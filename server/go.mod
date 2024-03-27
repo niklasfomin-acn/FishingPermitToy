@@ -1,6 +1,6 @@
 module rest-backend
 
-go 1.22.1
+go 1.22
 
 require (
 	9fans.net/go v0.0.0-20181112161441-237454027057 // indirect
