@@ -7,8 +7,8 @@ COPY go.sum ./
 
 COPY . ./
 
-RUN go build -o /AnglerAppKlon
+RUN go build -o /AnglerAppKlon/app
 
 EXPOSE 3000
 
-CMD ["/AnglerAppKlon"]
+CMD ["/AnglerAppKlon/app"]
