@@ -44,13 +44,15 @@ func ShowOptions() {
 
 	// Buttons
 	form.AddButton("Neuen Antrag stellen", func() {
-		//citizen := data.CreateCitizenFromForm(form)
+		citizen := data.CreateCitizenFromForm(form)
 		permit := data.CreatePermitFromForm(form)
 
 		// Call API handler to post permit request
-		client := data.NewJSONTransferClient("localhost", "8080", "/permit")
-		client.TransferPermit(permit)
-
+		permitClient := data.NewJSONTransferClient("localhost", "3000", "/permit")
+		permitClient.TransferPermit(permit)
+		// Calli API handler to post citizen request
+		citizenClient := data.NewJSONTransferClient("localhost", "3000", "/citizen")
+		citizenClient.TransferCitizen(citizen)
 	})
 	form.AddButton("Antragstatus abfragen", func() {
 		// Angaben zum Antrag

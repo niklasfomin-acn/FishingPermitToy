@@ -1,0 +1,10 @@
+{
+    "serverAddress": ":3000",
+    "databases": [
+        "mongodb://localhost:27017"
+    ],
+    "handlers": {
+        "/permit": "HandlePermitRequest",
+        "/citizen": "HandleCitizenRequest"
+    }
+}

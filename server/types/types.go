@@ -1,6 +1,8 @@
 package types
 
-import "time"
+import (
+	"time"
+)
 
 type Citizen struct {
 	PassportNumber   string `json:"passport_number"`

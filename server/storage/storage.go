@@ -1,6 +1,17 @@
 package storage
 
+import "rest-backend/types"
+
 type Storage interface {
-	// Here the different storage procedures are defined but not implemented
-	// This should also server as a wrapper for the different storage types (aws storage, azure storage)
+
+	// Get all entries
+
+	// Save permit
+	SavePermitRequest(pr types.Permit) (interface{}, error)
+
+	// Save citizen request
+	SaveCitizenRequest(cd types.Citizen) (interface{}, error)
+
+	// Change permit status
+
 }

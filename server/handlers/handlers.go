@@ -4,9 +4,18 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"rest-backend/storage"
 	types "rest-backend/types"
 	"sync"
 )
+
+type Handlers struct {
+	Store storage.Storage
+}
+
+func New(store storage.Storage) *Handlers {
+	return &Handlers{Store: store}
+}
 
 var (
 	mu               sync.Mutex
@@ -15,7 +24,7 @@ var (
 )
 
 // Handle a newly received permit request
-func HandlePermitRequest(w http.ResponseWriter, r *http.Request) {
+func (h *Handlers) HandlePermitRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
 		return
@@ -35,10 +44,21 @@ func HandlePermitRequest(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusCreated)
 
+	insertPermitID, err := h.Store.SavePermitRequest(permit)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"message":   "Permit Request Archived",
+		"permit_id": insertPermitID,
+	})
+
 }
 
 // Handle a newly received citizen request
-func HandleCitizenRequest(w http.ResponseWriter, r *http.Request) {
+func (h *Handlers) HandleCitizenRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
 		return
@@ -57,5 +77,16 @@ func HandleCitizenRequest(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Received citizen request: %+v\n", citizen)
 
 	w.WriteHeader(http.StatusCreated)
+
+	insertCitizenID, err := h.Store.SaveCitizenRequest(citizen)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"message":    "Citizen Data Archived",
+		"Citizen_id": insertCitizenID,
+	})
 
 }

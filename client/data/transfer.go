@@ -38,3 +38,22 @@ func (client *jsonTransferClient) TransferPermit(p *Permit) error {
 	}
 	return nil
 }
+
+func (client *jsonTransferClient) TransferCitizen(c *Citizen) error {
+	jsonData, err := json.Marshal(c)
+	if err != nil {
+		return err
+	}
+
+	resp, err := http.Post("http://"+client.destAddr+":"+client.destPort+client.destAPI, "application/json", bytes.NewBuffer(jsonData))
+	if err != nil {
+		return fmt.Errorf("failed to send citizen data: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("received non-ok status from server: %v", resp.StatusCode)
+	}
+
+	return nil
+}
