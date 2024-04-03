@@ -4,11 +4,15 @@ import (
 	"fmt"
 	"log"
 
+	"client/data"
+
 	"github.com/mbndr/figlet4go"
 	"github.com/rivo/tview"
-
-	"client/data"
 )
+
+// func InitClient() {
+// 	app := tview.NewApplication()
+// }
 
 func ShowWelcomeMessage() {
 	ascii := figlet4go.NewAsciiRender()
@@ -22,8 +26,16 @@ func ShowWelcomeMessage() {
 	fmt.Println(result)
 }
 
+// func WelcomePage() {
+// 	// Design with Logo and branding
+// 	// Time and Date
+// 	// Login Mask
+// 	//
+// }
+
 func ShowOptions() {
 
+	//TODO: Change Color Schema
 	app := tview.NewApplication()
 	form := tview.NewForm()
 
@@ -38,39 +50,49 @@ func ShowOptions() {
 	form.AddInputField("Date of Issue", "", 30, nil, nil)
 	form.AddInputField("Expiry Date", "", 30, nil, nil)
 	form.AddInputField("Issuing Authority", "", 30, nil, nil)
-
 	form.AddInputField("Permit Type", "", 30, nil, nil)
 	form.AddInputField("Permit Location", "", 30, nil, nil)
 
 	// Buttons
 	form.AddButton("Neuen Antrag stellen", func() {
-		citizen := data.CreateCitizenFromForm(form)
-		permit := data.CreatePermitFromForm(form)
-
-		// Call API handler to post permit request
-		permitClient := data.NewJSONTransferClient("localhost", "3000", "/permit")
-		permitClient.TransferPermit(permit)
-		// Calli API handler to post citizen request
-		citizenClient := data.NewJSONTransferClient("localhost", "3000", "/citizen")
-		citizenClient.TransferCitizen(citizen)
+		citizenPermit := data.CreateCitizenPermitFromForm(form)
+		// Call API handler to post citizen permit request
+		requestClient := data.NewJSONTransferClient("localhost", "3000", "/citizenPermit")
+		requestClient.TransferCitizenPermit(citizenPermit)
 	})
 	form.AddButton("Antragstatus abfragen", func() {
-		// Angaben zum Antrag
-		permit := data.CreatePermitFromForm(form)
-		permitView := tview.NewTextView().SetText(fmt.Sprintf("%+v", permit))
 		// Angaben zum Antragsteller
-		citizen := data.CreateCitizenFromForm(form)
-		citizenView := tview.NewTextView().SetText(fmt.Sprintf("%+v", citizen))
+		citizenPermit := data.CreateCitizenPermitFromForm(form)
+		citizenPermitView := tview.NewTextView().SetText(fmt.Sprintf("%+v", citizenPermit))
 
 		flex := tview.NewFlex().SetDirection(tview.FlexRow)
-		flex.AddItem(permitView, 0, 1, false)
-		flex.AddItem(citizenView, 0, 1, false)
+		flex.AddItem(citizenPermitView, 0, 1, false)
 		app.SetRoot(flex, true)
 
 	})
 
-	form.AddButton("Antrag zurückziehen", func() {
-		app.Stop()
+	// TODO: Restructure the whole app view. Only admin can call this.
+	form.AddButton("View Permits", func() {
+		adminClient, err := data.NewGrpcClient(":50051")
+		if err != nil {
+			log.Fatalf("Error creating new grpc client: %v", err)
+		}
+		citizenPermits, err := adminClient.FetchCitizenPermits()
+		if err != nil {
+			log.Fatalf("Error fetching citizen permits: %v", err)
+		}
+
+		permitText := ""
+		for _, permit := range citizenPermits {
+			permitText += fmt.Sprintf("%+v\n", permit)
+		}
+
+		permitView := tview.NewTextView().SetText(permitText)
+
+		flex := tview.NewFlex().SetDirection(tview.FlexRow)
+		flex.AddItem(permitView, 0, 1, false)
+		app.SetRoot(flex, true)
+
 	})
 	form.AddButton("Beenden", func() {
 		app.Stop()
@@ -83,18 +105,4 @@ func ShowOptions() {
 		log.Fatalf("Error starting application: %v", err)
 	}
 
-	//currentTimeView := tview.NewTextView()
-
-	// Doesn't work
-	// go func() {
-	// 	for {
-	// 		currenttime := time.Now().Format("15:04:05")
-	// 		app.QueueUpdateDraw(func() {
-	// 			currentTimeView.SetText(currenttime)
-	// 		})
-	// 		time.Sleep(time.Second)
-	// 	}
-	// }()
-
-	// form.AddFormItem(currentTimeView)
 }

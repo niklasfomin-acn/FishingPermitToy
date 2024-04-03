@@ -18,75 +18,40 @@ func New(store storage.Storage) *Handlers {
 }
 
 var (
-	mu               sync.Mutex
-	receivedPermits  = make([]types.Permit, 0)
-	receivedCitizens = make([]types.Citizen, 0)
+	mu                            sync.Mutex
+	receivedCitizenPermitRequests = make([]types.CitizenPermit, 0)
 )
 
-// Handle a newly received permit request
-func (h *Handlers) HandlePermitRequest(w http.ResponseWriter, r *http.Request) {
+// Handle a newly received citizen permit request
+func (h *Handlers) HandleCitizenPermitRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
 		return
 	}
-
-	var permit types.Permit
-	err := json.NewDecoder(r.Body).Decode(&permit)
+	var citzenPermit types.CitizenPermit
+	err := json.NewDecoder(r.Body).Decode(&citzenPermit)
 	if err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
 		return
+
 	}
 
 	mu.Lock()
-	receivedPermits = append(receivedPermits, permit)
+	receivedCitizenPermitRequests = append(receivedCitizenPermitRequests, citzenPermit)
 	mu.Unlock()
-	log.Printf("Received permit request: %+v\n", permit)
+	log.Printf("Received citizen permit request: %+v\n", receivedCitizenPermitRequests)
 
 	w.WriteHeader(http.StatusCreated)
 
-	insertPermitID, err := h.Store.SavePermitRequest(permit)
+	insertPermitID, err := h.Store.SaveCitizenPermitRequest(citzenPermit)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]interface{}{
-		"message":   "Permit Request Archived",
+		"message":   "Citizen Permit Request Archived",
 		"permit_id": insertPermitID,
-	})
-
-}
-
-// Handle a newly received citizen request
-func (h *Handlers) HandleCitizenRequest(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
-		return
-	}
-
-	var citizen types.Citizen
-	err := json.NewDecoder(r.Body).Decode(&citizen)
-	if err != nil {
-		http.Error(w, "Invalid request body", http.StatusBadRequest)
-		return
-	}
-
-	mu.Lock()
-	receivedCitizens = append(receivedCitizens, citizen)
-	mu.Unlock()
-	log.Printf("Received citizen request: %+v\n", citizen)
-
-	w.WriteHeader(http.StatusCreated)
-
-	insertCitizenID, err := h.Store.SaveCitizenRequest(citizen)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]interface{}{
-		"message":    "Citizen Data Archived",
-		"Citizen_id": insertCitizenID,
 	})
 
 }

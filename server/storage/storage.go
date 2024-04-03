@@ -4,13 +4,11 @@ import "rest-backend/types"
 
 type Storage interface {
 
-	// Get all entries
+	// Admin Only!!! Fetch the Citizen Permit Requests
+	FetchAll() ([]types.CitizenPermit, error)
 
-	// Save permit
-	SavePermitRequest(pr types.Permit) (interface{}, error)
-
-	// Save citizen request
-	SaveCitizenRequest(cd types.Citizen) (interface{}, error)
+	// Save a CitizenPermitRequest into db of choice (choose in config.json)
+	SaveCitizenPermitRequest(cpr types.CitizenPermit) (interface{}, error)
 
 	// Change permit status
 

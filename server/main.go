@@ -28,8 +28,7 @@ func main() {
 	store := storage.NewMongoStorage(config.Databases[0])
 	h := handlers.New(store)
 	handlerFuncs := map[string]func(w http.ResponseWriter, r *http.Request){
-		"/permit":  h.HandlePermitRequest,
-		"/citizen": h.HandleCitizenRequest,
+		"/citizenPermit": h.HandleCitizenPermitRequest,
 	}
 	// Start the server
 	server := api.NewServer(config.ServerAddress, handlerFuncs, store)

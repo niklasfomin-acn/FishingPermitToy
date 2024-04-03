@@ -21,33 +21,15 @@ func NewJSONTransferClient(destAddr, destPort, destAPI string) *jsonTransferClie
 	}
 }
 
-func (client *jsonTransferClient) TransferPermit(p *Permit) error {
-	jsonData, err := json.Marshal(p)
+func (client *jsonTransferClient) TransferCitizenPermit(cp *CitizenPermit) error {
+	jsonData, err := json.Marshal(cp)
 	if err != nil {
 		return err
 	}
 
 	resp, err := http.Post("http://"+client.destAddr+":"+client.destPort+client.destAPI, "application/json", bytes.NewBuffer(jsonData))
 	if err != nil {
-		return fmt.Errorf("failed to send permit data: %v", err)
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("received non-ok status from server: %v", resp.StatusCode)
-	}
-	return nil
-}
-
-func (client *jsonTransferClient) TransferCitizen(c *Citizen) error {
-	jsonData, err := json.Marshal(c)
-	if err != nil {
-		return err
-	}
-
-	resp, err := http.Post("http://"+client.destAddr+":"+client.destPort+client.destAPI, "application/json", bytes.NewBuffer(jsonData))
-	if err != nil {
-		return fmt.Errorf("failed to send citizen data: %v", err)
+		return fmt.Errorf("failed to send citizen permit data: %v", err)
 	}
 	defer resp.Body.Close()
 

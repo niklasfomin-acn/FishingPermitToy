@@ -6,14 +6,16 @@ import (
 	"rest-backend/types"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type MongoStorage struct {
-	client            *mongo.Client
-	permitCollection  *mongo.Collection
-	citizenCollection *mongo.Collection
+	client *mongo.Client
+	//permitCollection        *mongo.Collection
+	//citizenCollection       *mongo.Collection
+	citizenPermitCollection *mongo.Collection
 }
 
 func NewMongoStorage(uri string) *MongoStorage {
@@ -23,30 +25,43 @@ func NewMongoStorage(uri string) *MongoStorage {
 		log.Fatal(err)
 	}
 	return &MongoStorage{
-		client:            client,
-		permitCollection:  client.Database("permits").Collection("permit"),
-		citizenCollection: client.Database("citizens").Collection("citizen"),
+		client: client,
+		//permitCollection:        client.Database("permits").Collection("permit"),
+		//citizenCollection:       client.Database("citizens").Collection("citizen"),
+		citizenPermitCollection: client.Database("citizenPermits").Collection("citizenPermit"),
 	}
 }
 
-func (ms *MongoStorage) SavePermitRequest(pr types.Permit) (interface{}, error) {
-	insertRequest, err := ms.permitCollection.InsertOne(context.Background(), pr)
+func (ms *MongoStorage) SaveCitizenPermitRequest(cpr types.CitizenPermit) (interface{}, error) {
+	insertCitizenPermit, err := ms.citizenPermitCollection.InsertOne(context.Background(), cpr)
 	if err != nil {
 		return nil, err
 	}
-	log.Printf("Permit request saved: %+v\n", pr)
-	return insertRequest.InsertedID, nil
+	log.Printf("Citizen permit request saved: %+v\n", cpr)
+	return insertCitizenPermit.InsertedID, nil
 }
 
-func (ms *MongoStorage) SaveCitizenRequest(cd types.Citizen) (interface{}, error) {
-	// cdCopy := bson.M{
-	// 	"permitID": permitID,
-	// }
+func (ms *MongoStorage) FetchAll() ([]types.CitizenPermit, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
 
-	insertCitizen, err := ms.citizenCollection.InsertOne(context.Background(), cd)
+	cursor, err := ms.citizenPermitCollection.Find(ctx, bson.M{})
 	if err != nil {
 		return nil, err
 	}
-	log.Printf("Citizen request saved: %+v\n", cd)
-	return insertCitizen.InsertedID, nil
+	defer cursor.Close(ctx)
+
+	var results []types.CitizenPermit
+	for cursor.Next(ctx) {
+		var result types.CitizenPermit
+		err := cursor.Decode(&result)
+		if err != nil {
+			return nil, err
+		}
+		results = append(results, result)
+	}
+	if err := cursor.Err(); err != nil {
+		return nil, err
+	}
+	return results, nil
 }

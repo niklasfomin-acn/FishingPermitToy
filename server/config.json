@@ -5,6 +5,7 @@
     ],
     "handlers": {
         "/permit": "HandlePermitRequest",
-        "/citizen": "HandleCitizenRequest"
+        "/citizen": "HandleCitizenRequest",
+        "/citizenPermit": "HandleCitizenPermitRequest"
     }
 }
