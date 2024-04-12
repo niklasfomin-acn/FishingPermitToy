@@ -24,8 +24,33 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Define the handlers and database for the server
-	store := storage.NewMongoStorage(config.Databases[0])
+	/*
+		Define Databases here
+		[0] MongoDB
+		[1] Postgres
+		[2] OracleDB
+		[3] MongoDB Cluster Deployment
+	*/
+
+	// MongoDB local
+	//store := storage.NewMongoStorage(config.Databases[0])
+
+	// Postgres
+	// store, err := storage.NewPostgresStorage(config.Databases[1])
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// OracleDB
+	// store, err := storage.NewOracleStorage(config.Databases[2])
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// MongoDB Cluster Deployment
+	store := storage.NewMongoStorage(config.Databases[3])
+
+	// Define the API handlers here
 	h := handlers.New(store)
 	handlerFuncs := map[string]func(w http.ResponseWriter, r *http.Request){
 		"/citizenPermit": h.HandleCitizenPermitRequest,

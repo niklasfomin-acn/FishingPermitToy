@@ -4,17 +4,16 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"net/url"
 	"rest-backend/types"
 )
 
 type OracleStorage struct {
 	db  *sql.DB
-	url *url.URL
+	uri string
 }
 
-func NewOracleStorage(url *url.URL) (*OracleStorage, error) {
-	db, err := sql.Open("goracle", url.String())
+func NewOracleStorage(uri string) (*OracleStorage, error) {
+	db, err := sql.Open("goracle", uri)
 	if err != nil {
 		return nil, fmt.Errorf("error instanciating oracle db: %w", err)
 	}
@@ -23,28 +22,35 @@ func NewOracleStorage(url *url.URL) (*OracleStorage, error) {
 		return nil, fmt.Errorf("error pinging oracle db: %w", err)
 	}
 
-	return &OracleStorage{
+	os := &OracleStorage{
 		db:  db,
-		url: url,
-	}, nil
+		uri: uri,
+	}
+
+	err = os.CreateTable()
+	if err != nil {
+		return nil, fmt.Errorf("error creating table: %w", err)
+	}
+
+	return os, nil
 }
 
 func (os *OracleStorage) CreateTable() error {
 	query := `
 		CREATE TABLE citizenPermit (
 			PassportNumber VARCHAR2(100) NOT NULL PRIMARY KEY,
-            Surname VARCHAR2(100) NOT NULL,
-            GivenNames VARCHAR2(100) NOT NULL,
-            DateOfBirth VARCHAR2(100) NOT NULL,
-            PlaceOfBirth VARCHAR2(100) NOT NULL,
-            Gender VARCHAR2(10) NOT NULL,
-            Nationality VARCHAR2(100) NOT NULL,
-            DateOfIssue VARCHAR2(100) NOT NULL,
-            ExpiryDate VARCHAR2(100) NOT NULL,
-            IssuingAuthority VARCHAR2(100) NOT NULL,
-            PermitDate DATE NOT NULL,
-            PermitLocation VARCHAR2(100) NOT NULL,
-            PermitType VARCHAR2(100) NOT NULL,
+            Surname VARCHAR2(100),
+            GivenNames VARCHAR2(100),
+            DateOfBirth VARCHAR2(100),
+            PlaceOfBirth VARCHAR2(100),
+            Gender VARCHAR2(10),
+            Nationality VARCHAR2(100),
+            DateOfIssue VARCHAR2(100),
+            ExpiryDate VARCHAR2(100),
+            IssuingAuthority VARCHAR2(100),
+            PermitDate DATE,
+            PermitLocation VARCHAR2(100),
+            PermitType VARCHAR2(100),
             PermitState VARCHAR2(100) NOT NULL
         )
     `

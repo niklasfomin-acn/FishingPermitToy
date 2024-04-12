@@ -1,54 +1,65 @@
 package storage
 
 import (
-	"database/sql"
 	"fmt"
 	"log"
-	"net/url"
 	"rest-backend/types"
+
+	"github.com/jmoiron/sqlx"
+	_ "github.com/lib/pq"
 )
 
 type PostgresStorage struct {
-	db  *sql.DB
-	url *url.URL
+	db  *sqlx.DB
+	uri string
 }
 
-func NewPostgresStorage(url *url.URL) (*PostgresStorage, error) {
-	db, err := sql.Open("pq", url.String())
+func NewPostgresStorage(uri string) (*PostgresStorage, error) {
+	db, err := sqlx.Connect("postgres", uri)
 	if err != nil {
-		return nil, fmt.Errorf("error postgres db: %w", err)
+		return nil, fmt.Errorf("error instanciating postgres db: %w", err)
 	}
 
 	if err := db.Ping(); err != nil {
 		return nil, fmt.Errorf("error pinging postgres db: %w", err)
 	}
 
-	return &PostgresStorage{
+	ps := PostgresStorage{
 		db:  db,
-		url: url,
-	}, nil
+		uri: uri,
+	}
+
+	err = ps.CreateTable()
+	if err != nil {
+		return nil, fmt.Errorf("error creating table: %w", err)
+	}
+
+	return &ps, nil
 }
 
-func (os *PostgresStorage) CreateTable() error {
+func (ps *PostgresStorage) CreateTable() error {
+	if _, err := ps.db.Exec("DROP TABLE IF EXISTS citizenPermit"); err != nil {
+		log.Printf("Error dropping table: %v", err)
+	}
 	query := `
 		CREATE TABLE citizenPermit (
-			PassportNumber VARCHAR2(100) NOT NULL PRIMARY KEY,
-            Surname VARCHAR2(100) NOT NULL,
-            GivenNames VARCHAR2(100) NOT NULL,
-            DateOfBirth VARCHAR2(100) NOT NULL,
-            PlaceOfBirth VARCHAR2(100) NOT NULL,
-            Gender VARCHAR2(10) NOT NULL,
-            Nationality VARCHAR2(100) NOT NULL,
-            DateOfIssue VARCHAR2(100) NOT NULL,
-            ExpiryDate VARCHAR2(100) NOT NULL,
-            IssuingAuthority VARCHAR2(100) NOT NULL,
-            PermitDate DATE NOT NULL,
-            PermitLocation VARCHAR2(100) NOT NULL,
-            PermitType VARCHAR2(100) NOT NULL,
-            PermitState VARCHAR2(100) NOT NULL
+			PassportNumber VARCHAR(100) NOT NULL PRIMARY KEY,
+            Surname VARCHAR(100),
+            GivenNames VARCHAR(100),
+            DateOfBirth VARCHAR(100) ,
+            PlaceOfBirth VARCHAR(100) ,
+            Gender VARCHAR(10) ,
+            Nationality VARCHAR(100) ,
+            DateOfIssue VARCHAR(100) ,
+            ExpiryDate VARCHAR(100) ,
+            IssuingAuthority VARCHAR(100) ,
+            PermitDate DATE ,
+            PermitLocation VARCHAR(100) ,
+            PermitType VARCHAR(100) ,
+            PermitState VARCHAR(100) 
         )
     `
-	_, err := os.db.Exec(query)
+	_, err := ps.db.Exec(query)
 	if err != nil {
 		log.Printf("Error creating table: %v", err)
 	}
@@ -56,7 +67,7 @@ func (os *PostgresStorage) CreateTable() error {
 	return err
 }
 
-func (os *PostgresStorage) SaveCitizenPermitRequest(cpr types.CitizenPermit) (interface{}, error) {
+func (ps *PostgresStorage) SaveCitizenPermitRequest(cpr types.CitizenPermit) (interface{}, error) {
 	query := `
 		INSERT INTO citizenPermit (
 			PassportNumber,
@@ -90,7 +101,7 @@ func (os *PostgresStorage) SaveCitizenPermitRequest(cpr types.CitizenPermit) (in
             :PermitState
         )
     `
-	_, err := os.db.Exec(query, sql.Named("DateOfBirth", cpr.DateOfBirth), sql.Named("PlaceOfBirth", cpr.PlaceOfBirth), sql.Named("Gender", cpr.Gender), sql.Named("Nationality", cpr.Nationality), sql.Named("DateOfIssue", cpr.DateOfIssue), sql.Named("ExpiryDate", cpr.ExpiryDate), sql.Named("IssuingAuthority", cpr.IssuingAuthority), sql.Named("PermitDate", cpr.PermitDate), sql.Named("PermitLocation", cpr.PermitLocation), sql.Named("PermitType", cpr.PermitType), sql.Named("PermitState", cpr.PermitState))
+	_, err := ps.db.NamedExec(query, cpr)
 	if err != nil {
 		log.Printf("Error saving citizen permit request: %v", err)
 		return nil, err

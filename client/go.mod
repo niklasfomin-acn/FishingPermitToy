@@ -4,14 +4,7 @@ go 1.22.1
 
 require (
 	github.com/mbndr/figlet4go v0.0.0-20190224160619-d6cef5b186ea
-	github.com/rivo/tview v0.0.0-20240307173318-e804876934a1
-)
-
-require (
-	github.com/golang/protobuf v1.5.3 // indirect
-	golang.org/x/net v0.20.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240123012728-ef4313101c80 // indirect
-	google.golang.org/protobuf v1.32.0 // indirect
+	github.com/rivo/tview v0.0.0-20240406141410-79d4cc321256
 )
 
 require (
@@ -23,5 +16,4 @@ require (
 	golang.org/x/sys v0.17.0 // indirect
 	golang.org/x/term v0.17.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
-	google.golang.org/grpc v1.62.1
 )

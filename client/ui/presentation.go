@@ -57,7 +57,7 @@ func ShowOptions() {
 	form.AddButton("Neuen Antrag stellen", func() {
 		citizenPermit := data.CreateCitizenPermitFromForm(form)
 		// Call API handler to post citizen permit request
-		requestClient := data.NewJSONTransferClient("localhost", "3000", "/citizenPermit")
+		requestClient := data.NewJSONTransferClient("localhost", "30000", "/citizenPermit")
 		requestClient.TransferCitizenPermit(citizenPermit)
 	})
 	form.AddButton("Antragstatus abfragen", func() {
@@ -71,29 +71,6 @@ func ShowOptions() {
 
 	})
 
-	// TODO: Restructure the whole app view. Only admin can call this.
-	form.AddButton("View Permits", func() {
-		adminClient, err := data.NewGrpcClient(":50051")
-		if err != nil {
-			log.Fatalf("Error creating new grpc client: %v", err)
-		}
-		citizenPermits, err := adminClient.FetchCitizenPermits()
-		if err != nil {
-			log.Fatalf("Error fetching citizen permits: %v", err)
-		}
-
-		permitText := ""
-		for _, permit := range citizenPermits {
-			permitText += fmt.Sprintf("%+v\n", permit)
-		}
-
-		permitView := tview.NewTextView().SetText(permitText)
-
-		flex := tview.NewFlex().SetDirection(tview.FlexRow)
-		flex.AddItem(permitView, 0, 1, false)
-		app.SetRoot(flex, true)
-
-	})
 	form.AddButton("Beenden", func() {
 		app.Stop()
 	})
