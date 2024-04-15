@@ -1,7 +1,7 @@
 {
     "serverAddress": ":3000",
     "databases": [
-        "mongodb://host.docker.internal:27017",
+        "mongodb://localhost:27017",
         "postgresql://postgres@localhost:5432/postgres?sslmode=disable",
         "oracle://system:oracle@localhost:1521/xe",
         "mongodb://mongodb:27017"

@@ -18,5 +18,7 @@ type CitizenPermit struct {
 	PermitDate       time.Time `json:"permit_date" db:"PermitDate"`
 	PermitLocation   string    `json:"permit_location" db:"PermitLocation"`
 	PermitType       string    `json:"permit_type" db:"PermitType"`
-	PermitState      string    `json:"permit_state" db:"PermitState"`
+	PermitState      string    `json:"permit_state"`
+	Email            string    `json:"email"`
+	Phone            string    `json:"phone"`
 }

@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"rest-backend/types"
+
+	_ "github.com/godror/godror"
 )
 
 type OracleStorage struct {
@@ -13,7 +15,7 @@ type OracleStorage struct {
 }
 
 func NewOracleStorage(uri string) (*OracleStorage, error) {
-	db, err := sql.Open("goracle", uri)
+	db, err := sql.Open("godror", uri)
 	if err != nil {
 		return nil, fmt.Errorf("error instanciating oracle db: %w", err)
 	}

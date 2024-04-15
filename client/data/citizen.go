@@ -22,24 +22,29 @@ type CitizenPermit struct {
 	PermitLocation   string    `json:"permit_location"`
 	PermitType       string    `json:"permit_type"`
 	PermitState      string    `json:"permit_state"`
+	Email            string    `json:"email"`
+	Phone            string    `json:"phone"`
 }
 
 func CreateCitizenPermitFromForm(form *tview.Form) *CitizenPermit {
 	permitDate := time.Now().Local()
 
 	return &CitizenPermit{
-		PassportNumber:   form.GetFormItemByLabel("Passport Number").(*tview.InputField).GetText(),
-		Surname:          form.GetFormItemByLabel("Surname").(*tview.InputField).GetText(),
-		GivenNames:       form.GetFormItemByLabel("Given Names").(*tview.InputField).GetText(),
-		DateOfBirth:      form.GetFormItemByLabel("Date of Birth").(*tview.InputField).GetText(),
-		PlaceOfBirth:     form.GetFormItemByLabel("Place of Birth").(*tview.InputField).GetText(),
-		Gender:           form.GetFormItemByLabel("Gender").(*tview.InputField).GetText(),
-		Nationality:      form.GetFormItemByLabel("Nationality").(*tview.InputField).GetText(),
-		DateOfIssue:      form.GetFormItemByLabel("Date of Issue").(*tview.InputField).GetText(),
-		ExpiryDate:       form.GetFormItemByLabel("Expiry Date").(*tview.InputField).GetText(),
-		IssuingAuthority: form.GetFormItemByLabel("Issuing Authority").(*tview.InputField).GetText(),
+		PassportNumber:   form.GetFormItemByLabel("Personalausweis-Nr.").(*tview.InputField).GetText(),
+		Surname:          form.GetFormItemByLabel("Nachname").(*tview.InputField).GetText(),
+		GivenNames:       form.GetFormItemByLabel("Vorname").(*tview.InputField).GetText(),
+		DateOfBirth:      form.GetFormItemByLabel("Geburtsdatum [dd:mm:yy]").(*tview.InputField).GetText(),
+		PlaceOfBirth:     form.GetFormItemByLabel("Geburtsort").(*tview.InputField).GetText(),
+		Gender:           form.GetFormItemByLabel("Geschlecht").(*tview.InputField).GetText(),
+		Nationality:      form.GetFormItemByLabel("Nationalität").(*tview.InputField).GetText(),
+		DateOfIssue:      form.GetFormItemByLabel("Datum der Ausstellung [dd:mm:yy]").(*tview.InputField).GetText(),
+		ExpiryDate:       form.GetFormItemByLabel("Gültig bis: [dd:mm:yy]").(*tview.InputField).GetText(),
+		IssuingAuthority: form.GetFormItemByLabel("Ausstellende Behörde [Amt]").(*tview.InputField).GetText(),
 		PermitDate:       permitDate,
-		PermitLocation:   form.GetFormItemByLabel("Permit Location").(*tview.InputField).GetText(),
-		PermitType:       form.GetFormItemByLabel("Permit Type").(*tview.InputField).GetText(),
+		PermitLocation:   form.GetFormItemByLabel("Vorgesehene Nutzungsregion [Berlin/Brandenburg]").(*tview.InputField).GetText(),
+		PermitType:       form.GetFormItemByLabel("Antragstyp[Hobby/Gewerblich]").(*tview.InputField).GetText(),
+		PermitState:      "pending",
+		Email:            form.GetFormItemByLabel("E-Mail Adresse [max.mustermann@xxx.com]").(*tview.InputField).GetText(),
+		Phone:            form.GetFormItemByLabel("Telefonnummer[+49 12345678]").(*tview.InputField).GetText(),
 	}
 }

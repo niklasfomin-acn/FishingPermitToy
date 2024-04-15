@@ -33,7 +33,7 @@ func main() {
 	*/
 
 	// MongoDB local
-	//store := storage.NewMongoStorage(config.Databases[0])
+	store := storage.NewMongoStorage(config.Databases[0])
 
 	// Postgres
 	// store, err := storage.NewPostgresStorage(config.Databases[1])
@@ -48,7 +48,7 @@ func main() {
 	// }
 
 	// MongoDB Cluster Deployment
-	store := storage.NewMongoStorage(config.Databases[3])
+	//store := storage.NewMongoStorage(config.Databases[3])
 
 	// Define the API handlers here
 	h := handlers.New(store)
