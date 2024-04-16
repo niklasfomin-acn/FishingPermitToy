@@ -1,0 +1,5 @@
+{
+    "ServerAddress": "localhost",
+    "ServerPort": "3000",
+    "ServerAPI": "/citizenPermit"
+}

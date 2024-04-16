@@ -22,7 +22,7 @@ var (
 	receivedCitizenPermitRequests = make([]types.CitizenPermit, 0)
 )
 
-// Handle a newly received citizen permit request
+// Store a newly received citizen permit request
 func (h *Handlers) HandleCitizenPermitRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
@@ -40,8 +40,6 @@ func (h *Handlers) HandleCitizenPermitRequest(w http.ResponseWriter, r *http.Req
 	receivedCitizenPermitRequests = append(receivedCitizenPermitRequests, citzenPermit)
 	mu.Unlock()
 	log.Printf("Received citizen permit request: %+v\n", receivedCitizenPermitRequests)
-
-	w.WriteHeader(http.StatusCreated)
 
 	insertPermitID, err := h.Store.SaveCitizenPermitRequest(citzenPermit)
 	if err != nil {
