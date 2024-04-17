@@ -22,10 +22,13 @@ func SetupStartPage(app *tview.Application, pages *tview.Pages) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer file.Close()
+
 	img, err := jpeg.Decode(file)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	form.AddImage("", img, 75, 15, 0)
 
 	// InputFields
@@ -65,12 +68,16 @@ func SetupCitizenLandingPage(app *tview.Application, pages *tview.Pages, config 
 		log.Fatal(err)
 	}
 
+	// Header
 	landingForm.AddImage("", img, 70, 15, 0)
 
+	// Buttons
+	landingForm.AddButton("Antragstatus Anzeigen", func() {})
 	landingForm.AddButton("Ausweisdokument Hochladen", func() { TriggerDocumentAI() })
 	landingForm.AddButton("Manuellen Antrag Erstellen", func() { pages.SwitchToPage("ManualPermitPage") })
 	landingForm.AddButton("Zurück", func() { pages.SwitchToPage("StartPage") })
 	landingForm.AddButton("Beenden", func() { app.Stop() })
+
 	pages.AddPage("CitizenLandingPage", landingForm, true, false)
 	landingForm.AddTextView("Impressum", "Accenture x BMI / LLM-supported Cloud Native Assessment / PoC Application V0.3", 50, 0, false, false).SetBorder(true).SetBorderColor(tview.Styles.BorderColor)
 }

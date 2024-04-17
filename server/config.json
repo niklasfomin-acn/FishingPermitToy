@@ -9,6 +9,7 @@
     "handlers": {
         "/permit": "HandlePermitRequest",
         "/citizen": "HandleCitizenRequest",
-        "/citizenPermit": "HandleCitizenPermitRequest"
+        "/SaveCitizenPermit": "HandleCitizenPermitRequest",
+        "/GetAllCitizenPermitRequests": "GetAllCitizenPermitRequests"
     }
 }

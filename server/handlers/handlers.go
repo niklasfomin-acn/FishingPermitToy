@@ -54,3 +54,45 @@ func (h *Handlers) HandleCitizenPermitRequest(w http.ResponseWriter, r *http.Req
 	})
 
 }
+
+// Get all citizen permit requests
+func (h *Handlers) GetCitizenPermitRequests(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	allCitizenPermitRequests, err := h.Store.FetchCitizenPermitRequests()
+	if err != nil {
+		log.Printf("Error fetching citizen permit requests from database: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	jsonResults, err := json.Marshal(allCitizenPermitRequests)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(jsonResults)
+	w.WriteHeader(http.StatusOK)
+
+}
+
+// Get all processed citizen permit requests
+
+// Get all pending citizen permit requests
+
+// Get all approved citizen permit requests
+
+// Get all rejected citizen permit requests
+
+// Get a citizen permit request by ID
+
+// Approve a citizen permit request
+
+// Reject a citizen permit request
+
+// Notify a citizen on permit status

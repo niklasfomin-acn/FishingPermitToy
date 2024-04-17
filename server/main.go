@@ -53,7 +53,8 @@ func main() {
 	// Define the API handlers here
 	h := handlers.New(store)
 	handlerFuncs := map[string]func(w http.ResponseWriter, r *http.Request){
-		"/citizenPermit": h.HandleCitizenPermitRequest,
+		"/SaveCitizenPermit":           h.HandleCitizenPermitRequest,
+		"/GetAllCitizenPermitRequests": h.GetCitizenPermitRequests,
 	}
 	// Start the server
 	server := api.NewServer(config.ServerAddress, handlerFuncs, store)
