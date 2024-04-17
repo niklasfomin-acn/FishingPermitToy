@@ -1,3 +1,15 @@
+/*
+	GPT Experiment zum Untersuchungsaspekt Module / Datenbanken
+
+Code Snippet zur Anbindung von AWS RDS Postgres an das Backend
+Version: 3
+Bemerkungen: Die Datenbankanbindung funktioniert. Allerdings behandelt der generierte Code nicht das
+Szenario, in dem die Datenbanktabelle bereits existiert. Daher wirf der Server folgenden Fehler und stoppt.
+2024/04/17 09:37:01 Error creating table: pq: relation "citizenpermit" already exists
+2024/04/17 09:37:01 Table created successfully
+2024/04/17 09:37:01 error creating table: pq: relation "citizenpermit" already exists
+exit status 1
+*/
 package storage
 
 import (
@@ -39,7 +51,7 @@ func NewPostgresStorage(uri string) (*PostgresStorage, error) {
 
 func (ps *PostgresStorage) CreateTable() error {
 	query := `  
-		CREATE TABLE citizenPermit (  
+		CREATE TABLE IF NOT EXISTS citizenPermit (  
 			PassportNumber VARCHAR(100) NOT NULL PRIMARY KEY,  
             Surname VARCHAR(100),  
             GivenNames VARCHAR(100),  
@@ -59,9 +71,10 @@ func (ps *PostgresStorage) CreateTable() error {
 	_, err := ps.db.Exec(query)
 	if err != nil {
 		log.Printf("Error creating table: %v", err)
+		return err
 	}
 	log.Println("Table created successfully")
-	return err
+	return nil
 }
 
 func (ps *PostgresStorage) SaveCitizenPermitRequest(cpr types.CitizenPermit) (interface{}, error) {
