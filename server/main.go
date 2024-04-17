@@ -3,7 +3,7 @@
 
 Code Snippet zur Anbindung von AWS RDS Postgres an das Backend
 Version: 4
-Bemerkungen:
+Bemerkungen: Die Anbindung von MongoDB funktioniert auf Anhieb.
 */
 package main
 
