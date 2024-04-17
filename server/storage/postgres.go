@@ -2,16 +2,8 @@
 	GPT Experiment zum Untersuchungsaspekt Module / Datenbanken
 
 Code Snippet zur Anbindung von AWS RDS Postgres an das Backend
-Version: 3
-Bemerkungen: Die Datenbankanbindung funktioniert. Allerdings behandelt der generierte Code nicht das
-Szenario, in dem die Datenbanktabelle bereits existiert. Daher wirf der Server folgenden Fehler und stoppt.
-2024/04/17 09:37:01 Error creating table: pq: relation "citizenpermit" already exists
-2024/04/17 09:37:01 Table created successfully
-2024/04/17 09:37:01 error creating table: pq: relation "citizenpermit" already exists
-exit status 1
-
-Der Fehler konnte durch die vorgschlagene Änderung im Code behoben werden. Der Server
-startet und verarbeitet Anfragen korrekt.
+Version: 4
+Bemerkungen:
 */
 package storage
 

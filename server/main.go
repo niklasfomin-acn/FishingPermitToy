@@ -2,7 +2,7 @@
 	GPT Experiment zum Untersuchungsaspekt Module / Datenbanken
 
 Code Snippet zur Anbindung von AWS RDS Postgres an das Backend
-Version: 2
+Version: 4
 Bemerkungen:
 */
 package main
@@ -43,10 +43,10 @@ func main() {
 	//store := storage.NewMongoStorage(config.Databases[0])
 
 	//Postgres
-	store, err := storage.NewPostgresStorage(config.Databases[1])
-	if err != nil {
-		log.Fatal(err)
-	}
+	// store, err := storage.NewPostgresStorage(config.Databases[1])
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	// OracleDB
 	// store, err := storage.NewOracleStorage(config.Databases[2])
@@ -55,7 +55,7 @@ func main() {
 	// }
 
 	// MongoDB Cluster Deployment
-	//store := storage.NewMongoStorage(config.Databases[3])
+	store, err := storage.NewMongoDBStorage(config.Databases[3], "citizenPermit")
 
 	// Define the API handlers here
 	h := handlers.New(store)
