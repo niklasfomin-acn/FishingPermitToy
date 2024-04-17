@@ -2,7 +2,7 @@
     "serverAddress": ":3000",
     "databases": [
         "mongodb://localhost:27017",
-        "postgresql://postgres@localhost:5432/postgres?sslmode=disable",
+        "postgresql://postgres@pgkibund.cz3htc7khf9a.eu-central-1.rds.amazonaws.com:5432/postgres?sslmode=require",
         "oracle://system:oracle@localhost:1521/xe",
         "mongodb://mongodb:27017"
     ],

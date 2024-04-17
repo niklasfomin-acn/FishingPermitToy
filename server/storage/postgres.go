@@ -1,10 +1,3 @@
-/*
-	GPT Experiment zum Untersuchungsaspekt Module / Datenbanken
-
-Code Snippet zur Anbindung von Postgres an das Backend
-Version: 1
-Bemerkungen: Copy Paste erzeugt keinerlei Fehler des LSP,
-*/
 package storage
 
 import (

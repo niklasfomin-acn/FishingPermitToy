@@ -1,12 +1,9 @@
 /*
 	GPT Experiment zum Untersuchungsaspekt Module / Datenbanken
 
-Code Snippet zur Anbindung von Postgres an das Backend
-Version: 1
-Bemerkungen: die Store Funktion beschwert sich, dass postgres.go nicht alle abstrakten Methoden
-des Storage Interfaces implementiert. Das einfach hinzufügen ohne Implementierung genügt.
-Die Quelldatei kompiliert fehlerfrei und der Server ist ausführbar.
-Die Datenbankanbindung funktioniert fehlerfrei ohne notwendige Anpassungen.
+Code Snippet zur Anbindung von AWS RDS Postgres an das Backend
+Version: 2
+Bemerkungen:
 */
 package main
 
