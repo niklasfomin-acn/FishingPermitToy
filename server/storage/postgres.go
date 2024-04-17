@@ -9,6 +9,9 @@ Szenario, in dem die Datenbanktabelle bereits existiert. Daher wirf der Server f
 2024/04/17 09:37:01 Table created successfully
 2024/04/17 09:37:01 error creating table: pq: relation "citizenpermit" already exists
 exit status 1
+
+Der Fehler konnte durch die vorgschlagene Änderung im Code behoben werden. Der Server
+startet und verarbeitet Anfragen korrekt.
 */
 package storage
 
