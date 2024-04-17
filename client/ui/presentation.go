@@ -1,10 +1,6 @@
 package presentation
 
 import (
-	"image/jpeg"
-	"log"
-	"os"
-
 	"client/data"
 	config "client/data"
 
@@ -18,18 +14,18 @@ func SetupStartPage(app *tview.Application, pages *tview.Pages) {
 	form.SetButtonTextColor(tview.Styles.PrimaryTextColor)
 
 	// Header
-	file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/angelschein.jpeg")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
+	// file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/angelschein.jpeg")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer file.Close()
 
-	img, err := jpeg.Decode(file)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// img, err := jpeg.Decode(file)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	form.AddImage("", img, 75, 15, 0)
+	// form.AddImage("", img, 75, 15, 0)
 
 	// InputFields
 	form.AddDropDown("Nutzerstatus", []string{"Bürger", "Administrator"}, 0, nil)
@@ -59,17 +55,17 @@ func SetupCitizenLandingPage(app *tview.Application, pages *tview.Pages, config 
 	landingForm.SetButtonBackgroundColor(tview.Styles.PrimitiveBackgroundColor)
 	landingForm.SetButtonTextColor(tview.Styles.PrimaryTextColor)
 
-	file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/angelschein.jpeg")
-	if err != nil {
-		log.Fatal(err)
-	}
-	img, err := jpeg.Decode(file)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/angelschein.jpeg")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// img, err := jpeg.Decode(file)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	// Header
-	landingForm.AddImage("", img, 70, 15, 0)
+	// // Header
+	// landingForm.AddImage("", img, 70, 15, 0)
 
 	// Buttons
 	landingForm.AddButton("Antragstatus Anzeigen", func() {})
@@ -86,16 +82,16 @@ func SetupManualPermitPage(app *tview.Application, pages *tview.Pages, config co
 	manualPermitForm := tview.NewForm()
 	manualPermitForm.SetBorder(true).SetTitle("Manueller Antrag").SetTitleAlign(tview.AlignCenter)
 
-	file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/perso.jpeg")
-	if err != nil {
-		log.Fatal(err)
-	}
-	img, err := jpeg.Decode(file)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/perso.jpeg")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// img, err := jpeg.Decode(file)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	manualPermitForm.AddImage("", img, 40, 10, 0)
+	// manualPermitForm.AddImage("", img, 40, 10, 0)
 
 	manualPermitForm.AddInputField("Personalausweis-Nr.", "", 30, nil, nil)
 	manualPermitForm.AddInputField("Nachname", "", 30, nil, nil)
