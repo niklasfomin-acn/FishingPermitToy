@@ -76,23 +76,182 @@ func (h *Handlers) GetCitizenPermitRequests(w http.ResponseWriter, r *http.Reque
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(jsonResults)
 	w.WriteHeader(http.StatusOK)
-
+	w.Write(jsonResults)
 }
 
 // Get all processed citizen permit requests
 
+func (h *Handlers) GetProcessedCitizenPermitRequests(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	processedCitizenPermitRequests, err := h.Store.FetchProcessedCitizenPermitRequests()
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	jsonResults, err := json.Marshal(processedCitizenPermitRequests)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(jsonResults)
+}
+
 // Get all pending citizen permit requests
+func (h *Handlers) GetPendingCitizenPermitRequests(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	pendingCitizenPermitRequests, err := h.Store.FetchPendingCitizenPermitRequests()
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	jsonResults, err := json.Marshal(pendingCitizenPermitRequests)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(jsonResults)
+}
 
 // Get all approved citizen permit requests
+func (h *Handlers) GetApprovedCitizenPermitRequests(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	approvedCitizenPermitRequests, err := h.Store.FetchApprovedCitizenPermitRequests()
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	jsonResults, err := json.Marshal(approvedCitizenPermitRequests)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(jsonResults)
+}
 
 // Get all rejected citizen permit requests
+func (h *Handlers) GetRejectedCitizenPermitRequests(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	rejectedCitizenPermitRequests, err := h.Store.FetchRejectedCitizenPermitRequests()
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	jsonResults, err := json.Marshal(rejectedCitizenPermitRequests)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(jsonResults)
+}
 
 // Get a citizen permit request by ID
+func (h *Handlers) GetCitizenPermitRequestByID(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	id := r.URL.Query().Get("id")
+
+	permitID, err := h.Store.FetchCitizenPermitRequestByID(id)
+	if err != nil {
+		log.Printf("Error fetching Permit Request by ID: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	jsonResults, err := json.Marshal(permitID)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(jsonResults)
+
+}
 
 // Approve a citizen permit request
+func (h *Handlers) ApproveCitizenPermitRequest(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	id := r.URL.Query().Get("id")
+
+	err := h.Store.ApproveCitizenPermitRequest(id)
+	if err != nil {
+		log.Printf("Error approving citizen permit request: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(map[string]interface{}{
+			"message": "Citizen Permit Request Approved",
+		})
+	}
+}
 
 // Reject a citizen permit request
+func (h *Handlers) RejectCitizenPermitRequest(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+		return
+	}
+
+	id := r.URL.Query().Get("id")
+
+	err := h.Store.RejectCitizenPermitRequest(id)
+	if err != nil {
+		log.Printf("Error rejecting citizen permit request: %v\n", err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(map[string]interface{}{
+			"message": "Citizen Permit Request Rejected",
+		})
+	}
+}
 
 // Notify a citizen on permit status

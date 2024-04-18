@@ -67,33 +67,152 @@ func (ms *MongoStorage) FetchCitizenPermitRequests() ([]types.CitizenPermit, err
 }
 
 func (ms *MongoStorage) FetchProcessedCitizenPermitRequests() ([]types.CitizenPermit, error) {
-	return nil, nil
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	cursor, err := ms.citizenPermitCollection.Find(ctx, bson.M{"permitstate": bson.M{"$in": []string{"approved", "rejected"}}})
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	var results []types.CitizenPermit
+	for cursor.Next(ctx) {
+		var result types.CitizenPermit
+		err := cursor.Decode(&result)
+		if err != nil {
+			return nil, err
+		}
+		results = append(results, result)
+	}
+	if err := cursor.Err(); err != nil {
+		return nil, err
+	}
+	return results, nil
 }
 
 func (ms *MongoStorage) FetchPendingCitizenPermitRequests() ([]types.CitizenPermit, error) {
-	return nil, nil
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	cursor, err := ms.citizenPermitCollection.Find(ctx, bson.M{"permitstate": "pending"})
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	var results []types.CitizenPermit
+	for cursor.Next(ctx) {
+		var result types.CitizenPermit
+		err := cursor.Decode(&result)
+		if err != nil {
+			return nil, err
+		}
+		results = append(results, result)
+	}
+	if err := cursor.Err(); err != nil {
+		return nil, err
+	}
+	return results, nil
 }
 
 func (ms *MongoStorage) FetchApprovedCitizenPermitRequests() ([]types.CitizenPermit, error) {
-	return nil, nil
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	cursor, err := ms.citizenPermitCollection.Find(ctx, bson.M{"permitstate": "approved"})
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	var results []types.CitizenPermit
+	for cursor.Next(ctx) {
+		var result types.CitizenPermit
+		err := cursor.Decode(&result)
+		if err != nil {
+			return nil, err
+		}
+		results = append(results, result)
+	}
+	if err := cursor.Err(); err != nil {
+		return nil, err
+	}
+	return results, nil
 }
 
 func (ms *MongoStorage) FetchRejectedCitizenPermitRequests() ([]types.CitizenPermit, error) {
-	return nil, nil
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	cursor, err := ms.citizenPermitCollection.Find(ctx, bson.M{"permitstate": "rejected"})
+	if err != nil {
+		log.Printf("Error fetching processed citizen permit requests from database: %v\n", err)
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	var results []types.CitizenPermit
+	for cursor.Next(ctx) {
+		var result types.CitizenPermit
+		err := cursor.Decode(&result)
+		if err != nil {
+			return nil, err
+		}
+		results = append(results, result)
+	}
+	if err := cursor.Err(); err != nil {
+		return nil, err
+	}
+	return results, nil
 }
 
 func (ms *MongoStorage) FetchCitizenPermitRequestByID(id string) (types.CitizenPermit, error) {
-	return types.CitizenPermit{}, nil
+	// Fetch by Passport Number as unique identifier
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	cursor := ms.citizenPermitCollection.FindOne(ctx, bson.M{"passportnumber": id})
+
+	var result types.CitizenPermit
+	err := cursor.Decode(&result)
+	if err != nil {
+		log.Printf("Error decoding document into citizen permit request: %v\n", err)
+		return types.CitizenPermit{}, err
+	}
+
+	return result, nil
 }
 
 func (ms *MongoStorage) ApproveCitizenPermitRequest(id string) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	cursor := ms.citizenPermitCollection.FindOneAndUpdate(ctx, bson.M{"passportnumber": id}, bson.M{"$set": bson.M{"permitstate": "approved"}})
+
+	var result types.CitizenPermit
+	err := cursor.Decode(&result)
+	if err != nil {
+		log.Printf("Error changing permit status: %v\n", err)
+		return err
+	}
 	return nil
 }
 
 func (ms *MongoStorage) RejectCitizenPermitRequest(id string) error {
-	return nil
-}
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
 
-func (ms *MongoStorage) ViewPermitStatus(id string) (types.CitizenPermit, error) {
-	return types.CitizenPermit{}, nil
+	cursor := ms.citizenPermitCollection.FindOneAndUpdate(ctx, bson.M{"passportnumber": id}, bson.M{"$set": bson.M{"permitstate": "rejected"}})
+
+	var result types.CitizenPermit
+	err := cursor.Decode(&result)
+	if err != nil {
+		log.Printf("Error changing permit status: %v\n", err)
+		return err
+	}
+	return nil
 }

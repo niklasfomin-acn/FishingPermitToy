@@ -109,3 +109,35 @@ func (ps *PostgresStorage) SaveCitizenPermitRequest(cpr types.CitizenPermit) (in
 	log.Println("Citizen Permit Request saved successfully")
 	return cpr, nil
 }
+
+func (ps *PostgresStorage) FetchCitizenPermitRequests() ([]types.CitizenPermit, error) {
+	return nil, nil
+}
+
+func (ps *PostgresStorage) FetchProcessedCitizenPermitRequests() ([]types.CitizenPermit, error) {
+	return nil, nil
+}
+
+func (ps *PostgresStorage) FetchPendingCitizenPermitRequests() ([]types.CitizenPermit, error) {
+	return nil, nil
+}
+
+func (ps *PostgresStorage) FetchApprovedCitizenPermitRequests() ([]types.CitizenPermit, error) {
+	return nil, nil
+}
+
+func (ps *PostgresStorage) FetchRejectedCitizenPermitRequests() ([]types.CitizenPermit, error) {
+	return nil, nil
+}
+
+func (ps *PostgresStorage) FetchCitizenPermitRequestByID(id string) (types.CitizenPermit, error) {
+	return types.CitizenPermit{}, nil
+}
+
+func (ps *PostgresStorage) ApproveCitizenPermitRequest(id string) error {
+	return nil
+}
+
+func (ps *PostgresStorage) RejectCitizenPermitRequest(id string) error {
+	return nil
+}

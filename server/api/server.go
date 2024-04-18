@@ -1,8 +1,11 @@
 package api
 
 import (
+	"encoding/json"
 	"log"
 	"net/http"
+	"os"
+	"rest-backend/config"
 	"rest-backend/storage"
 )
 
@@ -22,9 +25,35 @@ func NewServer(listenAddr string, handlers map[string]func(w http.ResponseWriter
 }
 
 func (s *Server) Start() error {
-	log.Printf("Backend Server listening on Port 3000\n")
+	data, err := os.ReadFile("config.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	var config config.Config
+	err = json.Unmarshal(data, &config)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("Backend Server Running on Port %v\n", config.ServerAddress)
+
 	for route, handler := range s.handlers {
 		http.HandleFunc(route, handler)
 	}
+
 	return http.ListenAndServe(s.listenAddr, nil)
+}
+
+func ServerDB(choice int, config *config.Config) storage.Storage {
+	var store storage.Storage
+
+	switch choice {
+	case 1:
+		store = storage.NewMongoStorage(config.Databases[0])
+	case 2:
+		store = storage.NewMongoStorage(config.Databases[0])
+	default:
+		log.Fatal("Invalid Database Choice")
+	}
+	return store
 }

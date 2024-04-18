@@ -2,18 +2,17 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
-	"net/http"
 	"os"
 	"rest-backend/api"
 	"rest-backend/config"
 	"rest-backend/handlers"
-	"rest-backend/storage"
 )
 
 func main() {
 
-	// Read the configuration for the server
+	// Parse in the Database Server configuration
 	data, err := os.ReadFile("config.json")
 	if err != nil {
 		log.Fatal(err)
@@ -24,38 +23,19 @@ func main() {
 		log.Fatal(err)
 	}
 
-	/*
-		Define Databases here
-		[0] MongoDB
-		[1] Postgres
-		[2] OracleDB
-		[3] MongoDB Cluster Deployment
-	*/
-
-	// MongoDB local
-	store := storage.NewMongoStorage(config.Databases[0])
-
-	// Postgres
-	// store, err := storage.NewPostgresStorage(config.Databases[1])
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// OracleDB
-	// store, err := storage.NewOracleStorage(config.Databases[2])
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// MongoDB Cluster Deployment
-	//store := storage.NewMongoStorage(config.Databases[3])
-
-	// Define the API handlers here
-	h := handlers.New(store)
-	handlerFuncs := map[string]func(w http.ResponseWriter, r *http.Request){
-		"/SaveCitizenPermit":           h.HandleCitizenPermitRequest,
-		"/GetAllCitizenPermitRequests": h.GetCitizenPermitRequests,
+	fmt.Println("Init Database Server:")
+	var choice int
+	_, err = fmt.Scan(&choice)
+	if err != nil {
+		log.Fatal(err)
 	}
+
+	store := api.ServerDB(choice, &config)
+
+	// Parse in the API handlers
+	h := handlers.New(store)
+	handlerFuncs := handlers.GetHandlerFuncs(h)
+
 	// Start the server
 	server := api.NewServer(config.ServerAddress, handlerFuncs, store)
 	log.Fatal(server.Start())

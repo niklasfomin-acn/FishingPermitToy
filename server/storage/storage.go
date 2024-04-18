@@ -9,9 +9,6 @@ type Storage interface {
 	// Save a CitizenPermitRequest
 	SaveCitizenPermitRequest(cpr types.CitizenPermit) (interface{}, error)
 
-	// View Permit Status
-	ViewPermitStatus(id string) (types.CitizenPermit, error)
-
 	/* Admin API storage procedures */
 
 	// Fetch all CitizenPermitRequests

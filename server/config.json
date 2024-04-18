@@ -5,11 +5,5 @@
         "postgresql://postgres@localhost:5432/postgres?sslmode=disable",
         "oracle://system:oracle@localhost:1521/xe",
         "mongodb://mongodb:27017"
-    ],
-    "handlers": {
-        "/permit": "HandlePermitRequest",
-        "/citizen": "HandleCitizenRequest",
-        "/SaveCitizenPermit": "HandleCitizenPermitRequest",
-        "/GetAllCitizenPermitRequests": "GetAllCitizenPermitRequests"
-    }
+    ]
 }
