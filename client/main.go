@@ -38,8 +38,6 @@ func main() {
 	// Setup Admin Pages
 	presentation.SetupAdminPage(app, pages, config)
 
-	presentation.SetupPermitPage(app, pages, config)
-
 	// Set the initial page to be the Start Page
 	if err := app.SetRoot(pages, true).Run(); err != nil {
 		log.Fatalf("Error starting application: %v", err)

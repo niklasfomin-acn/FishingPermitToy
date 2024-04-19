@@ -74,6 +74,7 @@ func (h *Handlers) GetCitizenPermitRequests(w http.ResponseWriter, r *http.Reque
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	log.Println("Successfully Served All Citizen Permit Requests")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -100,6 +101,7 @@ func (h *Handlers) GetProcessedCitizenPermitRequests(w http.ResponseWriter, r *h
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	log.Println("Successfully Served All Processed Citizen Permit Requests")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -125,6 +127,7 @@ func (h *Handlers) GetPendingCitizenPermitRequests(w http.ResponseWriter, r *htt
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	log.Println("Successfully Served All Pending Citizen Permit Requests")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -150,6 +153,7 @@ func (h *Handlers) GetApprovedCitizenPermitRequests(w http.ResponseWriter, r *ht
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	log.Println("Successfully Served All Approved Citizen Permit Requests")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -175,6 +179,7 @@ func (h *Handlers) GetRejectedCitizenPermitRequests(w http.ResponseWriter, r *ht
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	log.Println("Successfully Served All Rejected Citizen Permit Requests")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -202,6 +207,8 @@ func (h *Handlers) GetCitizenPermitRequestByID(w http.ResponseWriter, r *http.Re
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	log.Println("Successfully Served Citizen Permit Request by ID")
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(jsonResults)
@@ -225,6 +232,7 @@ func (h *Handlers) ApproveCitizenPermitRequest(w http.ResponseWriter, r *http.Re
 	} else {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
+		log.Printf("Citizen Permit Request Approved")
 		json.NewEncoder(w).Encode(map[string]interface{}{
 			"message": "Citizen Permit Request Approved",
 		})

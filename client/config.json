@@ -1,5 +1,14 @@
 {
     "ServerAddress": "localhost",
     "ServerPort": "3000",
-    "ServerAPI": "/SaveCitizenPermit"
+    "ServerAPIs": [
+        "/SaveCitizenPermit",
+        "/GetAllCitizenPermitRequests",
+        "/GetPendingCitizenPermitRequests",
+        "/GetProcessedCitizenPermitRequests",
+        "/GetApprovedCitizenPermitRequests",
+        "/GetRejectedCitizenPermitRequests",
+        "/ApproveCitizenPermitRequest",
+        "/RejectCitizenPermitRequest"
+    ]
 }
