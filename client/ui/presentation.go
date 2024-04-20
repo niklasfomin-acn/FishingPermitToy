@@ -38,12 +38,17 @@ func SetupStartPage(app *tview.Application, pages *tview.Pages) {
 	// Buttons
 	form.AddButton("Login", func() {
 		if _, option := form.GetFormItemByLabel("Nutzerstatus").(*tview.DropDown).GetCurrentOption(); option == "Bürger" {
+			//TODO: Implement keycloak auhtentication for role citizen
 			pages.SwitchToPage("CitizenLandingPage")
 		} else {
+			//TODO: Implement keycloak auhtentication for role admin
 			pages.SwitchToPage("AdminPage")
 		}
 	})
 
+	form.AddButton("Logout", func() {
+		//TODO: Implement keycloak logout
+	})
 	form.AddButton("Beenden", func() { app.Stop() })
 
 	// Footer
@@ -73,7 +78,7 @@ func SetupCitizenLandingPage(app *tview.Application, pages *tview.Pages, config 
 
 	// Buttons
 	landingForm.AddButton("Antragstatus Anzeigen", func() {})
-	landingForm.AddButton("Ausweisdokument Hochladen", func() { TriggerDocumentAI() })
+	landingForm.AddButton("Ausweisdokument Hochladen", func() {})
 	landingForm.AddButton("Manuellen Antrag Erstellen", func() { pages.SwitchToPage("ManualPermitPage") })
 	landingForm.AddButton("Zurück", func() { pages.SwitchToPage("StartPage") })
 	landingForm.AddButton("Beenden", func() { app.Stop() })
@@ -199,6 +204,16 @@ func SetupAdminPage(app *tview.Application, pages *tview.Pages, config config.Co
 						passportIdentifier := cp.PassportNumber
 						requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[6])
 						requestClient.ApproveCitizenPermitRequest(passportIdentifier)
+
+						// Notify the user
+						flex := tview.NewFlex()
+						notifier := tview.NewForm()
+						notifier.AddButton("Zurück", func() { pages.SwitchToPage("AdminPage") })
+						NotifyView := tview.NewTextView()
+						NotifyView.SetText("Antrag wurde genehmigt. E-Mail Benachrichtigung wurde versendet.").SetTextColor(tcell.ColorGreen)
+						flex.AddItem(NotifyView, 0, 1, false)
+						flex.AddItem(notifier, 0, 2, true)
+						pages.AddAndSwitchToPage("NotifyPage", flex, true)
 					})
 					admissionForm.AddButton("Antrag Ablehnen", func() {
 						passportIdentifier := cp.PassportNumber
@@ -329,5 +344,3 @@ func SetupAdminPage(app *tview.Application, pages *tview.Pages, config config.Co
 	pages.AddPage("AdminPage", adminForm, true, false)
 
 }
-
-func TriggerDocumentAI() {}
