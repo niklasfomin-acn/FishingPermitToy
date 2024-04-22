@@ -1,9 +1,7 @@
 package utils
 
 import (
-	"encoding/json"
 	"image"
-	"net/http"
 )
 
 type DocumentService interface {
@@ -17,9 +15,9 @@ type DocumentService interface {
 	// Get the results from the AI Service
 	GetResults(Endpoint string) (results string, err error)
 
-	// Connect with the AI Service
-	ConnectWithService() (client http.Client, err error)
-
 	// Parse in the results from the AI service
-	ParseResults(results json.Decoder) (err error)
+	ParseResults(results string) (res map[string]interface{}, err error)
+
+	// Format the parsed results
+	FormatResults(results map[string]interface{}) string
 }

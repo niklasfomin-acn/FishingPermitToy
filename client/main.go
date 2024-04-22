@@ -6,7 +6,9 @@ import (
 	"os"
 
 	config "client/data"
-	"client/utils"
+	presentation "client/ui"
+
+	"github.com/rivo/tview"
 )
 
 func main() {
@@ -21,49 +23,48 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Cli Instanciation
-	//app := tview.NewApplication()
-	//pages := tview.NewPages()
+	//Cli Instanciation
+	app := tview.NewApplication()
+	pages := tview.NewPages()
 
 	// Setup Start Page
-	//presentation.SetupStartPage(app, pages)
+	presentation.SetupStartPage(app, pages)
 
 	// Setup Citizen Pages
-	//presentation.SetupCitizenLandingPage(app, pages, config)
+	presentation.SetupCitizenLandingPage(app, pages, config)
 
-	//presentation.SetupManualPermitPage(app, pages, config)
+	presentation.SetupManualPermitPage(app, pages, config)
+
+	presentation.SetupSmartPermitPage(app, pages, config)
+
+	presentation.SetupSmartDocumentPage(app, pages, config)
 
 	// Setup Admin Pages
-	//presentation.SetupAdminPage(app, pages, config)
+	presentation.SetupAdminPage(app, pages, config)
 
 	// Set the initial page to be the Start Page
-	//	if err := app.SetRoot(pages, true).Run(); err != nil {
-	//		log.Fatalf("Error starting application: %v", err)
-	//	}
-
-	// ID Document Test
-	aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, config.FilePath)
-	file, err := aiService.SelectDocument(config.FilePath)
-	if err != nil {
-		log.Fatalf("Error selecting document: %v", err)
+	if err := app.SetRoot(pages, true).Run(); err != nil {
+		log.Fatalf("Error starting application: %v", err)
 	}
-	log.Printf("Successfully selected document")
 
-	client, err := aiService.ConnectWithService()
-	if err != nil {
-		log.Fatalf("Error connecting with service: %v", err)
-	}
-	log.Printf("Successfully created Client: %v", client)
+	//ID Document Test
+	// aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, config.FilePaths[0])
 
-	result, err := aiService.UploadDocument(file)
-	if err != nil {
-		log.Fatalf("Error uploading document: %v", err)
-	}
-	log.Printf("Successfully uploaded document to : %v", result)
+	// file, err := aiService.SelectDocument(config.FilePaths[0])
+	// if err != nil {
+	// 	log.Fatalf("Error selecting document: %v", err)
+	// }
+	// log.Printf("Successfully selected document")
 
-	aiResult, err := aiService.GetResults(result)
-	if err != nil {
-		log.Fatalf("Error getting results: %v", err)
-	}
-	log.Printf("Successfully got results: %v", aiResult)
+	// result, err := aiService.UploadDocument(file)
+	// if err != nil {
+	// 	log.Fatalf("Error uploading document: %v", err)
+	// }
+	// log.Printf("Successfully uploaded document to : %v", result)
+
+	// aiResult, err := aiService.GetResults(result)
+	// if err != nil {
+	// 	log.Fatalf("Error getting results: %v", err)
+	// }
+	// aiService.ParseResults(aiResult)
 }

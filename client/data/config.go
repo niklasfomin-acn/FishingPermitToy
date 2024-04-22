@@ -7,5 +7,5 @@ type Config struct {
 	ServerAPIs       []string `json:"serverAPIs"`
 	ServiceEndpoints string   `json:"serviceEndpoints"`
 	ServiceKeys      string   `json:"serviceKeys"`
-	FilePath         string   `json:"filePath"`
+	FilePaths        []string `json:"FilePaths"`
 }

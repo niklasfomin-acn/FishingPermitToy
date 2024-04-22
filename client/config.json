@@ -13,5 +13,8 @@
     ],
     "ServiceEndpoints": "https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview",
     "ServiceKeys": "",
-    "FilePath": "/Users/niklas.fomin/Downloads/perso.jpeg"
+    "FilePaths": [
+        "/Users/niklas.fomin/Downloads/perso.jpeg",
+        "/Users/niklas.fomin/Downloads/perso2.jpeg"
+    ]
 }

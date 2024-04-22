@@ -3,12 +3,16 @@ package presentation
 import (
 	"client/data"
 	config "client/data"
+	"client/utils"
 	"fmt"
 	"log"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
 )
+
+// Global Variables
+var ProcessedResultMap map[string]interface{}
 
 // Login
 func SetupStartPage(app *tview.Application, pages *tview.Pages) {
@@ -46,13 +50,14 @@ func SetupStartPage(app *tview.Application, pages *tview.Pages) {
 		}
 	})
 
+	form.AddButton("Registrieren", func() {})
 	form.AddButton("Logout", func() {
 		//TODO: Implement keycloak logout
 	})
 	form.AddButton("Beenden", func() { app.Stop() })
 
 	// Footer
-	form.AddTextView("Impressum", " > Accenture Technology - all rights reserved. Accenture x BMI / Project: LLM-supported Cloud Native Assessment / MIT-licensed PoC Application V0.3 / StaffDevs: Fomin, Niklas", 50, 0, false, false).SetBorder(true).SetBorderColor(tview.Styles.BorderColor)
+	form.AddTextView("Impressum", " > Accenture Technology - all rights reserved. Accenture x BMI / Project: LLM-supported Cloud Native Assessment / MIT-licensed PoC Application V0.3 / StaffDev: Fomin, Niklas", 50, 0, false, false).SetBorder(true).SetBorderColor(tview.Styles.BorderColor)
 
 	// Finish Page Setup
 	pages.AddPage("StartPage", form, true, true)
@@ -78,7 +83,7 @@ func SetupCitizenLandingPage(app *tview.Application, pages *tview.Pages, config 
 
 	// Buttons
 	landingForm.AddButton("Antragstatus Anzeigen", func() {})
-	landingForm.AddButton("Ausweisdokument Hochladen", func() {})
+	landingForm.AddButton("Smarte Antragstellung", func() { pages.SwitchToPage("SmartDocumentPage") })
 	landingForm.AddButton("Manuellen Antrag Erstellen", func() { pages.SwitchToPage("ManualPermitPage") })
 	landingForm.AddButton("Zurück", func() { pages.SwitchToPage("StartPage") })
 	landingForm.AddButton("Beenden", func() { app.Stop() })
@@ -122,7 +127,7 @@ func SetupManualPermitPage(app *tview.Application, pages *tview.Pages, config co
 	manualPermitForm.AddInputField("E-Mail Adresse [max.mustermann@xxx.com]", "", 30, nil, nil)
 	manualPermitForm.AddInputField("Telefonnummer[+49 12345678]", "", 30, nil, nil)
 
-	manualPermitForm.AddButton("Manuellen Neuen Antrag stellen", func() {
+	manualPermitForm.AddButton("Neuen Antrag stellen", func() {
 		citizenPermit := data.CreateCitizenPermitFromForm(manualPermitForm)
 		// Call API handler to post citizen permit request
 		requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
@@ -326,7 +331,6 @@ func SetupAdminPage(app *tview.Application, pages *tview.Pages, config config.Co
 			listCounter := 1
 			for _, cp := range allCitizenPermitRequests {
 				secondaryText := fmt.Sprintf("%v\n								Personalausweis-Nummer: %v\n								Antrag-Status: %v\n								Geburtsdatum: %v\n								Antrags-Typ: %v\n								Ort der Nutzung: %v\n								E-Mail: %v\n								Telefonnummer: %v\n								Ausstellungsdatum: %v\n								Ablaufdatum: %v\n								Behörde: %v\n								Staatsangehörigkeit: %v", "", cp.PassportNumber, cp.PermitState, cp.DateOfBirth, cp.PermitType, cp.PermitLocation, cp.Email, cp.Phone, cp.DateOfIssue, cp.ExpiryDate, cp.IssuingAuthority, cp.Nationality)
-				//list.AddItem(fmt.Sprintf("%d - %s", listCounter, cp.Surname), secondaryText, 0, nil)
 				list.AddItem(fmt.Sprintf("%d - %s", listCounter, cp.Surname), "", 0, func() {
 					details.SetText(secondaryText)
 				})
@@ -343,4 +347,101 @@ func SetupAdminPage(app *tview.Application, pages *tview.Pages, config config.Co
 	// Finsih Page Setup
 	pages.AddPage("AdminPage", adminForm, true, false)
 
+}
+
+func SetupSmartPermitPage(app *tview.Application, pages *tview.Pages, config config.Config) {
+	smartPermitForm := tview.NewForm()
+	smartPermitForm.SetBorder(true).SetTitle("Erfassung von Pflichtangaben").SetTitleAlign(tview.AlignCenter)
+
+	smartPermitForm.AddTextView("Intelligente Dokumentenverarbeitung powered by Azure/AWS", "Bitte befüllen Sie das untenstehende Formular. Die restlichen Angaben wurden durch den Dokumentenupload automatisch erfasst.	", 50, 0, false, false).SetBorder(true).SetBorderColor(tview.Styles.BorderColor)
+	smartPermitForm.AddInputField("Datum der Ausstellung [dd:mm:yy]", "", 30, nil, nil)
+	smartPermitForm.AddInputField("Geschlecht", "", 30, nil, nil)
+	smartPermitForm.AddInputField("Nationalität", "", 30, nil, nil)
+	smartPermitForm.AddInputField("Ausstellende Behörde [Amt]", "", 30, nil, nil)
+	smartPermitForm.AddInputField("Antragstyp[Hobby/Gewerblich]", "", 30, nil, nil)
+	smartPermitForm.AddInputField("Vorgesehene Nutzungsregion [Berlin/Brandenburg]", "", 30, nil, nil)
+	smartPermitForm.AddInputField("E-Mail Adresse [max.mustermann@xxx.com]", "", 30, nil, nil)
+	smartPermitForm.AddInputField("Telefonnummer[+49 12345678]", "", 30, nil, nil)
+	smartPermitForm.AddButton("Antrag stellen", func() {
+		citizenPermit := data.CreateMergedCitizenPermitFromService(smartPermitForm, ProcessedResultMap)
+
+		// Call API handler to post citizen permit request
+		requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
+		requestClient.TransferCitizenPermit(citizenPermit)
+	})
+
+	// Buttons
+	smartPermitForm.AddButton("Zurück", func() { pages.SwitchToPage("CitizenLandingPage") })
+
+	// Finish Page Setup
+	pages.AddPage("SmartPermitPage", smartPermitForm, true, false)
+}
+
+func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config config.Config) {
+	smartDocumentForm := tview.NewForm()
+	smartDocumentForm.SetBorder(true).SetTitle("Smarte Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
+
+	// Persodokumente hardcoded TODO: Dynamische File Auswahl in der main implementieren
+	var personalausweis1 string = config.FilePaths[0]
+	var personalausweis2 string = config.FilePaths[1]
+
+	// Buttons
+	smartDocumentForm.AddDropDown("Dokument Wählen", []string{personalausweis1, personalausweis2}, 0, nil)
+	smartDocumentForm.AddButton("Dokument Hochladen", func() {
+
+		// Show waiting notification on the screen
+		modal := tview.NewModal().
+			SetText("Dokument bereit zur Verarbeitung...!").
+			AddButtons([]string{"Mit ENTER bestätigen"}).
+			SetDoneFunc(func(buttonIndex int, buttonLabel string) {
+				// Define the page that occurs when clicking the button
+				resultsView := tview.NewTextView()
+				resultsView.SetBorder(true).SetTitle("Ergebnisse der Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
+				//resultsView.SetText("Bitte prüfen Sie die Ergebnisse der Dokumentenverarbeitung auf Korrektheit.")
+				resultsView.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
+					if event.Key() == tcell.KeyEnter {
+						pages.SwitchToPage("SmartPermitPage")
+					}
+					return event
+				})
+
+				// Process the document through AI service
+				_, indexValue := smartDocumentForm.GetFormItemByLabel("Dokument Wählen").(*tview.DropDown).GetCurrentOption()
+				aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, indexValue)
+				persoFile, err := aiService.SelectDocument(indexValue)
+				if err != nil {
+					log.Fatalf("Error selecting document: %v", err)
+				}
+
+				aiServiceRequest, err := aiService.UploadDocument(persoFile)
+				if err != nil {
+					log.Fatalf("Error uploading document: %v", err)
+				}
+				aiServiceResults, err := aiService.GetResults(aiServiceRequest)
+				if err != nil {
+					log.Fatalf("Error fetching results: %v", err)
+				}
+				aiServiceResultsParsed, err := aiService.ParseResults(aiServiceResults)
+				if err != nil {
+					log.Fatalf("Error parsing results: %v", err)
+				}
+
+				aiServiceResultsFormatted := aiService.FormatResults(aiServiceResultsParsed)
+
+				// Pass the resulting map to the global variable to make it accessible
+				// for the func that sends the citizen permit request to the server
+				ProcessedResultMap = aiServiceResultsParsed
+
+				// Layout
+				resultsView.SetText("\n				Intelligente Dokumentenverarbeitung powered by Azure/AWS\n\n				PRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
+				pages.AddPage("AIResults", resultsView, true, true)
+				pages.SwitchToPage("AIResults")
+			})
+
+		pages.AddPage("ProcessPage", modal, true, true)
+	})
+
+	smartDocumentForm.AddButton("Zurück", func() { pages.SwitchToPage("CitizenLandingPage") })
+
+	pages.AddPage("SmartDocumentPage", smartDocumentForm, true, false)
 }

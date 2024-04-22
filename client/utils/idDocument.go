@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"image"
 	"image/jpeg"
 	"io"
@@ -13,25 +14,25 @@ import (
 )
 
 type idDocument struct {
-	Endpoint string
-	Key      string
-	FilePath string
-	File     image.Image
-	client   http.Client
+	Endpoint  string
+	Key       string
+	FilePaths string
+	File      image.Image
+	client    http.Client
 }
 
-func NewIDDocumentService(Endpoint string, Key string, FilePath string) DocumentService {
+func NewIDDocumentService(Endpoint string, Key string, FilePaths string) DocumentService {
 	return &idDocument{
-		Endpoint: Endpoint,
-		Key:      Key,
-		FilePath: FilePath,
-		File:     nil,
-		client:   http.Client{},
+		Endpoint:  Endpoint,
+		Key:       Key,
+		FilePaths: FilePaths,
+		File:      nil,
+		client:    http.Client{},
 	}
 }
 
-func (doc *idDocument) SelectDocument(FilePath string) (File image.Image, err error) {
-	document, err := os.Open(doc.FilePath)
+func (doc *idDocument) SelectDocument(FilePaths string) (File image.Image, err error) {
+	document, err := os.Open(doc.FilePaths)
 	if err != nil {
 		log.Printf("Error opening file: %v", err)
 		return nil, err
@@ -70,7 +71,7 @@ func (doc *idDocument) UploadDocument(File image.Image) (operationLocation strin
 	}
 	defer resp.Body.Close()
 
-	log.Printf("Response: %v", resp)
+	//log.Printf("Response: %v", resp)
 	operationLocation = resp.Header.Get("Operation-Location")
 	return operationLocation, nil
 }
@@ -104,19 +105,91 @@ func (doc *idDocument) GetResults(Endpoint string) (results string, err error) {
 			results = string(bodyBytes)
 			break
 		} else {
-			log.Printf("Response not ready yet: %v", response)
+			//log.Printf("Response not ready yet: %v", response)
 			time.Sleep(5 * time.Second)
 		}
 	}
 	return results, nil
 }
 
-func (doc *idDocument) ConnectWithService() (client http.Client, err error) {
-	client = http.Client{}
+func (doc *idDocument) ParseResults(results string) (map[string]interface{}, error) {
+	var res map[string]interface{}
+	err := json.Unmarshal([]byte(results), &res)
+	if err != nil {
+		log.Printf("Error unmarshalling results: %v", err)
+		return res, nil
+	}
 
-	return client, nil
+	extractedData := make(map[string]interface{})
+
+	if analyzeResult, ok := res["analyzeResult"].(map[string]interface{}); ok {
+		if documents, ok := analyzeResult["documents"].([]interface{}); ok {
+			for _, document := range documents {
+				if docMap, ok := document.(map[string]interface{}); ok {
+					if fields, ok := docMap["fields"].(map[string]interface{}); ok {
+						extractedData = make(map[string]interface{})
+						for key, value := range fields {
+							if key == "FirstName" || key == "LastName" || key == "PlaceOfBirth" {
+								if valMap, ok := value.(map[string]interface{}); ok {
+									extractedData[key] = valMap["content"]
+								}
+							} else if key == "DateOfBirth" || key == "DateOfExpiration" {
+								if valMap, ok := value.(map[string]interface{}); ok {
+									extractedData[key] = valMap["valueDate"]
+								}
+							} else if key == "Address" {
+								if valMap, ok := value.(map[string]interface{}); ok {
+									extractedData[key] = valMap["valueAddress"]
+								}
+							} else if key == "DocumentNumber" || key == "EyeColor" || key == "Height" {
+								if valMap, ok := value.(map[string]interface{}); ok {
+									extractedData[key] = valMap["valueString"]
+								}
+
+							}
+
+						}
+
+						//fmt.Println(extractedData)
+					}
+				}
+			}
+		}
+
+	}
+	//extractedMapToString := fmt.Sprintf("%v", extractedData)
+	//log.Printf("Extracted Data: %v", extractedMapToString)
+	//log.Printf("Extracted Data: %v", string(jsonStr))
+	return extractedData, nil
 }
 
-func (doc *idDocument) ParseResults(results json.Decoder) (err error) {
-	return nil
+func (doc *idDocument) FormatResults(results map[string]interface{}) string {
+	// 	var formattedResults string
+
+	// 	for key, value := range results {
+	// 		if key == "Address" {
+	// 			if addressMap, ok := value.(map[string]interface{}); ok {
+	// 				formattedResults += "				" + key + ": "
+	// 				for addressKey, addressValue := range addressMap {
+	// 					formattedResults += fmt.Sprintf("%s: %v, ", addressKey, addressValue)
+	// 				}
+	// 				formattedResults = strings.TrimSuffix(formattedResults, ", ") + "\n"
+	// 			}
+	// 		} else {
+	// 			formattedResults += "								" + key + ": " + fmt.Sprint(value) + "\n"
+	// 		}
+	// 	}
+
+	// 	return formattedResults
+	// }
+
+	var formattedResults string
+
+	for key, value := range results {
+		if key != "Address" {
+			formattedResults += "								" + key + ": " + fmt.Sprint(value) + "\n"
+		}
+	}
+
+	return formattedResults
 }
