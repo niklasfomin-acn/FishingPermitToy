@@ -68,5 +68,39 @@ func CreateMergedCitizenPermitFromService(form *tview.Form, idData map[string]in
 		Email:            form.GetFormItemByLabel("E-Mail Adresse [max.mustermann@xxx.com]").(*tview.InputField).GetText(),
 		Phone:            form.GetFormItemByLabel("Telefonnummer[+49 12345678]").(*tview.InputField).GetText(),
 		PermitDate:       permitDate,
+		PermitState:      "pending",
 	}
+}
+
+func CreateMergedCitizenPermitFromService2(form *tview.Form, idData map[string]interface{}) *CitizenPermit {
+	permitDate := time.Now().Local()
+
+	return &CitizenPermit{
+		PassportNumber:   getString(idData["DOCUMENT_NUMBER"]),
+		Surname:          getString(idData["LAST_NAME"]),
+		GivenNames:       getString(idData["First_Name"]),
+		DateOfBirth:      getString(idData["DATE_OF_BIRTH"]),
+		PlaceOfBirth:     getString(idData["PLACE_OF_BIRTH"]),
+		Gender:           form.GetFormItemByLabel("Geschlecht").(*tview.InputField).GetText(),
+		Nationality:      form.GetFormItemByLabel("Nationalität").(*tview.InputField).GetText(),
+		DateOfIssue:      form.GetFormItemByLabel("Datum der Ausstellung [dd:mm:yy]").(*tview.InputField).GetText(),
+		ExpiryDate:       getString(idData["EXPIRATION_DATE"]),
+		IssuingAuthority: form.GetFormItemByLabel("Ausstellende Behörde [Amt]").(*tview.InputField).GetText(),
+		PermitLocation:   form.GetFormItemByLabel("Vorgesehene Nutzungsregion [Berlin/Brandenburg]").(*tview.InputField).GetText(),
+		PermitType:       form.GetFormItemByLabel("Antragstyp[Hobby/Gewerblich]").(*tview.InputField).GetText(),
+		Email:            form.GetFormItemByLabel("E-Mail Adresse [max.mustermann@xxx.com]").(*tview.InputField).GetText(),
+		Phone:            form.GetFormItemByLabel("Telefonnummer[+49 12345678]").(*tview.InputField).GetText(),
+		PermitDate:       permitDate,
+		PermitState:      "pending",
+	}
+}
+
+func getString(value interface{}) string {
+	if value != nil {
+		str, ok := value.(string)
+		if ok {
+			return str
+		}
+	}
+	return ""
 }

@@ -8,7 +8,9 @@ require (
 )
 
 require (
+	github.com/aws/aws-sdk-go v1.51.26 // indirect
 	github.com/gdamore/encoding v1.0.0 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect

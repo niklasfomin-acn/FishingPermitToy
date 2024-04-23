@@ -8,4 +8,5 @@ type Config struct {
 	ServiceEndpoints string   `json:"serviceEndpoints"`
 	ServiceKeys      string   `json:"serviceKeys"`
 	FilePaths        []string `json:"FilePaths"`
+	AWSRegion        string   `json:"AWSRegion"`
 }

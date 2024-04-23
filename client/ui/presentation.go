@@ -4,6 +4,7 @@ import (
 	"client/data"
 	config "client/data"
 	"client/utils"
+	"encoding/json"
 	"fmt"
 	"log"
 
@@ -13,6 +14,7 @@ import (
 
 // Global Variables
 var ProcessedResultMap map[string]interface{}
+var Vendor string
 
 // Login
 func SetupStartPage(app *tview.Application, pages *tview.Pages) {
@@ -349,6 +351,136 @@ func SetupAdminPage(app *tview.Application, pages *tview.Pages, config config.Co
 
 }
 
+func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config config.Config) {
+	smartDocumentForm := tview.NewForm()
+	smartDocumentForm.SetBorder(true).SetTitle("Smarte Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
+
+	// Persodokumente hardcoded TODO: Dynamische File Auswahl in der main implementieren
+	var personalausweis1 string = config.FilePaths[0]
+	var personalausweis2 string = config.FilePaths[1]
+
+	// Buttons
+	smartDocumentForm.AddDropDown("Vendor wählen", []string{"Azure", "AWS"}, 0, nil)
+	smartDocumentForm.AddDropDown("Dokument Wählen", []string{personalausweis1, personalausweis2}, 0, nil)
+	smartDocumentForm.AddButton("Dokument Hochladen", func() {
+
+		if _, option := smartDocumentForm.GetFormItemByLabel("Vendor wählen").(*tview.DropDown).GetCurrentOption(); option == "Azure" {
+			// Show waiting notification on the screen
+			modal := tview.NewModal().
+				SetText("Dokument bereit zur Verarbeitung...!").
+				AddButtons([]string{"Mit ENTER bestätigen"}).
+				SetDoneFunc(func(buttonIndex int, buttonLabel string) {
+					// Define the page that occurs when clicking the button
+					resultsView := tview.NewTextView()
+					resultsView.SetBorder(true).SetTitle("Ergebnisse der Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
+					//resultsView.SetText("Bitte prüfen Sie die Ergebnisse der Dokumentenverarbeitung auf Korrektheit.")
+					resultsView.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
+						if event.Key() == tcell.KeyEnter {
+							pages.SwitchToPage("SmartPermitPage")
+						}
+						return event
+					})
+
+					// Process the document through AI service
+					_, indexValue := smartDocumentForm.GetFormItemByLabel("Dokument Wählen").(*tview.DropDown).GetCurrentOption()
+					aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, indexValue)
+					persoFile, err := aiService.SelectDocument(indexValue)
+					if err != nil {
+						log.Fatalf("Error selecting document: %v", err)
+					}
+
+					aiServiceRequest, err := aiService.UploadDocument(persoFile)
+					if err != nil {
+						log.Fatalf("Error uploading document: %v", err)
+					}
+					aiServiceResults, err := aiService.GetResults(aiServiceRequest)
+					if err != nil {
+						log.Fatalf("Error fetching results: %v", err)
+					}
+					aiServiceResultsParsed, err := aiService.ParseResults(aiServiceResults)
+					if err != nil {
+						log.Fatalf("Error parsing results: %v", err)
+					}
+
+					aiServiceResultsFormatted := aiService.FormatResults(aiServiceResultsParsed)
+
+					// Pass the resulting map to the global variable to make it accessible
+					// for the func that sends the citizen permit request to the server
+					ProcessedResultMap = aiServiceResultsParsed
+					Vendor = "Azure"
+
+					// Layout
+					resultsView.SetText("\n				Intelligente Dokumentenverarbeitung powered by Azure\n\n				PRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
+					pages.AddPage("AIResults", resultsView, true, true)
+					pages.SwitchToPage("AIResults")
+				})
+
+			pages.AddPage("ProcessPage", modal, true, true)
+
+		} else {
+			modal := tview.NewModal().
+				SetText("Dokument bereit zur Verarbeitung...!").
+				AddButtons([]string{"Mit ENTER bestätigen"}).
+				SetDoneFunc(func(buttonIndex int, buttonLabel string) {
+					// Define the page that occurs when clicking the button
+					resultsView := tview.NewTextView()
+					resultsView.SetBorder(true).SetTitle("Ergebnisse der Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
+					//resultsView.SetText("Bitte prüfen Sie die Ergebnisse der Dokumentenverarbeitung auf Korrektheit.")
+					resultsView.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
+						if event.Key() == tcell.KeyEnter {
+							pages.SwitchToPage("SmartPermitPage")
+						}
+						return event
+					})
+
+					// Process the document through AI service
+					_, indexValue := smartDocumentForm.GetFormItemByLabel("Dokument Wählen").(*tview.DropDown).GetCurrentOption()
+					aiService := utils.NewTextractClient(indexValue, config.AWSRegion)
+					persoFile, err := aiService.SelectDocument(indexValue)
+					if err != nil {
+						log.Fatalf("Error selecting document: %v", err)
+					}
+
+					byteFile := utils.ConvertToTextractImage(persoFile)
+
+					aiServiceRequest, err := aiService.AnalyzeID(byteFile)
+					if err != nil {
+						log.Fatalf("Error uploading document: %v", err)
+					}
+
+					resultsJSON, err := json.Marshal(aiServiceRequest)
+					if err != nil {
+						log.Fatalf("Error marshalling results: %v", err)
+					}
+
+					aiServiceResultsParsed, err := aiService.ParseResults(string(resultsJSON))
+					if err != nil {
+						log.Fatalf("Error parsing results: %v", err)
+					}
+
+					aiServiceResultsFormatted := aiService.FormatResults(aiServiceResultsParsed)
+
+					// Pass the resulting map to the global variable to make it accessible
+					// for the func that sends the citizen permit request to the server
+					ProcessedResultMap = aiServiceResultsParsed
+					Vendor = "AWS"
+
+					// Layout
+					resultsView.SetText("\n				Intelligente Dokumentenverarbeitung powered by AWS\n\n				PRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
+					pages.AddPage("AIResults", resultsView, true, true)
+					pages.SwitchToPage("AIResults")
+				})
+
+			pages.AddPage("ProcessPage", modal, true, true)
+
+		}
+	})
+
+	smartDocumentForm.AddButton("Zurück", func() { pages.SwitchToPage("CitizenLandingPage") })
+
+	pages.AddPage("SmartDocumentPage", smartDocumentForm, true, false)
+}
+
 func SetupSmartPermitPage(app *tview.Application, pages *tview.Pages, config config.Config) {
 	smartPermitForm := tview.NewForm()
 	smartPermitForm.SetBorder(true).SetTitle("Erfassung von Pflichtangaben").SetTitleAlign(tview.AlignCenter)
@@ -363,11 +495,20 @@ func SetupSmartPermitPage(app *tview.Application, pages *tview.Pages, config con
 	smartPermitForm.AddInputField("E-Mail Adresse [max.mustermann@xxx.com]", "", 30, nil, nil)
 	smartPermitForm.AddInputField("Telefonnummer[+49 12345678]", "", 30, nil, nil)
 	smartPermitForm.AddButton("Antrag stellen", func() {
-		citizenPermit := data.CreateMergedCitizenPermitFromService(smartPermitForm, ProcessedResultMap)
+		if Vendor == "Azure" {
+			citizenPermit := data.CreateMergedCitizenPermitFromService(smartPermitForm, ProcessedResultMap)
 
-		// Call API handler to post citizen permit request
-		requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
-		requestClient.TransferCitizenPermit(citizenPermit)
+			// Call API handler to post citizen permit request
+			requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
+			requestClient.TransferCitizenPermit(citizenPermit)
+		} else {
+			citizenPermit := data.CreateMergedCitizenPermitFromService2(smartPermitForm, ProcessedResultMap)
+
+			// Call API handler to post citizen permit request
+			requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
+			requestClient.TransferCitizenPermit(citizenPermit)
+
+		}
 	})
 
 	// Buttons
@@ -375,73 +516,4 @@ func SetupSmartPermitPage(app *tview.Application, pages *tview.Pages, config con
 
 	// Finish Page Setup
 	pages.AddPage("SmartPermitPage", smartPermitForm, true, false)
-}
-
-func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config config.Config) {
-	smartDocumentForm := tview.NewForm()
-	smartDocumentForm.SetBorder(true).SetTitle("Smarte Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
-
-	// Persodokumente hardcoded TODO: Dynamische File Auswahl in der main implementieren
-	var personalausweis1 string = config.FilePaths[0]
-	var personalausweis2 string = config.FilePaths[1]
-
-	// Buttons
-	smartDocumentForm.AddDropDown("Dokument Wählen", []string{personalausweis1, personalausweis2}, 0, nil)
-	smartDocumentForm.AddButton("Dokument Hochladen", func() {
-
-		// Show waiting notification on the screen
-		modal := tview.NewModal().
-			SetText("Dokument bereit zur Verarbeitung...!").
-			AddButtons([]string{"Mit ENTER bestätigen"}).
-			SetDoneFunc(func(buttonIndex int, buttonLabel string) {
-				// Define the page that occurs when clicking the button
-				resultsView := tview.NewTextView()
-				resultsView.SetBorder(true).SetTitle("Ergebnisse der Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
-				//resultsView.SetText("Bitte prüfen Sie die Ergebnisse der Dokumentenverarbeitung auf Korrektheit.")
-				resultsView.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
-					if event.Key() == tcell.KeyEnter {
-						pages.SwitchToPage("SmartPermitPage")
-					}
-					return event
-				})
-
-				// Process the document through AI service
-				_, indexValue := smartDocumentForm.GetFormItemByLabel("Dokument Wählen").(*tview.DropDown).GetCurrentOption()
-				aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, indexValue)
-				persoFile, err := aiService.SelectDocument(indexValue)
-				if err != nil {
-					log.Fatalf("Error selecting document: %v", err)
-				}
-
-				aiServiceRequest, err := aiService.UploadDocument(persoFile)
-				if err != nil {
-					log.Fatalf("Error uploading document: %v", err)
-				}
-				aiServiceResults, err := aiService.GetResults(aiServiceRequest)
-				if err != nil {
-					log.Fatalf("Error fetching results: %v", err)
-				}
-				aiServiceResultsParsed, err := aiService.ParseResults(aiServiceResults)
-				if err != nil {
-					log.Fatalf("Error parsing results: %v", err)
-				}
-
-				aiServiceResultsFormatted := aiService.FormatResults(aiServiceResultsParsed)
-
-				// Pass the resulting map to the global variable to make it accessible
-				// for the func that sends the citizen permit request to the server
-				ProcessedResultMap = aiServiceResultsParsed
-
-				// Layout
-				resultsView.SetText("\n				Intelligente Dokumentenverarbeitung powered by Azure/AWS\n\n				PRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
-				pages.AddPage("AIResults", resultsView, true, true)
-				pages.SwitchToPage("AIResults")
-			})
-
-		pages.AddPage("ProcessPage", modal, true, true)
-	})
-
-	smartDocumentForm.AddButton("Zurück", func() { pages.SwitchToPage("CitizenLandingPage") })
-
-	pages.AddPage("SmartDocumentPage", smartDocumentForm, true, false)
 }
