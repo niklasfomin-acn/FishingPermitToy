@@ -164,25 +164,6 @@ func (doc *idDocument) ParseResults(results string) (map[string]interface{}, err
 }
 
 func (doc *idDocument) FormatResults(results map[string]interface{}) string {
-	// 	var formattedResults string
-
-	// 	for key, value := range results {
-	// 		if key == "Address" {
-	// 			if addressMap, ok := value.(map[string]interface{}); ok {
-	// 				formattedResults += "				" + key + ": "
-	// 				for addressKey, addressValue := range addressMap {
-	// 					formattedResults += fmt.Sprintf("%s: %v, ", addressKey, addressValue)
-	// 				}
-	// 				formattedResults = strings.TrimSuffix(formattedResults, ", ") + "\n"
-	// 			}
-	// 		} else {
-	// 			formattedResults += "								" + key + ": " + fmt.Sprint(value) + "\n"
-	// 		}
-	// 	}
-
-	// 	return formattedResults
-	// }
-
 	var formattedResults string
 
 	for key, value := range results {
