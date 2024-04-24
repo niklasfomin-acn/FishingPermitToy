@@ -8,11 +8,13 @@ import (
 	config "client/data"
 	presentation "client/ui"
 
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/rivo/tview"
 )
 
 func main() {
-	// Client Config
+	//Client Config
 	data, err := os.ReadFile("config.json")
 	if err != nil {
 		log.Fatal(err)
@@ -21,6 +23,15 @@ func main() {
 	err = json.Unmarshal(data, &config)
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	// Initialize a session that the SDK uses to load
+	// credentials from the shared credentials file. (~/.aws/credentials).
+	sess, err := session.NewSession(&aws.Config{
+		Region: aws.String("eu-central-1")},
+	)
+	if err != nil {
+		log.Fatalf("Error creating session: %v", err)
 	}
 
 	//Cli Instanciation
@@ -37,7 +48,7 @@ func main() {
 
 	presentation.SetupSmartPermitPage(app, pages, config)
 
-	presentation.SetupSmartDocumentPage(app, pages, config)
+	presentation.SetupSmartDocumentPage(app, pages, config, sess)
 
 	// Setup Admin Pages
 	presentation.SetupAdminPage(app, pages, config)
@@ -46,25 +57,4 @@ func main() {
 	if err := app.SetRoot(pages, true).Run(); err != nil {
 		log.Fatalf("Error starting application: %v", err)
 	}
-
-	//ID Document Test
-	// aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, config.FilePaths[0])
-
-	// file, err := aiService.SelectDocument(config.FilePaths[0])
-	// if err != nil {
-	// 	log.Fatalf("Error selecting document: %v", err)
-	// }
-	// log.Printf("Successfully selected document")
-
-	// result, err := aiService.UploadDocument(file)
-	// if err != nil {
-	// 	log.Fatalf("Error uploading document: %v", err)
-	// }
-	// log.Printf("Successfully uploaded document to : %v", result)
-
-	// aiResult, err := aiService.GetResults(result)
-	// if err != nil {
-	// 	log.Fatalf("Error getting results: %v", err)
-	// }
-	// aiService.ParseResults(aiResult)
 }
