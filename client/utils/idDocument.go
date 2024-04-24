@@ -6,10 +6,8 @@ import (
 	"image"
 	"image/jpeg"
 	"log"
-	"net/http"
 	"os"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/textract"
 )
@@ -19,20 +17,18 @@ type idDocument struct {
 	Key       string
 	FilePaths string
 	File      image.Image
-	client    http.Client
+	sess      *session.Session
 }
 
-func NewIDDocumentService(Endpoint string, Key string, FilePaths string) DocumentService {
+func NewIDDocumentService(sess *session.Session, FilePaths string) DocumentService {
 	return &idDocument{
-		Endpoint:  Endpoint,
-		Key:       Key,
 		FilePaths: FilePaths,
 		File:      nil,
-		client:    http.Client{},
+		sess:      sess,
 	}
 }
 
-func (doc *idDocument) SelectDocument(FilePaths string) (File image.Image, err error) {
+func (doc *idDocument) SelectDocument() (File image.Image, err error) {
 	document, err := os.Open(doc.FilePaths)
 	if err != nil {
 		log.Printf("Error opening file: %v", err)
@@ -49,98 +45,49 @@ func (doc *idDocument) SelectDocument(FilePaths string) (File image.Image, err e
 }
 
 func (doc *idDocument) UploadDocument(File image.Image) (JobId string, err error) {
-	sess, _ := session.NewSession(&aws.Config{
-		Region: aws.String("eu-central-1")}, // die Region anpassen
-	)
-
-	// Convert image.Image to []byte
 	buf := new(bytes.Buffer)
 	err = jpeg.Encode(buf, File, nil)
 	if err != nil {
-		return JobId, err
+		return "", err
 	}
 
-	// Create a Textract service client
-	svc := textract.New(sess)
+	svc := textract.New(doc.sess)
 
-	// Call Textract
-	result, err := svc.AnalyzeDocument(&textract.AnalyzeDocumentInput{
+	result, err := svc.DetectDocumentText(&textract.DetectDocumentTextInput{
 		Document: &textract.Document{
 			Bytes: buf.Bytes(),
 		},
-		FeatureTypes: []*string{
-			aws.String("FORMS"),
-		},
 	})
-
 	if err != nil {
-		return JobId, err
+		return "", err
 	}
 
-	JobId = *result.JobId
-	return JobId, nil
+	return result.String(), nil
 }
 
-func (doc *idDocument) GetResults(jobId string) (results *textract.GetDocumentAnalysisOutput, err error) {
-	sess, _ := session.NewSession(&aws.Config{
-		Region: aws.String("eu-central-1")}, // die Region anpassen
-	)
-	svc := textract.New(sess)
-
-	err = svc.GetDocumentAnalysisPages(&textract.GetDocumentAnalysisInput{
-		JobId: aws.String(jobId),
-	})
-
-	return results, err
+func (doc *idDocument) GetResults(Endpoint string) (results string, err error) {
+	/*
+	   You could process the JobStatus from the Textract API for Asynchronous operations here
+	   or print the output data if this function is used.
+	   For now, it only returns an error
+	*/
+	return "", fmt.Errorf("function GetResults not implemented")
 }
 
-func (doc *idDocument) ParseResults(results *textract.GetDocumentAnalysisOutput) (res map[string]interface{}, err error) {
-	for _, item := range results.Blocks {
-		if *item.BlockType == "KEY_VALUE_SET" {
-			if *item.EntityTypes[0] == "KEY" {
-				key := *item.Text
-				for _, valueID := range item.Value {
-					for _, valueItem := range results.Blocks {
-						if *valueItem.Id == *valueID {
-							res[key] = *valueItem.Text
-							break
-						}
-					}
-				}
-			}
-		}
-	}
-
-	return res, nil
+func (doc *idDocument) ParseResults(file string) (res map[string]interface{}, err error) {
+	/*
+	   Since we now return a string from UploadDocument,
+	   we need to modify this function to parse the string into usable data.
+	   Currently, this function returns an error
+	*/
+	return nil, fmt.Errorf("function ParseResults not implemented")
 }
 
-func (doc *idDocument) FormatResults(results map[string]interface{}) string {
-	// 	var formattedResults string
-
-	// 	for key, value := range results {
-	// 		if key == "Address" {
-	// 			if addressMap, ok := value.(map[string]interface{}); ok {
-	// 				formattedResults += "				" + key + ": "
-	// 				for addressKey, addressValue := range addressMap {
-	// 					formattedResults += fmt.Sprintf("%s: %v, ", addressKey, addressValue)
-	// 				}
-	// 				formattedResults = strings.TrimSuffix(formattedResults, ", ") + "\n"
-	// 			}
-	// 		} else {
-	// 			formattedResults += "								" + key + ": " + fmt.Sprint(value) + "\n"
-	// 		}
-	// 	}
-
-	// 	return formattedResults
-	// }
-
-	var formattedResults string
-
-	for key, value := range results {
-		if key != "Address" {
-			formattedResults += "								" + key + ": " + fmt.Sprint(value) + "\n"
-		}
-	}
-
-	return formattedResults
+func (doc *idDocument) FormatResults(data map[string]interface{}) string {
+	/*
+	   This function is used to format the map[string]interface{} to your needs.
+	   Here you would implement how the parsed data should be displayed or returned.
+	   Currently, it returns an empty string.
+	*/
+	return ""
 }
