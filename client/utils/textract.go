@@ -138,7 +138,7 @@ func (c TextractClient) FormatResults(results map[string]interface{}) string {
 
 	for key, value := range results {
 		if key != "Address" {
-			formattedResults += "								" + key + ": " + fmt.Sprint(value) + "\n"
+			formattedResults += "" + key + ": " + fmt.Sprint(value) + "\n"
 		}
 	}
 

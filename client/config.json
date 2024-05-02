@@ -17,5 +17,24 @@
         "/Users/niklas.fomin/Downloads/perso.jpeg",
         "/Users/niklas.fomin/Downloads/perso2.jpeg"
     ],
-    "AWSRegion": "eu-central-1"
+    "AWSRegion": "eu-central-1", 
+    "HVaultAddress": "http://localhost:8200",
+    "SecretNames": [
+        "ServiceEndpoints",
+        "ServiceKeys"
+    ],
+    "SecretPaths" :[
+            "secret/data/FishingPermitClone/ServiceConfig"
+            ],
+    "ServiceEndpointPath": "secret/FishingPermitClone/ServiceConfig/ServiceEndpoint",
+    "APIKeyPath": "secret/FishingPermitClone/ServiceConfig/ServiceKeys",
+    "SecretProvider":[
+        "AWSSecretsManager",
+        "HashiCorpVault",
+        "AzureVault"
+    ]
 }
+
+
+
+

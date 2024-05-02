@@ -1,12 +1,14 @@
 package presentation
 
 import (
+	"client/auth"
 	"client/data"
 	config "client/data"
 	"client/utils"
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
@@ -380,26 +382,46 @@ func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config c
 						}
 						return event
 					})
+					// Logger for Debugging
+
+					logFile, err := os.OpenFile("log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+					if err != nil {
+						log.Fatalf("Error opening log file: %v", err)
+					}
+					defer logFile.Close()
+					log.SetOutput(logFile)
 
 					// Process the document through AI service
 					_, indexValue := smartDocumentForm.GetFormItemByLabel("Dokument Wählen").(*tview.DropDown).GetCurrentOption()
-					aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, indexValue)
+					// Access the keyvault here, TODO: Exchange bools versus config.json stuff
+					pathFromVault, secretFromVault, err := auth.GetSecretFromVault(true, false, false, &config)
+					if err != nil {
+						log.Fatalf("Error getting secret from vault: %v", err)
+					}
+					log.Printf("Secret from Vault: %v", secretFromVault)
+					log.Printf("Path from Vault: %v", pathFromVault)
+					// Call a document Service instance
+					aiService := utils.NewIDDocumentService(pathFromVault, secretFromVault, indexValue)
+					//aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, indexValue)
 					persoFile, err := aiService.SelectDocument(indexValue)
 					if err != nil {
 						log.Fatalf("Error selecting document: %v", err)
 					}
-
+					//log.Printf(pathFromVault, secretFromVault, indexValue)
 					aiServiceRequest, err := aiService.UploadDocument(persoFile)
 					if err != nil {
 						log.Fatalf("Error uploading document: %v", err)
 					}
+					log.Printf("Successfully uploaded document to : %v", aiServiceRequest)
+
 					aiServiceResults, err := aiService.GetResults(aiServiceRequest)
 					if err != nil {
-						log.Fatalf("Error fetching results: %v", err)
+						log.Printf("Error fetching results: %v", err)
 					}
+					log.Printf("Successfully fetched results: %v", aiServiceResults)
 					aiServiceResultsParsed, err := aiService.ParseResults(aiServiceResults)
 					if err != nil {
-						log.Fatalf("Error parsing results: %v", err)
+						log.Printf("Error parsing results: %v", err)
 					}
 
 					aiServiceResultsFormatted := aiService.FormatResults(aiServiceResultsParsed)
@@ -410,7 +432,7 @@ func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config c
 					Vendor = "Azure"
 
 					// Layout
-					resultsView.SetText("\n				Intelligente Dokumentenverarbeitung powered by Azure\n\n				PRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
+					resultsView.SetText("\nIntelligente Dokumentenverarbeitung powered by Azure\n\nPRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
 					pages.AddPage("AIResults", resultsView, true, true)
 					pages.SwitchToPage("AIResults")
 				})
@@ -466,7 +488,7 @@ func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config c
 					Vendor = "AWS"
 
 					// Layout
-					resultsView.SetText("\n				Intelligente Dokumentenverarbeitung powered by AWS\n\n				PRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
+					resultsView.SetText("\nIntelligente Dokumentenverarbeitung powered by AWS\n\nPRÜFEN SIE AUF KORREKTHEIT UND BESTÄTIGEN SIE MIT 'ENTER'\n\n\n\n" + aiServiceResultsFormatted).SetTextColor(tcell.ColorYellow)
 					pages.AddPage("AIResults", resultsView, true, true)
 					pages.SwitchToPage("AIResults")
 				})

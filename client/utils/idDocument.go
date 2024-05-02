@@ -71,14 +71,15 @@ func (doc *idDocument) UploadDocument(File image.Image) (operationLocation strin
 	}
 	defer resp.Body.Close()
 
-	//log.Printf("Response: %v", resp)
+	log.Printf("Response: %v", resp)
 	operationLocation = resp.Header.Get("Operation-Location")
+	log.Printf("Operation Location: %v", operationLocation)
 	return operationLocation, nil
 }
 
 func (doc *idDocument) GetResults(Endpoint string) (results string, err error) {
 	for {
-		req, err := http.NewRequest("GET", Endpoint, nil)
+		req, err := http.NewRequest("GET", doc.Endpoint, nil)
 		if err != nil {
 			return results, err
 		}
@@ -105,7 +106,7 @@ func (doc *idDocument) GetResults(Endpoint string) (results string, err error) {
 			results = string(bodyBytes)
 			break
 		} else {
-			//log.Printf("Response not ready yet: %v", response)
+			log.Printf("Response not ready yet: %v", response)
 			time.Sleep(5 * time.Second)
 		}
 	}
@@ -168,7 +169,7 @@ func (doc *idDocument) FormatResults(results map[string]interface{}) string {
 
 	for key, value := range results {
 		if key != "Address" {
-			formattedResults += "								" + key + ": " + fmt.Sprint(value) + "\n"
+			formattedResults += "" + key + ": " + fmt.Sprint(value) + "\n"
 		}
 	}
 

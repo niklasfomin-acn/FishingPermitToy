@@ -1,0 +1,144 @@
+2024/05/02 10:05:20 Vault client initialized
+2024/05/02 10:05:20 Connected to HashiCorp Vault service
+2024/05/02 10:05:20 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:05:20 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
+2024/05/02 10:05:20 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:05:20 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 10:05:20 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview%!(EXTRA string=aea95a4fbfbb43a78646f7bdc7049341, string=/Users/niklas.fomin/Downloads/perso.jpeg)
+2024/05/02 10:05:20 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/ successfull.
+2024/05/02 10:05:21 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[b3596bfb-27a1-4208-80be-995003210124] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:05:20 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000238180} 56 [] false false map[] 0x14000000120 0x1400066c160}
+2024/05/02 10:05:21 Operation Location: 
+2024/05/02 10:05:21 Endpoint:https://kibundai.cognitiveservices.azure.com/
+2024/05/02 10:05:21 Successfully uploaded document to : 
+2024/05/02 10:14:13 Error opening file: open /Users/niklas.fomin/Downloads/perso.jpeg: operation not permitted
+2024/05/02 10:14:13 Error selecting document: open /Users/niklas.fomin/Downloads/perso.jpeg: operation not permitted
+2024/05/02 10:14:46 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/ successfull.
+2024/05/02 10:14:47 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[d54a0bb0-5b83-497b-a791-66bafb84a27b] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:14:46 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x1400054a180} 56 [] false false map[] 0x140000ac480 0x140005480b0}
+2024/05/02 10:14:47 Successfully uploaded document to : 
+2024/05/02 10:18:08 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview successfull.
+2024/05/02 10:18:09 Response: &{400 Bad Request 400 HTTP/2.0 2 0 map[Apim-Request-Id:[32bc2e80-aa59-4b9d-914b-510cbb5f983d] Content-Length:[172] Content-Type:[application/json; charset=utf-8] Date:[Thu, 02 May 2024 08:18:09 GMT] Ms-Azure-Ai-Errorcode:[InvalidArgument] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[5] X-Ms-Region:[East US]] {0x140004bc180} 172 [] false false map[] 0x140000005a0 0x140004ba0b0}
+2024/05/02 10:18:09 Successfully uploaded document to : 
+2024/05/02 10:21:45 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview successfull.
+2024/05/02 10:21:46 Response: &{400 Bad Request 400 HTTP/2.0 2 0 map[Apim-Request-Id:[0e4ef137-63f9-4ded-83e5-9a1ca207cd68] Content-Length:[172] Content-Type:[application/json; charset=utf-8] Date:[Thu, 02 May 2024 08:21:46 GMT] Ms-Azure-Ai-Errorcode:[InvalidArgument] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[4] X-Ms-Region:[East US]] {0x14000476180} 172 [] false false map[] 0x14000420360 0x140004740b0}
+2024/05/02 10:21:46 Successfully uploaded document to : 
+2024/05/02 10:31:51 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b9975d84-5ca8-4e1a-8e9d-ab04c27d331d?api-version=2024-02-29-preview
+2024/05/02 10:33:50 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[f3e1f9f7-2356-4d4e-a97b-f885476b6ae5] Content-Length:[0] Date:[Thu, 02 May 2024 08:33:50 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/f3e1f9f7-2356-4d4e-a97b-f885476b6ae5?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[64] X-Ms-Region:[East US]] {0x140005a2180} 0 [] false false map[] 0x14000498360 0x14000716160}
+2024/05/02 10:33:50 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/f3e1f9f7-2356-4d4e-a97b-f885476b6ae5?api-version=2024-02-29-preview
+2024/05/02 10:35:03 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[8f0e2d5e-e373-4884-8485-e09480b57cca] Content-Length:[0] Date:[Thu, 02 May 2024 08:35:03 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/8f0e2d5e-e373-4884-8485-e09480b57cca?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[88] X-Ms-Region:[East US]] {0x14000514180} 0 [] false false map[] 0x14000000120 0x1400050c0b0}
+2024/05/02 10:35:03 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/8f0e2d5e-e373-4884-8485-e09480b57cca?api-version=2024-02-29-preview
+2024/05/02 10:35:03 Successfully fetched results: {
+  "error": {
+    "code": "NotFound",
+    "message": "Resource not found.",
+    "innererror": {
+      "code": "ModelNotFound",
+      "message": "The requested model was not found."
+    }
+  }
+}
+2024/05/02 10:36:30 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[4212e5c2-3490-48d0-8d97-92414bfc9489] Content-Length:[0] Date:[Thu, 02 May 2024 08:36:29 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/4212e5c2-3490-48d0-8d97-92414bfc9489?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[62] X-Ms-Region:[East US]] {0x14000446180} 0 [] false false map[] 0x1400050a120 0x1400013c370}
+2024/05/02 10:36:30 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/4212e5c2-3490-48d0-8d97-92414bfc9489?api-version=2024-02-29-preview
+2024/05/02 10:36:30 Successfully fetched results: {
+  "error": {
+    "code": "NotFound",
+    "message": "Resource not found.",
+    "innererror": {
+      "code": "ModelNotFound",
+      "message": "The requested model was not found."
+    }
+  }
+}
+2024/05/02 10:37:04 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[234f8475-2b7f-4a43-bdd7-aedaf3e2c5ac] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:37:04 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000228180} 56 [] false false map[] 0x14000000240 0x1400015c420}
+2024/05/02 10:37:04 Successfully uploaded document to : 
+2024/05/02 10:37:04 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
+2024/05/02 10:39:30 Response: &{400 Bad Request 400 HTTP/2.0 2 0 map[Apim-Request-Id:[d7cbe6b0-90b4-47b5-bc77-25b4e1d1c43d] Content-Length:[172] Content-Type:[application/json; charset=utf-8] Date:[Thu, 02 May 2024 08:39:30 GMT] Ms-Azure-Ai-Errorcode:[InvalidArgument] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[5] X-Ms-Region:[East US]] {0x14000212180} 172 [] false false map[] 0x14000000120 0x140002100b0}
+2024/05/02 10:39:30 Successfully uploaded document to : 
+2024/05/02 10:39:30 Successfully fetched results: {
+  "error": {
+    "code": "NotFound",
+    "message": "Resource not found.",
+    "innererror": {
+      "code": "ModelNotFound",
+      "message": "The requested model was not found."
+    }
+  }
+}
+2024/05/02 10:40:04 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[7099429b-4e00-456f-b85d-ffabe65c98f3] Content-Length:[0] Date:[Thu, 02 May 2024 08:40:04 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/7099429b-4e00-456f-b85d-ffabe65c98f3?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[77] X-Ms-Region:[East US]] {0x14000226180} 0 [] false false map[] 0x140000005a0 0x140002220b0}
+2024/05/02 10:40:04 Operation Location: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/7099429b-4e00-456f-b85d-ffabe65c98f3?api-version=2024-02-29-preview
+2024/05/02 10:40:04 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/7099429b-4e00-456f-b85d-ffabe65c98f3?api-version=2024-02-29-preview
+2024/05/02 10:40:05 Successfully fetched results: {
+  "error": {
+    "code": "NotFound",
+    "message": "Resource not found.",
+    "innererror": {
+      "code": "ModelNotFound",
+      "message": "The requested model was not found."
+    }
+  }
+}
+2024/05/02 10:42:36 Vault client initialized
+2024/05/02 10:42:36 Connected to HashiCorp Vault service
+2024/05/02 10:42:36 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:42:36 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
+2024/05/02 10:42:36 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:42:36 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 10:42:36 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview%!(EXTRA string=aea95a4fbfbb43a78646f7bdc7049341, string=/Users/niklas.fomin/Downloads/perso.jpeg)
+2024/05/02 10:42:37 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[03a7fb9f-1d3f-43f0-a075-c0af36a77ae9] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:42:37 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x140001ce180} 56 [] false false map[] 0x1400049e7e0 0x140005d2160}
+2024/05/02 10:42:37 Operation Location: 
+2024/05/02 10:42:37 Successfully uploaded document to : 
+2024/05/02 10:42:37 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
+2024/05/02 10:44:15 Vault client initialized
+2024/05/02 10:44:15 Connected to HashiCorp Vault service
+2024/05/02 10:44:15 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:44:15 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
+2024/05/02 10:44:15 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:44:15 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 10:44:15 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
+2024/05/02 10:44:16 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[08c2f52c-6444-4b7f-8693-b84b4e20988c] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:44:15 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x1400045e180} 56 [] false false map[] 0x1400079a120 0x14000142580}
+2024/05/02 10:44:16 Operation Location: 
+2024/05/02 10:44:16 Successfully uploaded document to : 
+2024/05/02 10:44:16 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
+2024/05/02 10:55:56 Vault client initialized
+2024/05/02 10:55:56 Connected to HashiCorp Vault service
+2024/05/02 10:55:56 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:55:56 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
+2024/05/02 10:55:56 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 10:55:56 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 10:55:56 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
+2024/05/02 10:55:57 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[3978ae32-f537-49e3-a00f-5d2c3e021c7c] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:55:57 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000444180} 56 [] false false map[] 0x1400050a240 0x1400016c4d0}
+2024/05/02 10:55:57 Operation Location: 
+2024/05/02 10:55:57 Successfully uploaded document to : 
+2024/05/02 10:55:57 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
+2024/05/02 11:06:29 Vault client initialized
+2024/05/02 11:06:29 Connected to HashiCorp Vault service
+2024/05/02 11:06:29 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 11:06:29 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
+2024/05/02 11:06:29 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 11:06:29 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 11:06:29 Secret from Vault: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 11:06:29 Path from Vault: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
+2024/05/02 11:06:30 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[1757d15f-0d1a-44c2-8d8f-12ffd92a9c0b] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 09:06:29 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000204180} 56 [] false false map[] 0x140000ae480 0x140001424d0}
+2024/05/02 11:06:30 Operation Location: 
+2024/05/02 11:06:30 Successfully uploaded document to : 
+2024/05/02 11:06:30 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
+2024/05/02 11:08:50 Vault client initialized
+2024/05/02 11:08:50 Connected to HashiCorp Vault service
+2024/05/02 11:08:50 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 11:08:50 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview
+2024/05/02 11:08:50 Path: secret/data/FishingPermitClone/ServiceConfig
+2024/05/02 11:08:50 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 11:08:50 Secret from Vault: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/02 11:08:50 Path from Vault: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview
+2024/05/02 11:08:51 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[b400a438-e5c8-43e8-8097-0a583205663a] Content-Length:[0] Date:[Thu, 02 May 2024 09:08:51 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b400a438-e5c8-43e8-8097-0a583205663a?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[80] X-Ms-Region:[East US]] {0x1400021c180} 0 [] false false map[] 0x140000ac5a0 0x1400062e160}
+2024/05/02 11:08:51 Operation Location: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b400a438-e5c8-43e8-8097-0a583205663a?api-version=2024-02-29-preview
+2024/05/02 11:08:51 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b400a438-e5c8-43e8-8097-0a583205663a?api-version=2024-02-29-preview
+2024/05/02 11:08:51 Successfully fetched results: {
+  "error": {
+    "code": "NotFound",
+    "message": "Resource not found.",
+    "innererror": {
+      "code": "ModelNotFound",
+      "message": "The requested model was not found."
+    }
+  }
+}

@@ -110,4 +110,36 @@ func main() {
 	// finalString := textractService.FormatResults(final)
 	// log.Printf("Formatted Results: %v", finalString)
 
+	// // Secret Manager Test
+	// vault, err := auth.NewHashiCorpVaultClient(&config)
+	// if err != nil {
+	// 	log.Fatalf("Error creating vault client: %v", err)
+	// }
+	// err = vault.ConnectToService()
+	// if err != nil {
+	// 	log.Fatalf("Error connecting to vault service: %v", err)
+	// }
+	// log.Printf("Connected to vault service")
+
+	// secret, err := vault.GetSecret(config.SecretNames[0], config.SecretPaths[0])
+	// if err != nil {
+	// 	log.Fatalf("Error getting secret: %v", err)
+	// }
+	// log.Printf("Secret: %v", secret)
+
+	// secret2, err := vault.GetSecret(config.SecretNames[1], config.SecretPaths[0])
+	// if err != nil {
+	// 	log.Fatalf("Error getting secret: %v", err)
+	// }
+	// log.Printf("Secret: %v", secret2)
+
+	// This is the test for the helper function. Depending on the call on the definition in config.json the different
+	// vaults can be selected.
+	// testEndpoint, testKey, err := auth.GetSecretFromVault(true, false, false, &config)
+	// if err != nil {
+	// 	log.Fatalf("Error getting secret: %v", err)
+	// }
+	// log.Printf("Path: %v", testEndpoint)
+	// log.Print("Key: ", testKey)
+
 }
