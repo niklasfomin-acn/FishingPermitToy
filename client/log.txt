@@ -1,144 +1,481 @@
-2024/05/02 10:05:20 Vault client initialized
-2024/05/02 10:05:20 Connected to HashiCorp Vault service
-2024/05/02 10:05:20 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:05:20 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
-2024/05/02 10:05:20 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:05:20 Secret: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 10:05:20 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview%!(EXTRA string=aea95a4fbfbb43a78646f7bdc7049341, string=/Users/niklas.fomin/Downloads/perso.jpeg)
-2024/05/02 10:05:20 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/ successfull.
-2024/05/02 10:05:21 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[b3596bfb-27a1-4208-80be-995003210124] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:05:20 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000238180} 56 [] false false map[] 0x14000000120 0x1400066c160}
-2024/05/02 10:05:21 Operation Location: 
-2024/05/02 10:05:21 Endpoint:https://kibundai.cognitiveservices.azure.com/
-2024/05/02 10:05:21 Successfully uploaded document to : 
-2024/05/02 10:14:13 Error opening file: open /Users/niklas.fomin/Downloads/perso.jpeg: operation not permitted
-2024/05/02 10:14:13 Error selecting document: open /Users/niklas.fomin/Downloads/perso.jpeg: operation not permitted
-2024/05/02 10:14:46 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/ successfull.
-2024/05/02 10:14:47 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[d54a0bb0-5b83-497b-a791-66bafb84a27b] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:14:46 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x1400054a180} 56 [] false false map[] 0x140000ac480 0x140005480b0}
-2024/05/02 10:14:47 Successfully uploaded document to : 
-2024/05/02 10:18:08 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview successfull.
-2024/05/02 10:18:09 Response: &{400 Bad Request 400 HTTP/2.0 2 0 map[Apim-Request-Id:[32bc2e80-aa59-4b9d-914b-510cbb5f983d] Content-Length:[172] Content-Type:[application/json; charset=utf-8] Date:[Thu, 02 May 2024 08:18:09 GMT] Ms-Azure-Ai-Errorcode:[InvalidArgument] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[5] X-Ms-Region:[East US]] {0x140004bc180} 172 [] false false map[] 0x140000005a0 0x140004ba0b0}
-2024/05/02 10:18:09 Successfully uploaded document to : 
-2024/05/02 10:21:45 Request for Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview successfull.
-2024/05/02 10:21:46 Response: &{400 Bad Request 400 HTTP/2.0 2 0 map[Apim-Request-Id:[0e4ef137-63f9-4ded-83e5-9a1ca207cd68] Content-Length:[172] Content-Type:[application/json; charset=utf-8] Date:[Thu, 02 May 2024 08:21:46 GMT] Ms-Azure-Ai-Errorcode:[InvalidArgument] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[4] X-Ms-Region:[East US]] {0x14000476180} 172 [] false false map[] 0x14000420360 0x140004740b0}
-2024/05/02 10:21:46 Successfully uploaded document to : 
-2024/05/02 10:31:51 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b9975d84-5ca8-4e1a-8e9d-ab04c27d331d?api-version=2024-02-29-preview
-2024/05/02 10:33:50 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[f3e1f9f7-2356-4d4e-a97b-f885476b6ae5] Content-Length:[0] Date:[Thu, 02 May 2024 08:33:50 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/f3e1f9f7-2356-4d4e-a97b-f885476b6ae5?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[64] X-Ms-Region:[East US]] {0x140005a2180} 0 [] false false map[] 0x14000498360 0x14000716160}
-2024/05/02 10:33:50 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/f3e1f9f7-2356-4d4e-a97b-f885476b6ae5?api-version=2024-02-29-preview
-2024/05/02 10:35:03 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[8f0e2d5e-e373-4884-8485-e09480b57cca] Content-Length:[0] Date:[Thu, 02 May 2024 08:35:03 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/8f0e2d5e-e373-4884-8485-e09480b57cca?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[88] X-Ms-Region:[East US]] {0x14000514180} 0 [] false false map[] 0x14000000120 0x1400050c0b0}
-2024/05/02 10:35:03 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/8f0e2d5e-e373-4884-8485-e09480b57cca?api-version=2024-02-29-preview
-2024/05/02 10:35:03 Successfully fetched results: {
-  "error": {
-    "code": "NotFound",
-    "message": "Resource not found.",
-    "innererror": {
-      "code": "ModelNotFound",
-      "message": "The requested model was not found."
-    }
-  }
-}
-2024/05/02 10:36:30 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[4212e5c2-3490-48d0-8d97-92414bfc9489] Content-Length:[0] Date:[Thu, 02 May 2024 08:36:29 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/4212e5c2-3490-48d0-8d97-92414bfc9489?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[62] X-Ms-Region:[East US]] {0x14000446180} 0 [] false false map[] 0x1400050a120 0x1400013c370}
-2024/05/02 10:36:30 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/4212e5c2-3490-48d0-8d97-92414bfc9489?api-version=2024-02-29-preview
-2024/05/02 10:36:30 Successfully fetched results: {
-  "error": {
-    "code": "NotFound",
-    "message": "Resource not found.",
-    "innererror": {
-      "code": "ModelNotFound",
-      "message": "The requested model was not found."
-    }
-  }
-}
-2024/05/02 10:37:04 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[234f8475-2b7f-4a43-bdd7-aedaf3e2c5ac] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:37:04 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000228180} 56 [] false false map[] 0x14000000240 0x1400015c420}
-2024/05/02 10:37:04 Successfully uploaded document to : 
-2024/05/02 10:37:04 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
-2024/05/02 10:39:30 Response: &{400 Bad Request 400 HTTP/2.0 2 0 map[Apim-Request-Id:[d7cbe6b0-90b4-47b5-bc77-25b4e1d1c43d] Content-Length:[172] Content-Type:[application/json; charset=utf-8] Date:[Thu, 02 May 2024 08:39:30 GMT] Ms-Azure-Ai-Errorcode:[InvalidArgument] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[5] X-Ms-Region:[East US]] {0x14000212180} 172 [] false false map[] 0x14000000120 0x140002100b0}
-2024/05/02 10:39:30 Successfully uploaded document to : 
-2024/05/02 10:39:30 Successfully fetched results: {
-  "error": {
-    "code": "NotFound",
-    "message": "Resource not found.",
-    "innererror": {
-      "code": "ModelNotFound",
-      "message": "The requested model was not found."
-    }
-  }
-}
-2024/05/02 10:40:04 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[7099429b-4e00-456f-b85d-ffabe65c98f3] Content-Length:[0] Date:[Thu, 02 May 2024 08:40:04 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/7099429b-4e00-456f-b85d-ffabe65c98f3?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[77] X-Ms-Region:[East US]] {0x14000226180} 0 [] false false map[] 0x140000005a0 0x140002220b0}
-2024/05/02 10:40:04 Operation Location: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/7099429b-4e00-456f-b85d-ffabe65c98f3?api-version=2024-02-29-preview
-2024/05/02 10:40:04 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/7099429b-4e00-456f-b85d-ffabe65c98f3?api-version=2024-02-29-preview
-2024/05/02 10:40:05 Successfully fetched results: {
-  "error": {
-    "code": "NotFound",
-    "message": "Resource not found.",
-    "innererror": {
-      "code": "ModelNotFound",
-      "message": "The requested model was not found."
-    }
-  }
-}
-2024/05/02 10:42:36 Vault client initialized
-2024/05/02 10:42:36 Connected to HashiCorp Vault service
-2024/05/02 10:42:36 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:42:36 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
-2024/05/02 10:42:36 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:42:36 Secret: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 10:42:36 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview%!(EXTRA string=aea95a4fbfbb43a78646f7bdc7049341, string=/Users/niklas.fomin/Downloads/perso.jpeg)
-2024/05/02 10:42:37 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[03a7fb9f-1d3f-43f0-a075-c0af36a77ae9] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:42:37 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x140001ce180} 56 [] false false map[] 0x1400049e7e0 0x140005d2160}
-2024/05/02 10:42:37 Operation Location: 
-2024/05/02 10:42:37 Successfully uploaded document to : 
-2024/05/02 10:42:37 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
-2024/05/02 10:44:15 Vault client initialized
-2024/05/02 10:44:15 Connected to HashiCorp Vault service
-2024/05/02 10:44:15 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:44:15 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
-2024/05/02 10:44:15 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:44:15 Secret: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 10:44:15 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
-2024/05/02 10:44:16 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[08c2f52c-6444-4b7f-8693-b84b4e20988c] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:44:15 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x1400045e180} 56 [] false false map[] 0x1400079a120 0x14000142580}
-2024/05/02 10:44:16 Operation Location: 
-2024/05/02 10:44:16 Successfully uploaded document to : 
-2024/05/02 10:44:16 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
-2024/05/02 10:55:56 Vault client initialized
-2024/05/02 10:55:56 Connected to HashiCorp Vault service
-2024/05/02 10:55:56 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:55:56 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
-2024/05/02 10:55:56 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 10:55:56 Secret: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 10:55:56 https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
-2024/05/02 10:55:57 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[3978ae32-f537-49e3-a00f-5d2c3e021c7c] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 08:55:57 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000444180} 56 [] false false map[] 0x1400050a240 0x1400016c4d0}
-2024/05/02 10:55:57 Operation Location: 
-2024/05/02 10:55:57 Successfully uploaded document to : 
-2024/05/02 10:55:57 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
-2024/05/02 11:06:29 Vault client initialized
-2024/05/02 11:06:29 Connected to HashiCorp Vault service
-2024/05/02 11:06:29 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 11:06:29 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
-2024/05/02 11:06:29 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 11:06:29 Secret: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 11:06:29 Secret from Vault: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 11:06:29 Path from Vault: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyze?api-version=2024-02-29-preview
-2024/05/02 11:06:30 Response: &{404 Not Found 404 HTTP/2.0 2 0 map[Apim-Request-Id:[1757d15f-0d1a-44c2-8d8f-12ffd92a9c0b] Content-Length:[56] Content-Type:[application/json] Date:[Thu, 02 May 2024 09:06:29 GMT] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff]] {0x14000204180} 56 [] false false map[] 0x140000ae480 0x140001424d0}
-2024/05/02 11:06:30 Operation Location: 
-2024/05/02 11:06:30 Successfully uploaded document to : 
-2024/05/02 11:06:30 Successfully fetched results: {"error":{"code":"404","message": "Resource not found"}}
-2024/05/02 11:08:50 Vault client initialized
-2024/05/02 11:08:50 Connected to HashiCorp Vault service
-2024/05/02 11:08:50 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 11:08:50 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview
-2024/05/02 11:08:50 Path: secret/data/FishingPermitClone/ServiceConfig
-2024/05/02 11:08:50 Secret: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 11:08:50 Secret from Vault: aea95a4fbfbb43a78646f7bdc7049341
-2024/05/02 11:08:50 Path from Vault: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview
-2024/05/02 11:08:51 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[b400a438-e5c8-43e8-8097-0a583205663a] Content-Length:[0] Date:[Thu, 02 May 2024 09:08:51 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b400a438-e5c8-43e8-8097-0a583205663a?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[80] X-Ms-Region:[East US]] {0x1400021c180} 0 [] false false map[] 0x140000ac5a0 0x1400062e160}
-2024/05/02 11:08:51 Operation Location: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b400a438-e5c8-43e8-8097-0a583205663a?api-version=2024-02-29-preview
-2024/05/02 11:08:51 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/b400a438-e5c8-43e8-8097-0a583205663a?api-version=2024-02-29-preview
-2024/05/02 11:08:51 Successfully fetched results: {
-  "error": {
-    "code": "NotFound",
-    "message": "Resource not found.",
-    "innererror": {
-      "code": "ModelNotFound",
-      "message": "The requested model was not found."
-    }
-  }
-}
+2024/05/20 22:30:25 Vault client initialized
+2024/05/20 22:30:25 Connected to HashiCorp Vault service
+2024/05/20 22:30:25 Endpoint: http://localhost:8080
+2024/05/20 22:30:25 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:30:25 Client ID: admin-cli
+2024/05/20 22:30:25 Realm: testrealm
+2024/05/20 22:30:25 Keycloak Client: http://localhost:8080, wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc, admin-cli
+2024/05/20 22:30:25 Keycloak Client: &{http://localhost:8080 admin-cli wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc  0x140003c4480}
+2024/05/20 22:30:25 User Credentials: niklas test
+2024/05/20 22:30:25 Vault client initialized
+2024/05/20 22:30:25 Connected to HashiCorp Vault service
+2024/05/20 22:30:25 Endpoint: http://localhost:8080
+2024/05/20 22:30:25 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:30:25 Client ID: admin-cli
+2024/05/20 22:30:25 Realm: testrealm
+2024/05/20 22:30:25 Request: &{POST admin-cli/realms/testrealm/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000722c80} 0x10471f030 136 [] false  map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/20 22:30:25 Error sending request: Post "admin-cli/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:30:25 Error getting token: Post "admin-cli/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:30:25 User Credentials are wrong: Post "admin-cli/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:31:40 Vault client initialized
+2024/05/20 22:31:40 Connected to HashiCorp Vault service
+2024/05/20 22:31:40 Endpoint: http://localhost:8080
+2024/05/20 22:31:40 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:31:40 Client ID: admin-cli
+2024/05/20 22:31:40 Realm: testrealm
+2024/05/20 22:31:40 Keycloak Client: http://localhost:8080, admin-cli, wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:31:40 Keycloak Client: &{http://localhost:8080 wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc admin-cli  0x14000592ab0}
+2024/05/20 22:31:40 User Credentials: niklas test
+2024/05/20 22:31:40 Vault client initialized
+2024/05/20 22:31:40 Connected to HashiCorp Vault service
+2024/05/20 22:31:40 Endpoint: http://localhost:8080
+2024/05/20 22:31:40 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:31:40 Client ID: admin-cli
+2024/05/20 22:31:40 Realm: testrealm
+2024/05/20 22:31:40 Request: &{POST wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x1400071bbe0} 0x1043eb030 113 [] false  map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/20 22:31:40 Error sending request: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:31:40 Error getting token: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:31:40 User Credentials are wrong: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:33:35 Vault client initialized
+2024/05/20 22:33:35 Connected to HashiCorp Vault service
+2024/05/20 22:33:35 Client ID: admin-cli
+2024/05/20 22:33:35 Endpoint: http://localhost:8080
+2024/05/20 22:33:35 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:33:35 Realm: testrealm
+2024/05/20 22:33:35 Keycloak Client: http://localhost:8080, admin-cli, wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:33:35 Keycloak Client: &{http://localhost:8080 wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc admin-cli  0x14000508870}
+2024/05/20 22:33:35 User Credentials: niklas test
+2024/05/20 22:33:35 Vault client initialized
+2024/05/20 22:33:35 Connected to HashiCorp Vault service
+2024/05/20 22:33:35 Client ID: admin-cli
+2024/05/20 22:33:35 Endpoint: http://localhost:8080
+2024/05/20 22:33:35 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:33:35 Realm: testrealm
+2024/05/20 22:33:35 Request: &{POST wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000673720} 0x1049b7030 113 [] false  map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/20 22:33:35 Error sending request: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:33:35 Error getting token: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:33:35 User Credentials are wrong: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:35:50 Vault client initialized
+2024/05/20 22:35:50 Connected to HashiCorp Vault service
+2024/05/20 22:35:50 Client ID: admin-cli
+2024/05/20 22:35:50 Endpoint: http://localhost:8080
+2024/05/20 22:35:50 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:35:50 Realm: testrealm
+2024/05/20 22:35:50 Keycloak Client: http://localhost:8080, admin-cli, wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:35:50 Keycloak Client: &{http://localhost:8080 wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc admin-cli  0x14000423bc0}
+2024/05/20 22:35:50 User Credentials: niklas test
+2024/05/20 22:35:50 Vault client initialized
+2024/05/20 22:35:50 Connected to HashiCorp Vault service
+2024/05/20 22:35:50 Client ID: admin-cli
+2024/05/20 22:35:50 Endpoint: http://localhost:8080
+2024/05/20 22:35:50 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:35:50 Realm: testrealm
+2024/05/20 22:35:50 Request: &{POST wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x1400050cfe0} 0x104417030 162 [] false  map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/20 22:35:50 Error sending request: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:35:50 Error getting token: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:35:50 User Credentials are wrong: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:39:53 Vault client initialized
+2024/05/20 22:39:53 Connected to HashiCorp Vault service
+2024/05/20 22:39:53 Client ID: admin-cli
+2024/05/20 22:39:53 Endpoint: http://localhost:8080
+2024/05/20 22:39:53 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:39:53 Realm: testrealm
+2024/05/20 22:39:53 Keycloak Client: http://localhost:8080, admin-cli, wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:39:53 Keycloak Client: &{http://localhost:8080 wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc admin-cli  0x14000644ba0}
+2024/05/20 22:39:53 User Credentials: niklas test
+2024/05/20 22:39:53 Vault client initialized
+2024/05/20 22:39:53 Connected to HashiCorp Vault service
+2024/05/20 22:39:53 Client ID: admin-cli
+2024/05/20 22:39:53 Endpoint: http://localhost:8080
+2024/05/20 22:39:53 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:39:53 Realm: testrealm
+2024/05/20 22:39:53 Request: &{POST wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000783840} 0x102653030 113 [] false  map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/20 22:39:53 Error sending request: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:39:53 Error getting token: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:39:53 User Credentials are wrong: Post "wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc/realms/testrealm/protocol/openid-connect/token": unsupported protocol scheme ""
+2024/05/20 22:41:02 Vault client initialized
+2024/05/20 22:41:02 Connected to HashiCorp Vault service
+2024/05/20 22:41:02 Client ID: admin-cli
+2024/05/20 22:41:02 Endpoint: http://localhost:8080
+2024/05/20 22:41:02 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:41:02 Realm: testrealm
+2024/05/20 22:41:02 Keycloak Client: admin-cli, wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc, http://localhost:8080
+2024/05/20 22:41:02 Keycloak Client: &{admin-cli http://localhost:8080 wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc  0x14000521860}
+2024/05/20 22:41:02 User Credentials: niklas test
+2024/05/20 22:41:02 Vault client initialized
+2024/05/20 22:41:02 Connected to HashiCorp Vault service
+2024/05/20 22:41:02 Client ID: admin-cli
+2024/05/20 22:41:02 Endpoint: http://localhost:8080
+2024/05/20 22:41:02 Secret: wMHsoqeRmJGEGhgZulNmCrG8PiWTTXXc
+2024/05/20 22:41:02 Realm: testrealm
+2024/05/20 22:41:03 Request: &{POST http://localhost:8080/realms/testrealm/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x1400014c1a0} 0x104fbb030 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/20 22:53:54 Vault client initialized
+2024/05/20 22:53:54 Connected to HashiCorp Vault service
+2024/05/20 22:53:54 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview
+2024/05/20 22:53:54 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/20 22:53:54 Vault Values, &{https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview aea95a4fbfbb43a78646f7bdc7049341 /Users/niklas.fomin/Downloads/perso.jpeg <nil> {<nil> <nil> <nil> 0}}
+2024/05/20 22:53:54 Config Vaules:&{https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview aea95a4fbfbb43a78646f7bdc7049341 /Users/niklas.fomin/Downloads/perso.jpeg <nil> {<nil> <nil> <nil> 0}}
+2024/05/20 22:53:55 Response: &{202 Accepted 202 HTTP/2.0 2 0 map[Apim-Request-Id:[431bcd85-4342-46fb-a4f0-17d9e1ebf688] Content-Length:[0] Date:[Mon, 20 May 2024 20:53:57 GMT] Operation-Location:[https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/431bcd85-4342-46fb-a4f0-17d9e1ebf688?api-version=2024-02-29-preview] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[78] X-Ms-Region:[East US]] {0x1400060e180} 0 [] false false map[] 0x14000522000 0x1400060c0b0}
+2024/05/20 22:53:55 Operation Location: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/431bcd85-4342-46fb-a4f0-17d9e1ebf688?api-version=2024-02-29-preview
+2024/05/20 22:53:55 Successfully uploaded document to : https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument/analyzeResults/431bcd85-4342-46fb-a4f0-17d9e1ebf688?api-version=2024-02-29-preview
+2024/05/20 22:53:55 Response not ready yet: &{200 OK 200 HTTP/2.0 2 0 map[Apim-Request-Id:[e3aac0ef-05b1-4c79-8c8b-5b780ae585d0] Content-Length:[106] Content-Type:[application/json; charset=utf-8] Date:[Mon, 20 May 2024 20:53:57 GMT] Retry-After:[3] Strict-Transport-Security:[max-age=31536000; includeSubDomains; preload] X-Content-Type-Options:[nosniff] X-Envoy-Upstream-Service-Time:[13] X-Ms-Region:[East US]] {0x140000b4000} 106 [] false false map[] 0x14000522480 0x1400060c0b0}
+2024/05/20 22:54:00 Successfully fetched results: {"status":"succeeded","createdDateTime":"2024-05-20T20:53:57Z","lastUpdatedDateTime":"2024-05-20T20:54:00Z","analyzeResult":{"apiVersion":"2024-02-29-preview","modelId":"prebuilt-idDocument","stringIndexType":"textElements","content":"BUNDESREPUBLIK DEUTSCHLAND\nT22000129\nAugenfarbe/Colour of eyes/Couleur des yeux\nAnschrift/Adress/Adresse\nFEDERAL REPUBLIC OF GERMANY / REPUBLIQUE FEDERALE D'ALLEMAGNE\nGRÜN\n51147 KÖLN\nPERSONALAUSWEIS\nIDENTITY CARD / CARTE D'IDENTITÉ\nName/Surname/Nom\nMUSTERMANN\nGröBe/Height/Taille\n160 cm\nHEIDESTRASSE 17\nGEB. GABLER\nDatum/Date/Date\nVornamen/Given names/Prénoms\n01.11.10\nERIKA\nBehörde/Authority/Autorité\nOrdens- oder Künstlername/Religious name or pseudonym/\nNom de religion ou pseudonyme\nGeburtstag/Date of birth/\nStaatsangehörigkeit/Nationality/\nSTADT KÖLN\nDate de naissance\nNationalité\n12.08.1964 DEUTSCH\nGeburtsort/Place of birth/Lieu de naissance\nBERLIN\nT220001293 << MUSTERMANN << ERIKA <<<<<<<<<<<<<\nGültig bis/Date of expiry/\nDate d'expiration\n31.10.2020\n938568\nIDD << T220001293 <<<<<<<<<<<<<<<\nUnterschrift der Inhaberin/des Inhabers -\nSignature of bearer - Signature de la titulaire/du titulaire\n6408125<2010315D <<<<<<<<<<<<< 4\nMUSTERMANN << ERIKA <<<<<<<<<<<<<\nBUNDESREPUBLIK DEUTSCHLAND\nAnschrift/Adress/Adresse\nFEDERAL REPUBLIC OF GERMANY / REPUBLIQUE FEDERALE D'ALLEMAGNE\n51147 KÖLN\nPERSONALAUSWEIS\nIDENTITY CARD / CARTE D'IDENTITE\nName/Surname/Nom\nMUSTERMANN\nHEIDESTRASSE 17\nDatum/Date/Date\nVornamen/Given names/Prénoms\n01.11.10\nERIKA\nBehörde/Authority/Autorité\nOrdens- oder Künstlername/Religious name or pseudonym/\nNom de religion ou pseudonyme\nGeburtstag/Date of birth/\nSTADT KÖLN\nDate de naissance\nStaatsangehörigkeit/Nationality/\nNationalité\n12.08.1964 DEUTSCH\nGeburtsort/Place of birth/Lieu de naissance\nBERLIN\nMUSTERMANN << ERIKA <<<<<<<<<<<<<\nGültig bis/Date of expiry/\nDate d'expiration\n31.10.2020\nUnterschrift der Inhaberin/des Inhabers -\nSignature of bearer - Signature de la titulaire/du titulaire\nMUSTERMANN << ERIKA <<<<<<<<<<<<<\nBUNDESDRUCKERET","pages":[{"pageNumber":1,"angle":0,"width":1240,"height":790,"unit":"pixel","words":[{"content":"BUNDESREPUBLIK","polygon":[26,17,209,17,210,34,27,35],"confidence":0.99,"span":{"offset":0,"length":14}},{"content":"DEUTSCHLAND","polygon":[222,17,372,17,372,34,222,34],"confidence":0.993,"span":{"offset":15,"length":11}},{"content":"T22000129","polygon":[438,21,593,21,593,47,438,47],"confidence":0.977,"span":{"offset":27,"length":9}},{"content":"Augenfarbe/Colour","polygon":[647,14,736,14,736,27,647,28],"confidence":0.946,"span":{"offset":37,"length":17}},{"content":"of","polygon":[739,14,748,14,749,27,739,27],"confidence":0.994,"span":{"offset":55,"length":2}},{"content":"eyes/Couleur","polygon":[751,14,814,14,814,28,751,27],"confidence":0.945,"span":{"offset":58,"length":12}},{"content":"des","polygon":[816,14,833,15,833,28,817,28],"confidence":0.995,"span":{"offset":71,"length":3}},{"content":"yeux","polygon":[836,15,860,15,860,28,836,28],"confidence":0.978,"span":{"offset":75,"length":4}},{"content":"Anschrift/Adress/Adresse","polygon":[897,13,1020,15,1020,27,898,27],"confidence":0.928,"span":{"offset":80,"length":24}},{"content":"FEDERAL","polygon":[31,33,74,32,74,44,31,44],"confidence":0.994,"span":{"offset":105,"length":7}},{"content":"REPUBLIC","polygon":[76,32,122,32,122,44,76,44],"confidence":0.961,"span":{"offset":113,"length":8}},{"content":"OF","polygon":[125,32,138,32,138,44,125,44],"confidence":0.995,"span":{"offset":122,"length":2}},{"content":"GERMANY","polygon":[141,32,188,32,188,43,141,44],"confidence":0.995,"span":{"offset":125,"length":7}},{"content":"/","polygon":[190,32,194,32,194,43,190,43],"confidence":0.995,"span":{"offset":133,"length":1}},{"content":"REPUBLIQUE","polygon":[196,32,256,32,256,43,196,43],"confidence":0.928,"span":{"offset":135,"length":10}},{"content":"FEDERALE","polygon":[258,32,307,33,307,43,258,43],"confidence":0.979,"span":{"offset":146,"length":8}},{"content":"D'ALLEMAGNE","polygon":[309,33,375,33,375,43,309,43],"confidence":0.948,"span":{"offset":155,"length":11}},{"content":"GRÜN","polygon":[651,27,698,27,697,49,651,48],"confidence":0.991,"span":{"offset":167,"length":4}},{"content":"51147","polygon":[901,27,964,28,964,48,901,48],"confidence":0.994,"span":{"offset":172,"length":5}},{"content":"KÖLN","polygon":[973,28,1021,28,1021,48,974,48],"confidence":0.658,"span":{"offset":178,"length":4}},{"content":"PERSONALAUSWEIS","polygon":[26,45,171,45,171,59,26,59],"confidence":0.987,"span":{"offset":183,"length":15}},{"content":"IDENTITY","polygon":[31,57,74,57,74,69,31,69],"confidence":0.992,"span":{"offset":199,"length":8}},{"content":"CARD","polygon":[76,57,100,57,100,68,76,69],"confidence":0.984,"span":{"offset":208,"length":4}},{"content":"/","polygon":[103,57,108,57,108,68,103,68],"confidence":0.945,"span":{"offset":213,"length":1}},{"content":"CARTE","polygon":[111,57,141,57,141,68,111,68],"confidence":0.993,"span":{"offset":215,"length":5}},{"content":"D'IDENTITÉ","polygon":[143,57,194,58,194,69,143,68],"confidence":0.507,"span":{"offset":221,"length":10}},{"content":"Name/Surname/Nom","polygon":[279,48,377,48,377,60,279,60],"confidence":0.86,"span":{"offset":232,"length":16}},{"content":"MUSTERMANN","polygon":[283,62,402,62,402,81,283,81],"confidence":0.989,"span":{"offset":249,"length":10}},{"content":"GröBe/Height/Taille","polygon":[647,50,739,51,739,62,647,62],"confidence":0.733,"span":{"offset":260,"length":19}},{"content":"160","polygon":[652,64,684,65,684,84,652,84],"confidence":0.996,"span":{"offset":280,"length":3}},{"content":"cm","polygon":[698,65,719,65,719,84,698,84],"confidence":0.995,"span":{"offset":284,"length":2}},{"content":"HEIDESTRASSE","polygon":[900,54,1046,54,1046,75,900,75],"confidence":0.99,"span":{"offset":287,"length":12}},{"content":"17","polygon":[1063,54,1086,54,1086,75,1063,75],"confidence":0.998,"span":{"offset":300,"length":2}},{"content":"GEB.","polygon":[283,88,331,89,331,107,283,108],"confidence":0.991,"span":{"offset":303,"length":4}},{"content":"GABLER","polygon":[344,89,415,88,415,108,345,107],"confidence":0.995,"span":{"offset":308,"length":6}},{"content":"Datum/Date/Date","polygon":[648,86,732,87,732,98,648,98],"confidence":0.983,"span":{"offset":315,"length":15}},{"content":"Vornamen/Given","polygon":[279,111,357,111,357,124,280,125],"confidence":0.858,"span":{"offset":331,"length":14}},{"content":"names/Prénoms","polygon":[360,111,438,111,438,124,360,124],"confidence":0.926,"span":{"offset":346,"length":13}},{"content":"01.11.10","polygon":[650,100,746,100,746,119,650,119],"confidence":0.953,"span":{"offset":360,"length":8}},{"content":"ERIKA","polygon":[283,126,343,126,343,144,283,145],"confidence":0.994,"span":{"offset":369,"length":5}},{"content":"Behörde/Authority/Autorité","polygon":[647,128,776,129,776,142,647,142],"confidence":0.895,"span":{"offset":375,"length":26}},{"content":"Ordens-","polygon":[899,130,936,130,936,142,899,142],"confidence":0.992,"span":{"offset":402,"length":7}},{"content":"oder","polygon":[938,130,959,130,959,142,938,142],"confidence":0.967,"span":{"offset":410,"length":4}},{"content":"Künstlername/Religious","polygon":[961,130,1073,130,1073,142,961,142],"confidence":0.837,"span":{"offset":415,"length":22}},{"content":"name","polygon":[1075,130,1102,130,1102,142,1075,142],"confidence":0.991,"span":{"offset":438,"length":4}},{"content":"or","polygon":[1104,130,1113,130,1113,142,1104,142],"confidence":0.995,"span":{"offset":443,"length":2}},{"content":"pseudonym/","polygon":[1115,130,1175,130,1175,143,1115,142],"confidence":0.972,"span":{"offset":446,"length":10}},{"content":"Nom","polygon":[898,139,916,139,916,151,898,150],"confidence":0.995,"span":{"offset":457,"length":3}},{"content":"de","polygon":[923,139,934,139,934,151,923,151],"confidence":0.97,"span":{"offset":461,"length":2}},{"content":"religion","polygon":[936,139,970,140,971,151,936,151],"confidence":0.606,"span":{"offset":464,"length":8}},{"content":"ou","polygon":[974,140,985,140,986,151,974,151],"confidence":0.995,"span":{"offset":473,"length":2}},{"content":"pseudonyme","polygon":[988,140,1047,140,1047,151,989,151],"confidence":0.961,"span":{"offset":476,"length":10}},{"content":"Geburtstag/Date","polygon":[280,155,359,156,360,168,280,168],"confidence":0.617,"span":{"offset":487,"length":15}},{"content":"of","polygon":[362,156,371,156,371,168,362,168],"confidence":0.992,"span":{"offset":503,"length":2}},{"content":"birth/","polygon":[373,156,401,155,402,168,374,168],"confidence":0.948,"span":{"offset":506,"length":6}},{"content":"Staatsangehörigkeit/Nationality/","polygon":[415,156,569,156,569,169,415,168],"confidence":0.93,"span":{"offset":513,"length":32}},{"content":"STADT","polygon":[651,142,713,142,713,163,652,164],"confidence":0.994,"span":{"offset":546,"length":5}},{"content":"KÖLN","polygon":[722,142,770,143,771,163,723,163],"confidence":0.763,"span":{"offset":552,"length":4}},{"content":"Date","polygon":[280,165,302,165,302,177,280,177],"confidence":0.988,"span":{"offset":557,"length":4}},{"content":"de","polygon":[304,165,316,165,316,177,304,177],"confidence":0.995,"span":{"offset":562,"length":2}},{"content":"naissance","polygon":[318,165,367,166,367,177,318,177],"confidence":0.849,"span":{"offset":565,"length":9}},{"content":"Nationalité","polygon":[415,166,466,166,466,177,415,176],"confidence":0.947,"span":{"offset":575,"length":11}},{"content":"12.08.1964","polygon":[285,176,405,178,405,199,285,200],"confidence":0.992,"span":{"offset":587,"length":10}},{"content":"DEUTSCH","polygon":[417,178,503,177,503,200,417,199],"confidence":0.994,"span":{"offset":598,"length":7}},{"content":"Geburtsort/Place","polygon":[279,209,360,208,360,222,279,222],"confidence":0.951,"span":{"offset":606,"length":16}},{"content":"of","polygon":[363,208,372,208,372,222,363,222],"confidence":0.914,"span":{"offset":623,"length":2}},{"content":"birth/Lieu","polygon":[375,208,421,209,421,222,375,222],"confidence":0.945,"span":{"offset":626,"length":10}},{"content":"de","polygon":[423,209,435,209,435,222,423,222],"confidence":0.995,"span":{"offset":637,"length":2}},{"content":"naissance","polygon":[437,209,486,209,486,222,437,222],"confidence":0.962,"span":{"offset":640,"length":9}},{"content":"BERLIN","polygon":[282,223,353,223,353,242,282,242],"confidence":0.994,"span":{"offset":650,"length":6}},{"content":"T220001293","polygon":[813,207,904,207,904,222,813,224],"confidence":0.965,"span":{"offset":657,"length":10}},{"content":"<<","polygon":[907,207,922,207,922,222,908,222],"confidence":0.953,"span":{"offset":668,"length":2}},{"content":"MUSTERMANN","polygon":[925,207,1019,206,1019,222,925,222],"confidence":0.934,"span":{"offset":671,"length":10}},{"content":"<<","polygon":[1022,206,1037,206,1037,221,1022,221],"confidence":0.743,"span":{"offset":682,"length":2}},{"content":"ERIKA","polygon":[1040,206,1086,206,1086,222,1040,221],"confidence":0.972,"span":{"offset":685,"length":5}},{"content":"<<<<<<<<<<<<<","polygon":[1089,206,1212,206,1211,223,1089,222],"confidence":0.51,"span":{"offset":691,"length":13}},{"content":"Gültig","polygon":[280,254,307,253,307,266,280,266],"confidence":0.829,"span":{"offset":705,"length":6}},{"content":"bis/Date","polygon":[310,253,351,253,351,266,310,266],"confidence":0.925,"span":{"offset":712,"length":8}},{"content":"of","polygon":[353,253,364,253,364,266,353,266],"confidence":0.977,"span":{"offset":721,"length":2}},{"content":"expiry/","polygon":[366,253,400,254,400,267,366,266],"confidence":0.961,"span":{"offset":724,"length":7}},{"content":"Date","polygon":[280,261,302,261,302,274,280,273],"confidence":0.947,"span":{"offset":732,"length":4}},{"content":"d'expiration","polygon":[305,261,359,261,359,274,305,274],"confidence":0.86,"span":{"offset":737,"length":12}},{"content":"31.10.2020","polygon":[285,273,404,273,404,293,286,293],"confidence":0.962,"span":{"offset":750,"length":10}},{"content":"938568","polygon":[471,264,574,264,574,289,471,289],"confidence":0.995,"span":{"offset":761,"length":6}},{"content":"IDD","polygon":[662,264,709,263,708,289,660,290],"confidence":0.995,"span":{"offset":768,"length":3}},{"content":"<<","polygon":[714,263,746,263,745,289,713,289],"confidence":0.932,"span":{"offset":772,"length":2}},{"content":"T220001293","polygon":[751,263,925,262,925,288,750,289],"confidence":0.983,"span":{"offset":775,"length":10}},{"content":"<<<<<<<<<<<<<<<","polygon":[930,262,1197,263,1197,287,930,288],"confidence":0.97,"span":{"offset":786,"length":15}},{"content":"Unterschrift","polygon":[279,295,335,295,336,306,280,306],"confidence":0.975,"span":{"offset":802,"length":12}},{"content":"der","polygon":[338,295,353,295,353,306,338,306],"confidence":0.986,"span":{"offset":815,"length":3}},{"content":"Inhaberin/des","polygon":[355,295,419,296,419,306,355,306],"confidence":0.963,"span":{"offset":819,"length":13}},{"content":"Inhabers","polygon":[421,296,463,296,462,307,421,306],"confidence":0.982,"span":{"offset":833,"length":8}},{"content":"-","polygon":[465,296,468,296,468,307,464,307],"confidence":0.842,"span":{"offset":842,"length":1}},{"content":"Signature","polygon":[280,304,324,304,324,315,280,315],"confidence":0.961,"span":{"offset":844,"length":9}},{"content":"of","polygon":[327,304,336,304,336,315,327,315],"confidence":0.948,"span":{"offset":854,"length":2}},{"content":"bearer","polygon":[339,304,368,304,368,315,339,315],"confidence":0.992,"span":{"offset":857,"length":6}},{"content":"-","polygon":[371,304,376,304,376,315,371,315],"confidence":0.949,"span":{"offset":864,"length":1}},{"content":"Signature","polygon":[379,304,423,303,423,315,379,315],"confidence":0.961,"span":{"offset":866,"length":9}},{"content":"de","polygon":[425,303,437,303,437,315,425,315],"confidence":0.903,"span":{"offset":876,"length":2}},{"content":"la","polygon":[439,303,449,303,449,315,439,315],"confidence":0.878,"span":{"offset":879,"length":2}},{"content":"titulaire/du","polygon":[451,303,502,302,502,315,451,315],"confidence":0.778,"span":{"offset":882,"length":12}},{"content":"titulaire","polygon":[505,302,541,301,541,315,505,315],"confidence":0.679,"span":{"offset":895,"length":9}},{"content":"6408125<2010315D","polygon":[658,293,942,293,942,318,658,319],"confidence":0.961,"span":{"offset":905,"length":16}},{"content":"<<<<<<<<<<<<<","polygon":[949,293,1177,293,1177,317,949,318],"confidence":0.795,"span":{"offset":922,"length":13}},{"content":"4","polygon":[1182,293,1195,293,1195,317,1182,317],"confidence":0.993,"span":{"offset":936,"length":1}},{"content":"MUSTERMANN","polygon":[656,324,832,324,833,349,657,351],"confidence":0.986,"span":{"offset":938,"length":10}},{"content":"<<","polygon":[841,324,870,324,871,349,841,349],"confidence":0.965,"span":{"offset":949,"length":2}},{"content":"ERIKA","polygon":[875,324,961,323,961,349,876,349],"confidence":0.992,"span":{"offset":952,"length":5}},{"content":"<<<<<<<<<<<<<","polygon":[968,323,1199,322,1199,349,968,349],"confidence":0.662,"span":{"offset":958,"length":13}},{"content":"BUNDESREPUBLIK","polygon":[26,414,208,414,209,431,26,431],"confidence":0.963,"span":{"offset":972,"length":14}},{"content":"DEUTSCHLAND","polygon":[222,414,371,414,371,431,222,431],"confidence":0.992,"span":{"offset":987,"length":11}},{"content":"Anschrift/Adress/Adresse","polygon":[897,410,1020,411,1020,425,898,425],"confidence":0.949,"span":{"offset":999,"length":24}},{"content":"FEDERAL","polygon":[31,430,73,429,74,440,31,440],"confidence":0.991,"span":{"offset":1024,"length":7}},{"content":"REPUBLIC","polygon":[76,429,123,429,123,441,76,440],"confidence":0.981,"span":{"offset":1032,"length":8}},{"content":"OF","polygon":[126,429,138,429,139,441,126,441],"confidence":0.995,"span":{"offset":1041,"length":2}},{"content":"GERMANY","polygon":[141,429,188,429,188,441,141,441],"confidence":0.962,"span":{"offset":1044,"length":7}},{"content":"/","polygon":[190,429,194,429,195,441,190,441],"confidence":0.995,"span":{"offset":1052,"length":1}},{"content":"REPUBLIQUE","polygon":[197,429,256,429,256,441,197,441],"confidence":0.86,"span":{"offset":1054,"length":10}},{"content":"FEDERALE","polygon":[258,429,306,429,306,441,258,441],"confidence":0.99,"span":{"offset":1065,"length":8}},{"content":"D'ALLEMAGNE","polygon":[308,429,375,430,375,441,309,441],"confidence":0.939,"span":{"offset":1074,"length":11}},{"content":"51147","polygon":[901,425,964,425,965,445,902,446],"confidence":0.994,"span":{"offset":1086,"length":5}},{"content":"KÖLN","polygon":[972,425,1019,426,1019,445,973,445],"confidence":0.637,"span":{"offset":1092,"length":4}},{"content":"PERSONALAUSWEIS","polygon":[26,443,171,442,171,456,26,456],"confidence":0.993,"span":{"offset":1097,"length":15}},{"content":"IDENTITY","polygon":[31,455,73,455,73,466,31,465],"confidence":0.99,"span":{"offset":1113,"length":8}},{"content":"CARD","polygon":[76,455,101,454,101,466,76,466],"confidence":0.98,"span":{"offset":1122,"length":4}},{"content":"/","polygon":[103,454,109,454,109,466,103,466],"confidence":0.859,"span":{"offset":1127,"length":1}},{"content":"CARTE","polygon":[111,454,141,454,141,466,111,466],"confidence":0.993,"span":{"offset":1129,"length":5}},{"content":"D'IDENTITE","polygon":[143,454,194,454,194,466,143,466],"confidence":0.504,"span":{"offset":1135,"length":10}},{"content":"Name/Surname/Nom","polygon":[280,446,377,446,377,457,280,457],"confidence":0.864,"span":{"offset":1146,"length":16}},{"content":"MUSTERMANN","polygon":[282,459,402,459,402,479,282,478],"confidence":0.993,"span":{"offset":1163,"length":10}},{"content":"HEIDESTRASSE","polygon":[900,450,1046,450,1046,473,901,473],"confidence":0.992,"span":{"offset":1174,"length":12}},{"content":"17","polygon":[1064,450,1086,450,1086,473,1064,473],"confidence":0.997,"span":{"offset":1187,"length":2}},{"content":"Datum/Date/Date","polygon":[647,482,733,483,733,495,648,496],"confidence":0.973,"span":{"offset":1190,"length":15}},{"content":"Vornamen/Given","polygon":[280,508,357,508,357,521,280,521],"confidence":0.825,"span":{"offset":1206,"length":14}},{"content":"names/Prénoms","polygon":[359,508,438,509,438,521,359,521],"confidence":0.757,"span":{"offset":1221,"length":13}},{"content":"01.11.10","polygon":[650,497,746,497,746,517,650,516],"confidence":0.982,"span":{"offset":1235,"length":8}},{"content":"ERIKA","polygon":[282,523,343,523,343,542,282,542],"confidence":0.994,"span":{"offset":1244,"length":5}},{"content":"Behörde/Authority/Autorité","polygon":[647,525,776,526,776,539,647,539],"confidence":0.943,"span":{"offset":1250,"length":26}},{"content":"Ordens-","polygon":[898,527,935,527,935,539,898,539],"confidence":0.992,"span":{"offset":1277,"length":7}},{"content":"oder","polygon":[937,527,959,526,959,539,937,539],"confidence":0.916,"span":{"offset":1285,"length":4}},{"content":"Künstlername/Religious","polygon":[961,526,1072,526,1072,540,961,539],"confidence":0.591,"span":{"offset":1290,"length":22}},{"content":"name","polygon":[1075,526,1102,526,1102,540,1075,540],"confidence":0.985,"span":{"offset":1313,"length":4}},{"content":"or","polygon":[1105,526,1114,527,1114,540,1105,540],"confidence":0.995,"span":{"offset":1318,"length":2}},{"content":"pseudonym/","polygon":[1116,527,1175,527,1176,540,1117,540],"confidence":0.966,"span":{"offset":1321,"length":10}},{"content":"Nom","polygon":[898,535,916,536,916,548,898,548],"confidence":0.995,"span":{"offset":1332,"length":3}},{"content":"de","polygon":[923,536,934,536,935,548,923,548],"confidence":0.995,"span":{"offset":1336,"length":2}},{"content":"religion","polygon":[937,536,970,537,971,548,937,548],"confidence":0.917,"span":{"offset":1339,"length":8}},{"content":"ou","polygon":[973,537,985,537,986,548,974,548],"confidence":0.993,"span":{"offset":1348,"length":2}},{"content":"pseudonyme","polygon":[988,537,1047,536,1047,547,988,548],"confidence":0.945,"span":{"offset":1351,"length":10}},{"content":"Geburtstag/Date","polygon":[280,553,359,553,359,565,280,565],"confidence":0.957,"span":{"offset":1362,"length":15}},{"content":"of","polygon":[361,553,371,553,371,565,362,565],"confidence":0.995,"span":{"offset":1378,"length":2}},{"content":"birth/","polygon":[373,553,399,552,400,565,374,565],"confidence":0.991,"span":{"offset":1381,"length":6}},{"content":"STADT","polygon":[652,539,713,539,713,561,652,561],"confidence":0.994,"span":{"offset":1388,"length":5}},{"content":"KÖLN","polygon":[723,539,771,540,771,560,723,560],"confidence":0.851,"span":{"offset":1394,"length":4}},{"content":"Date","polygon":[280,562,302,563,302,573,280,573],"confidence":0.99,"span":{"offset":1399,"length":4}},{"content":"de","polygon":[305,563,316,563,316,573,304,573],"confidence":0.995,"span":{"offset":1404,"length":2}},{"content":"naissance","polygon":[319,563,366,563,366,574,319,573],"confidence":0.75,"span":{"offset":1407,"length":9}},{"content":"Staatsangehörigkeit/Nationality/","polygon":[415,554,568,554,568,566,416,565],"confidence":0.789,"span":{"offset":1417,"length":32}},{"content":"Nationalité","polygon":[415,563,465,563,466,573,416,572],"confidence":0.772,"span":{"offset":1450,"length":11}},{"content":"12.08.1964","polygon":[286,575,404,576,404,596,286,595],"confidence":0.99,"span":{"offset":1462,"length":10}},{"content":"DEUTSCH","polygon":[418,576,502,575,502,595,418,595],"confidence":0.994,"span":{"offset":1473,"length":7}},{"content":"Geburtsort/Place","polygon":[279,606,360,606,360,618,280,618],"confidence":0.961,"span":{"offset":1481,"length":16}},{"content":"of","polygon":[362,606,372,606,372,618,363,618],"confidence":0.966,"span":{"offset":1498,"length":2}},{"content":"birth/Lieu","polygon":[374,606,420,606,420,618,374,618],"confidence":0.945,"span":{"offset":1501,"length":10}},{"content":"de","polygon":[423,606,435,606,434,618,423,618],"confidence":0.995,"span":{"offset":1512,"length":2}},{"content":"naissance","polygon":[437,606,485,607,485,619,437,618],"confidence":0.917,"span":{"offset":1515,"length":9}},{"content":"BERLIN","polygon":[282,617,354,617,354,640,282,640],"confidence":0.994,"span":{"offset":1525,"length":6}},{"content":"MUSTERMANN","polygon":[925,605,1018,605,1018,619,925,621],"confidence":0.975,"span":{"offset":1532,"length":10}},{"content":"<<","polygon":[1022,605,1037,605,1037,619,1022,619],"confidence":0.966,"span":{"offset":1543,"length":2}},{"content":"ERIKA","polygon":[1040,605,1086,605,1086,619,1040,619],"confidence":0.992,"span":{"offset":1546,"length":5}},{"content":"<<<<<<<<<<<<<","polygon":[1089,605,1211,605,1212,619,1089,619],"confidence":0.62,"span":{"offset":1552,"length":13}},{"content":"Gültig","polygon":[279,651,307,651,307,663,280,664],"confidence":0.842,"span":{"offset":1566,"length":6}},{"content":"bis/Date","polygon":[309,651,351,651,351,663,310,663],"confidence":0.914,"span":{"offset":1573,"length":8}},{"content":"of","polygon":[354,651,363,651,363,663,354,663],"confidence":0.995,"span":{"offset":1582,"length":2}},{"content":"expiry/","polygon":[365,651,398,651,398,664,365,663],"confidence":0.961,"span":{"offset":1585,"length":7}},{"content":"Date","polygon":[280,656,302,658,302,671,280,670],"confidence":0.961,"span":{"offset":1593,"length":4}},{"content":"d'expiration","polygon":[305,658,359,659,359,670,305,671],"confidence":0.857,"span":{"offset":1598,"length":12}},{"content":"31.10.2020","polygon":[284,670,403,670,403,689,285,690],"confidence":0.965,"span":{"offset":1611,"length":10}},{"content":"Unterschrift","polygon":[280,692,335,692,335,703,280,705],"confidence":0.969,"span":{"offset":1622,"length":12}},{"content":"der","polygon":[338,692,353,692,353,703,338,703],"confidence":0.968,"span":{"offset":1635,"length":3}},{"content":"Inhaberin/des","polygon":[355,692,419,693,419,704,355,703],"confidence":0.978,"span":{"offset":1639,"length":13}},{"content":"Inhabers","polygon":[421,693,462,693,462,705,421,704],"confidence":0.991,"span":{"offset":1653,"length":8}},{"content":"-","polygon":[464,693,471,693,471,705,464,705],"confidence":0.929,"span":{"offset":1662,"length":1}},{"content":"Signature","polygon":[280,700,325,701,325,712,280,712],"confidence":0.961,"span":{"offset":1664,"length":9}},{"content":"of","polygon":[327,701,336,701,337,712,327,712],"confidence":0.993,"span":{"offset":1674,"length":2}},{"content":"bearer","polygon":[339,701,368,701,369,712,339,712],"confidence":0.992,"span":{"offset":1677,"length":6}},{"content":"-","polygon":[371,701,377,701,377,712,371,712],"confidence":0.962,"span":{"offset":1684,"length":1}},{"content":"Signature","polygon":[379,701,423,701,423,712,380,712],"confidence":0.986,"span":{"offset":1686,"length":9}},{"content":"de","polygon":[425,701,437,700,437,712,426,712],"confidence":0.994,"span":{"offset":1696,"length":2}},{"content":"la","polygon":[440,700,448,700,448,712,440,712],"confidence":0.983,"span":{"offset":1699,"length":2}},{"content":"titulaire/du","polygon":[450,700,502,699,502,712,451,712],"confidence":0.917,"span":{"offset":1702,"length":12}},{"content":"titulaire","polygon":[504,699,541,698,541,712,504,712],"confidence":0.789,"span":{"offset":1715,"length":9}},{"content":"MUSTERMANN","polygon":[656,722,833,719,833,746,657,747],"confidence":0.961,"span":{"offset":1725,"length":10}},{"content":"<<","polygon":[840,719,868,719,869,746,840,746],"confidence":0.995,"span":{"offset":1736,"length":2}},{"content":"ERIKA","polygon":[874,719,962,718,962,746,874,746],"confidence":0.98,"span":{"offset":1739,"length":5}},{"content":"<<<<<<<<<<<<<","polygon":[967,718,1198,718,1197,746,967,746],"confidence":0.947,"span":{"offset":1745,"length":13}},{"content":"BUNDESDRUCKERET","polygon":[1110,754,1213,754,1213,767,1111,767],"confidence":0.594,"span":{"offset":1759,"length":15}}],"lines":[{"content":"BUNDESREPUBLIK DEUTSCHLAND","polygon":[25,16,375,16,375,34,25,34],"spans":[{"offset":0,"length":26}]},{"content":"T22000129","polygon":[436,20,593,20,593,46,436,46],"spans":[{"offset":27,"length":9}]},{"content":"Augenfarbe/Colour of eyes/Couleur des yeux","polygon":[646,13,860,14,860,28,646,27],"spans":[{"offset":37,"length":42}]},{"content":"Anschrift/Adress/Adresse","polygon":[896,12,1020,14,1020,28,896,26],"spans":[{"offset":80,"length":24}]},{"content":"FEDERAL REPUBLIC OF GERMANY / REPUBLIQUE FEDERALE D'ALLEMAGNE","polygon":[29,32,375,32,375,43,29,43],"spans":[{"offset":105,"length":61}]},{"content":"GRÜN","polygon":[651,27,702,27,703,49,651,48],"spans":[{"offset":167,"length":4}]},{"content":"51147 KÖLN","polygon":[899,27,1024,27,1024,48,899,47],"spans":[{"offset":172,"length":10}]},{"content":"PERSONALAUSWEIS","polygon":[25,44,173,44,173,58,25,58],"spans":[{"offset":183,"length":15}]},{"content":"IDENTITY CARD / CARTE D'IDENTITÉ","polygon":[30,57,195,57,195,68,30,68],"spans":[{"offset":199,"length":32}]},{"content":"Name/Surname/Nom","polygon":[278,47,382,48,382,60,278,60],"spans":[{"offset":232,"length":16}]},{"content":"MUSTERMANN","polygon":[282,61,407,61,407,80,282,80],"spans":[{"offset":249,"length":10}]},{"content":"GröBe/Height/Taille","polygon":[646,50,740,50,740,63,646,62],"spans":[{"offset":260,"length":19}]},{"content":"160 cm","polygon":[650,64,725,65,725,84,650,83],"spans":[{"offset":280,"length":6}]},{"content":"HEIDESTRASSE 17","polygon":[900,53,1086,54,1086,75,900,75],"spans":[{"offset":287,"length":15}]},{"content":"GEB. GABLER","polygon":[283,87,420,87,420,107,283,107],"spans":[{"offset":303,"length":11}]},{"content":"Datum/Date/Date","polygon":[647,86,733,86,733,98,647,98],"spans":[{"offset":315,"length":15}]},{"content":"Vornamen/Given names/Prénoms","polygon":[278,110,439,110,439,124,278,124],"spans":[{"offset":331,"length":28}]},{"content":"01.11.10","polygon":[649,100,750,100,750,118,649,118],"spans":[{"offset":360,"length":8}]},{"content":"ERIKA","polygon":[282,125,345,126,344,144,282,144],"spans":[{"offset":369,"length":5}]},{"content":"Behörde/Authority/Autorité","polygon":[646,127,776,128,776,142,646,142],"spans":[{"offset":375,"length":26}]},{"content":"Ordens- oder Künstlername/Religious name or pseudonym/","polygon":[897,129,1175,129,1175,142,897,141],"spans":[{"offset":402,"length":54}]},{"content":"Nom de religion ou pseudonyme","polygon":[897,139,1049,139,1048,151,897,150],"spans":[{"offset":457,"length":29}]},{"content":"Geburtstag/Date of birth/","polygon":[278,155,402,155,402,168,278,168],"spans":[{"offset":487,"length":25}]},{"content":"Staatsangehörigkeit/Nationality/","polygon":[414,155,569,155,569,168,414,168],"spans":[{"offset":513,"length":32}]},{"content":"STADT KÖLN","polygon":[650,142,775,142,775,163,650,163],"spans":[{"offset":546,"length":10}]},{"content":"Date de naissance","polygon":[279,165,367,165,367,177,279,176],"spans":[{"offset":557,"length":17}]},{"content":"Nationalité","polygon":[414,165,467,165,466,176,414,176],"spans":[{"offset":575,"length":11}]},{"content":"12.08.1964 DEUTSCH","polygon":[282,176,507,176,507,200,282,199],"spans":[{"offset":587,"length":18}]},{"content":"Geburtsort/Place of birth/Lieu de naissance","polygon":[277,208,486,208,486,222,277,221],"spans":[{"offset":606,"length":43}]},{"content":"BERLIN","polygon":[281,222,359,222,359,241,281,241],"spans":[{"offset":650,"length":6}]},{"content":"T220001293 << MUSTERMANN << ERIKA <<<<<<<<<<<<<","polygon":[812,206,1211,206,1211,222,812,223],"spans":[{"offset":657,"length":47}]},{"content":"Gültig bis/Date of expiry/","polygon":[278,252,400,252,400,266,278,266],"spans":[{"offset":705,"length":26}]},{"content":"Date d'expiration","polygon":[280,261,363,261,363,273,280,273],"spans":[{"offset":732,"length":17}]},{"content":"31.10.2020","polygon":[282,273,407,273,407,292,282,292],"spans":[{"offset":750,"length":10}]},{"content":"938568","polygon":[470,263,577,263,577,288,470,288],"spans":[{"offset":761,"length":6}]},{"content":"IDD << T220001293 <<<<<<<<<<<<<<<","polygon":[657,263,1200,262,1200,287,657,289],"spans":[{"offset":768,"length":33}]},{"content":"Unterschrift der Inhaberin/des Inhabers -","polygon":[279,295,468,295,468,306,279,306],"spans":[{"offset":802,"length":41}]},{"content":"Signature of bearer - Signature de la titulaire/du titulaire","polygon":[279,301,543,300,543,315,279,316],"spans":[{"offset":844,"length":60}]},{"content":"6408125<2010315D <<<<<<<<<<<<< 4","polygon":[658,293,1198,292,1198,317,658,318],"spans":[{"offset":905,"length":32}]},{"content":"MUSTERMANN << ERIKA <<<<<<<<<<<<<","polygon":[656,323,1200,321,1200,348,656,350],"spans":[{"offset":938,"length":33}]},{"content":"BUNDESREPUBLIK DEUTSCHLAND","polygon":[25,413,376,413,376,430,25,430],"spans":[{"offset":972,"length":26}]},{"content":"Anschrift/Adress/Adresse","polygon":[896,410,1020,411,1020,425,896,424],"spans":[{"offset":999,"length":24}]},{"content":"FEDERAL REPUBLIC OF GERMANY / REPUBLIQUE FEDERALE D'ALLEMAGNE","polygon":[29,428,376,428,376,440,29,440],"spans":[{"offset":1024,"length":61}]},{"content":"51147 KÖLN","polygon":[900,424,1024,424,1024,445,900,445],"spans":[{"offset":1086,"length":10}]},{"content":"PERSONALAUSWEIS","polygon":[25,441,173,441,173,455,25,455],"spans":[{"offset":1097,"length":15}]},{"content":"IDENTITY CARD / CARTE D'IDENTITE","polygon":[30,453,195,453,195,466,30,466],"spans":[{"offset":1113,"length":32}]},{"content":"Name/Surname/Nom","polygon":[279,445,382,445,382,457,279,457],"spans":[{"offset":1146,"length":16}]},{"content":"MUSTERMANN","polygon":[282,458,407,458,407,478,282,477],"spans":[{"offset":1163,"length":10}]},{"content":"HEIDESTRASSE 17","polygon":[899,449,1086,449,1086,472,899,472],"spans":[{"offset":1174,"length":15}]},{"content":"Datum/Date/Date","polygon":[646,482,734,482,734,495,646,495],"spans":[{"offset":1190,"length":15}]},{"content":"Vornamen/Given names/Prénoms","polygon":[278,507,439,508,439,521,278,521],"spans":[{"offset":1206,"length":28}]},{"content":"01.11.10","polygon":[648,496,751,496,751,516,648,516],"spans":[{"offset":1235,"length":8}]},{"content":"ERIKA","polygon":[281,522,345,522,345,542,281,541],"spans":[{"offset":1244,"length":5}]},{"content":"Behörde/Authority/Autorité","polygon":[646,525,776,525,776,539,646,539],"spans":[{"offset":1250,"length":26}]},{"content":"Ordens- oder Künstlername/Religious name or pseudonym/","polygon":[896,526,1175,526,1175,540,896,539],"spans":[{"offset":1277,"length":54}]},{"content":"Nom de religion ou pseudonyme","polygon":[897,534,1049,535,1049,547,897,547],"spans":[{"offset":1332,"length":29}]},{"content":"Geburtstag/Date of birth/","polygon":[278,552,399,552,399,565,278,565],"spans":[{"offset":1362,"length":25}]},{"content":"STADT KÖLN","polygon":[650,539,775,539,775,560,650,560],"spans":[{"offset":1388,"length":10}]},{"content":"Date de naissance","polygon":[278,561,367,562,367,573,278,572],"spans":[{"offset":1399,"length":17}]},{"content":"Staatsangehörigkeit/Nationality/","polygon":[414,553,568,553,568,565,414,565],"spans":[{"offset":1417,"length":32}]},{"content":"Nationalité","polygon":[414,563,467,563,467,572,414,572],"spans":[{"offset":1450,"length":11}]},{"content":"12.08.1964 DEUTSCH","polygon":[285,575,506,575,506,595,285,595],"spans":[{"offset":1462,"length":18}]},{"content":"Geburtsort/Place of birth/Lieu de naissance","polygon":[278,605,486,606,485,618,278,618],"spans":[{"offset":1481,"length":43}]},{"content":"BERLIN","polygon":[282,617,358,617,358,640,282,640],"spans":[{"offset":1525,"length":6}]},{"content":"MUSTERMANN << ERIKA <<<<<<<<<<<<<","polygon":[924,604,1211,604,1211,619,924,620],"spans":[{"offset":1532,"length":33}]},{"content":"Gültig bis/Date of expiry/","polygon":[278,650,398,650,398,663,278,663],"spans":[{"offset":1566,"length":26}]},{"content":"Date d'expiration","polygon":[278,656,363,657,363,672,278,670],"spans":[{"offset":1593,"length":17}]},{"content":"31.10.2020","polygon":[281,669,407,669,407,689,281,689],"spans":[{"offset":1611,"length":10}]},{"content":"Unterschrift der Inhaberin/des Inhabers -","polygon":[278,691,472,692,472,705,278,704],"spans":[{"offset":1622,"length":41}]},{"content":"Signature of bearer - Signature de la titulaire/du titulaire","polygon":[279,699,542,697,542,711,279,712],"spans":[{"offset":1664,"length":60}]},{"content":"MUSTERMANN << ERIKA <<<<<<<<<<<<<","polygon":[656,719,1199,718,1199,745,656,747],"spans":[{"offset":1725,"length":33}]},{"content":"BUNDESDRUCKERET","polygon":[1110,754,1213,753,1213,767,1110,767],"spans":[{"offset":1759,"length":15}]}],"spans":[{"offset":0,"length":1774}]}],"styles":[],"documents":[{"docType":"idDocument.nationalIdentityCard","boundingRegions":[{"pageNumber":1,"polygon":[0,0,1240,0,1240,790,0,790]}],"fields":{"Address":{"type":"address","content":"51147 KÖLN\nHEIDESTRASSE 17","boundingRegions":[{"pageNumber":1,"polygon":[900,27,1086,27,1086,75,900,75]}],"confidence":0.271,"spans":[{"offset":172,"length":10},{"offset":287,"length":15}],"valueAddress":{"houseNumber":"17","road":"HEIDESTRASSE","postalCode":"51147","city":"KÖLN","streetAddress":"17 HEIDESTRASSE"}},"DateOfBirth":{"type":"date","valueDate":"1964-08-12","content":"12.08.1964","boundingRegions":[{"pageNumber":1,"polygon":[285,176,405,178,405,199,285,200]}],"confidence":0.529,"spans":[{"offset":587,"length":10}]},"DateOfExpiration":{"type":"date","valueDate":"2020-10-31","content":"31.10.2020","boundingRegions":[{"pageNumber":1,"polygon":[285,273,404,273,404,293,286,293]}],"confidence":0.5,"spans":[{"offset":750,"length":10}]},"DateOfIssue":{"type":"date","valueDate":"2010-11-01","content":"01.11.10","boundingRegions":[{"pageNumber":1,"polygon":[650,497,746,497,746,517,650,516]}],"confidence":0.803,"spans":[{"offset":1235,"length":8}]},"DocumentDiscriminator":{"type":"string","valueString":"938568","content":"938568","boundingRegions":[{"pageNumber":1,"polygon":[471,264,574,264,574,289,471,289]}],"confidence":0.717,"spans":[{"offset":761,"length":6}]},"DocumentNumber":{"type":"string","valueString":"T22000129","content":"T22000129","boundingRegions":[{"pageNumber":1,"polygon":[438,21,593,21,593,47,438,47]}],"confidence":0.854,"spans":[{"offset":27,"length":9}]},"EyeColor":{"type":"string","valueString":"GRÜN","content":"GRÜN","boundingRegions":[{"pageNumber":1,"polygon":[651,27,698,27,697,49,651,48]}],"confidence":0.604,"spans":[{"offset":167,"length":4}]},"FirstName":{"type":"string","valueString":"ERIKA","content":"ERIKA","boundingRegions":[{"pageNumber":1,"polygon":[282,523,343,523,343,542,282,542]}],"confidence":0.332,"spans":[{"offset":1244,"length":5}]},"Height":{"type":"string","valueString":"160 cm","content":"160 cm","boundingRegions":[{"pageNumber":1,"polygon":[652,64,719,65,719,85,652,84]}],"confidence":0.736,"spans":[{"offset":280,"length":6}]},"LastName":{"type":"string","valueString":"MUSTERMANN","content":"MUSTERMANN","boundingRegions":[{"pageNumber":1,"polygon":[283,62,402,62,402,81,283,81]}],"confidence":0.473,"spans":[{"offset":249,"length":10}]},"PlaceOfBirth":{"type":"string","valueString":"BERLIN","content":"BERLIN","boundingRegions":[{"pageNumber":1,"polygon":[282,223,353,223,353,242,282,242]}],"confidence":0.37,"spans":[{"offset":650,"length":6}]}},"confidence":0.419,"spans":[{"offset":0,"length":1774}]}],"contentFormat":"text"}}
+2024/05/21 10:02:15 Vault client initialized
+2024/05/21 10:02:15 Connected to HashiCorp Vault service
+2024/05/21 10:02:15 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:02:15 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:03:08 Vault client initialized
+2024/05/21 10:03:08 Connected to HashiCorp Vault service
+2024/05/21 10:03:08 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:03:08 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:05:27 Vault client initialized
+2024/05/21 10:05:27 Connected to HashiCorp Vault service
+2024/05/21 10:05:27 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:05:27 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:11:30 Vault client initialized
+2024/05/21 10:11:30 Connected to HashiCorp Vault service
+2024/05/21 10:11:30 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:11:30 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:11:58 Vault client initialized
+2024/05/21 10:11:58 Connected to HashiCorp Vault service
+2024/05/21 10:11:58 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:11:58 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:14:38 Vault client initialized
+2024/05/21 10:14:38 Connected to HashiCorp Vault service
+2024/05/21 10:14:38 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:14:38 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:29:34 Vault client initialized
+2024/05/21 10:29:34 Connected to HashiCorp Vault service
+2024/05/21 10:29:34 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:29:34 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/IdentityConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:34:59 Vault client initialized
+2024/05/21 10:34:59 Connected to HashiCorp Vault service
+2024/05/21 10:34:59 Error reading secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/ServiceConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:34:59 Error getting secret: Error making API request.
+
+URL: GET http://localhost:8200/v1/secret/data/data/FishingPermitClone/ServiceConfig
+Code: 403. Errors:
+
+* permission denied
+2024/05/21 10:41:19 Error creating HashiCorp Vault client: VAULT_TOKEN environment variable is not set
+2024/05/21 10:50:47 Vault client initialized
+2024/05/21 10:50:47 Vault token is set, root
+2024/05/21 10:50:47 Vault token is set, root
+2024/05/21 10:50:47 Connected to HashiCorp Vault service
+2024/05/21 10:50:47 Error getting secret: No secret found at path: secret/data/data/FishingPermitClone/IdentityConfig
+2024/05/21 11:00:03 Vault client initialized
+2024/05/21 11:00:03 Vault token is set, root
+2024/05/21 11:00:03 Vault token is set, root
+2024/05/21 11:00:03 Connected to HashiCorp Vault service
+2024/05/21 11:00:03 Client ID: admin-cli
+2024/05/21 11:00:03 Endpoint: http://localhost:8080
+2024/05/21 11:00:03 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:00:03 Realm: master
+2024/05/21 11:00:03 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 11:00:03 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x140007169f0}
+2024/05/21 11:00:03 User Credentials: niklas test
+2024/05/21 11:00:03 Vault client initialized
+2024/05/21 11:00:03 Vault token is set, root
+2024/05/21 11:00:03 Connected to HashiCorp Vault service
+2024/05/21 11:00:03 Client ID: admin-cli
+2024/05/21 11:00:03 Endpoint: http://localhost:8080
+2024/05/21 11:00:03 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:00:03 Realm: master
+2024/05/21 11:00:03 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x140000a1e40} 0x100d3f710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 11:19:31 Vault client initialized
+2024/05/21 11:19:31 Vault token is set, root
+2024/05/21 11:19:31 Vault token is set, root
+2024/05/21 11:19:31 Connected to HashiCorp Vault service
+2024/05/21 11:19:31 Client ID: admin-cli
+2024/05/21 11:19:31 Endpoint: http://localhost:8080
+2024/05/21 11:19:31 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:19:31 Realm: master
+2024/05/21 11:19:31 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 11:19:31 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x140004280c0}
+2024/05/21 11:19:31 User Credentials: niklas test
+2024/05/21 11:19:31 Vault client initialized
+2024/05/21 11:19:31 Vault token is set, root
+2024/05/21 11:19:31 Connected to HashiCorp Vault service
+2024/05/21 11:19:31 Client ID: admin-cli
+2024/05/21 11:19:31 Endpoint: http://localhost:8080
+2024/05/21 11:19:31 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:19:31 Realm: master
+2024/05/21 11:19:32 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000888ee0} 0x10294b710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 11:19:43 Vault client initialized
+2024/05/21 11:19:43 Vault token is set, root
+2024/05/21 11:19:43 Connected to HashiCorp Vault service
+2024/05/21 11:19:43 Client ID: admin-cli
+2024/05/21 11:19:43 Endpoint: http://localhost:8080
+2024/05/21 11:19:43 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:19:43 Realm: master
+2024/05/21 11:19:43 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 11:19:43 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x140008a4630}
+2024/05/21 11:19:43 User Credentials: purwinsh splendid
+2024/05/21 11:19:43 Vault client initialized
+2024/05/21 11:19:43 Vault token is set, root
+2024/05/21 11:19:43 Connected to HashiCorp Vault service
+2024/05/21 11:19:43 Client ID: admin-cli
+2024/05/21 11:19:43 Endpoint: http://localhost:8080
+2024/05/21 11:19:43 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:19:43 Realm: master
+2024/05/21 11:19:44 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x140007e1920} 0x10294b710 122 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 11:19:56 Vault client initialized
+2024/05/21 11:19:56 Vault token is set, root
+2024/05/21 11:19:56 Connected to HashiCorp Vault service
+2024/05/21 11:19:56 Client ID: admin-cli
+2024/05/21 11:19:56 Endpoint: http://localhost:8080
+2024/05/21 11:19:56 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:19:56 Realm: master
+2024/05/21 11:19:56 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 11:19:56 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x140008a4810}
+2024/05/21 11:19:56 User Credentials: purwinsh fkldjflkasj
+2024/05/21 11:19:56 Vault client initialized
+2024/05/21 11:19:56 Vault token is set, root
+2024/05/21 11:19:56 Connected to HashiCorp Vault service
+2024/05/21 11:19:56 Client ID: admin-cli
+2024/05/21 11:19:56 Endpoint: http://localhost:8080
+2024/05/21 11:19:56 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:19:56 Realm: master
+2024/05/21 11:19:56 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000a202e0} 0x10294b710 125 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 11:19:56 Error getting token: map[error:invalid_grant error_description:Invalid user credentials]
+2024/05/21 11:19:56 Error getting token: failed to get token from Keycloak
+2024/05/21 11:19:56 User Credentials are wrong: failed to get token from Keycloak
+2024/05/21 11:53:04 Vault client initialized
+2024/05/21 11:53:04 Vault token is set, root
+2024/05/21 11:53:04 Vault token is set, root
+2024/05/21 11:53:04 Connected to HashiCorp Vault service
+2024/05/21 11:53:04 Client ID: admin-cli
+2024/05/21 11:53:04 Endpoint: http://localhost:8080
+2024/05/21 11:53:04 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:53:04 Realm: master
+2024/05/21 11:53:04 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 11:53:04 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x14000706cc0}
+2024/05/21 11:53:04 User Credentials: niklas test
+2024/05/21 11:53:04 Vault client initialized
+2024/05/21 11:53:04 Vault token is set, root
+2024/05/21 11:53:04 Connected to HashiCorp Vault service
+2024/05/21 11:53:04 Client ID: admin-cli
+2024/05/21 11:53:04 Endpoint: http://localhost:8080
+2024/05/21 11:53:04 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 11:53:04 Realm: master
+2024/05/21 11:53:04 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x1400007d6a0} 0x100533710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 12:21:27 Vault client initialized
+2024/05/21 12:21:27 Vault token is set, root
+2024/05/21 12:21:27 Connected to HashiCorp Vault service
+2024/05/21 12:21:27 Client ID: admin-cli
+2024/05/21 12:21:27 Endpoint: http://localhost:8080
+2024/05/21 12:21:27 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:21:27 Realm: master
+2024/05/21 12:21:27 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 12:21:27 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x140004be300}
+2024/05/21 12:21:27 User Credentials: purwinsh splendid
+2024/05/21 12:21:27 Vault client initialized
+2024/05/21 12:21:27 Vault token is set, root
+2024/05/21 12:21:27 Connected to HashiCorp Vault service
+2024/05/21 12:21:27 Client ID: admin-cli
+2024/05/21 12:21:27 Endpoint: http://localhost:8080
+2024/05/21 12:21:27 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:21:27 Realm: master
+2024/05/21 12:21:27 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x140007e3840} 0x100533710 122 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 12:21:34 Vault client initialized
+2024/05/21 12:21:34 Vault token is set, root
+2024/05/21 12:21:34 Connected to HashiCorp Vault service
+2024/05/21 12:21:34 Error getting secret: ServiceEndpoints%!(EXTRA string=: is not found in secret data)
+2024/05/21 12:23:12 Vault client initialized
+2024/05/21 12:23:12 Vault token is set, root
+2024/05/21 12:23:12 Vault token is set, root
+2024/05/21 12:23:12 Connected to HashiCorp Vault service
+2024/05/21 12:23:12 Client ID: admin-cli
+2024/05/21 12:23:12 Endpoint: http://localhost:8080
+2024/05/21 12:23:12 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:23:12 Realm: master
+2024/05/21 12:23:12 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 12:23:12 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x1400059ad80}
+2024/05/21 12:23:12 User Credentials: niklas test
+2024/05/21 12:23:12 Vault client initialized
+2024/05/21 12:23:12 Vault token is set, root
+2024/05/21 12:23:12 Connected to HashiCorp Vault service
+2024/05/21 12:23:12 Client ID: admin-cli
+2024/05/21 12:23:12 Endpoint: http://localhost:8080
+2024/05/21 12:23:12 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:23:12 Realm: master
+2024/05/21 12:23:13 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000598100} 0x1007a3710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 12:23:15 Vault client initialized
+2024/05/21 12:23:15 Vault token is set, root
+2024/05/21 12:23:15 Connected to HashiCorp Vault service
+2024/05/21 12:23:15 Endpoint: https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview
+2024/05/21 12:23:15 Secret: aea95a4fbfbb43a78646f7bdc7049341
+2024/05/21 12:23:15 Vault Values, &{https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze\?api-version\=2024-02-29-preview aea95a4fbfbb43a78646f7bdc7049341 /Users/niklas.fomin/Downloads/perso.jpeg <nil> {<nil> <nil> <nil> 0}}
+2024/05/21 12:23:15 Config Vaules:&{https://kibundai.cognitiveservices.azure.com/documentintelligence/documentModels/prebuilt-idDocument:analyze?api-version=2024-02-29-preview  /Users/niklas.fomin/Downloads/perso.jpeg <nil> {<nil> <nil> <nil> 0}}
+2024/05/21 12:23:15 Error opening file: open /Users/niklas.fomin/Downloads/perso.jpeg: operation not permitted
+2024/05/21 12:23:15 Error selecting document: open /Users/niklas.fomin/Downloads/perso.jpeg: operation not permitted
+2024/05/21 12:23:33 Vault client initialized
+2024/05/21 12:23:33 Vault token is set, root
+2024/05/21 12:23:33 Vault token is set, root
+2024/05/21 12:23:33 Connected to HashiCorp Vault service
+2024/05/21 12:23:33 Client ID: admin-cli
+2024/05/21 12:23:33 Endpoint: http://localhost:8080
+2024/05/21 12:23:33 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:23:33 Realm: master
+2024/05/21 12:23:33 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 12:23:33 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x1400076a420}
+2024/05/21 12:23:33 User Credentials: niklas test
+2024/05/21 12:23:33 Vault client initialized
+2024/05/21 12:23:33 Vault token is set, root
+2024/05/21 12:23:33 Connected to HashiCorp Vault service
+2024/05/21 12:23:33 Client ID: admin-cli
+2024/05/21 12:23:33 Endpoint: http://localhost:8080
+2024/05/21 12:23:33 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:23:33 Realm: master
+2024/05/21 12:23:33 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x1400075e2e0} 0x1042e7710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 12:24:02 Vault client initialized
+2024/05/21 12:24:02 Vault token is set, root
+2024/05/21 12:24:02 Vault token is set, root
+2024/05/21 12:24:02 Connected to HashiCorp Vault service
+2024/05/21 12:24:02 Client ID: admin-cli
+2024/05/21 12:24:02 Endpoint: http://localhost:8080
+2024/05/21 12:24:02 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:24:02 Realm: master
+2024/05/21 12:24:02 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 12:24:02 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x14000509110}
+2024/05/21 12:24:02 User Credentials: niklas test
+2024/05/21 12:24:02 Vault client initialized
+2024/05/21 12:24:02 Vault token is set, root
+2024/05/21 12:24:02 Connected to HashiCorp Vault service
+2024/05/21 12:24:02 Client ID: admin-cli
+2024/05/21 12:24:02 Endpoint: http://localhost:8080
+2024/05/21 12:24:02 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:24:02 Realm: master
+2024/05/21 12:24:02 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000736120} 0x10232b710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 12:31:55 Vault client initialized
+2024/05/21 12:31:55 Vault token is set, root
+2024/05/21 12:31:55 Vault token is set, root
+2024/05/21 12:31:55 Connected to HashiCorp Vault service
+2024/05/21 12:31:55 Client ID: admin-cli
+2024/05/21 12:31:55 Endpoint: http://localhost:8080
+2024/05/21 12:31:55 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:31:55 Realm: master
+2024/05/21 12:31:55 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 12:31:55 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x1400007ef90}
+2024/05/21 12:31:55 User Credentials: niklas test
+2024/05/21 12:31:55 Vault client initialized
+2024/05/21 12:31:55 Vault token is set, root
+2024/05/21 12:31:55 Connected to HashiCorp Vault service
+2024/05/21 12:31:55 Client ID: admin-cli
+2024/05/21 12:31:55 Endpoint: http://localhost:8080
+2024/05/21 12:31:55 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:31:55 Realm: master
+2024/05/21 12:31:55 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x1400088c100} 0x101107710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 12:33:38 Vault client initialized
+2024/05/21 12:33:38 Vault token is set, root
+2024/05/21 12:33:38 Vault token is set, root
+2024/05/21 12:33:38 Connected to HashiCorp Vault service
+2024/05/21 12:33:38 Client ID: admin-cli
+2024/05/21 12:33:38 Endpoint: http://localhost:8080
+2024/05/21 12:33:38 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:33:38 Realm: master
+2024/05/21 12:33:38 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 12:33:38 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x1400060b380}
+2024/05/21 12:33:38 User Credentials: niklas test
+2024/05/21 12:33:38 Vault client initialized
+2024/05/21 12:33:38 Vault token is set, root
+2024/05/21 12:33:38 Connected to HashiCorp Vault service
+2024/05/21 12:33:38 Client ID: admin-cli
+2024/05/21 12:33:38 Endpoint: http://localhost:8080
+2024/05/21 12:33:38 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:33:38 Realm: master
+2024/05/21 12:33:38 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x140006ab100} 0x104733710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}
+2024/05/21 12:34:54 Vault client initialized
+2024/05/21 12:34:54 Vault token is set, root
+2024/05/21 12:34:54 Vault token is set, root
+2024/05/21 12:34:54 Connected to HashiCorp Vault service
+2024/05/21 12:34:54 Client ID: admin-cli
+2024/05/21 12:34:54 Endpoint: http://localhost:8080
+2024/05/21 12:34:54 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:34:54 Realm: master
+2024/05/21 12:34:54 Keycloak Client: admin-cli, 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q, http://localhost:8080
+2024/05/21 12:34:54 Keycloak Client: &{admin-cli http://localhost:8080 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q  0x14000118990}
+2024/05/21 12:34:54 User Credentials: niklas test
+2024/05/21 12:34:54 Vault client initialized
+2024/05/21 12:34:54 Vault token is set, root
+2024/05/21 12:34:54 Connected to HashiCorp Vault service
+2024/05/21 12:34:54 Client ID: admin-cli
+2024/05/21 12:34:54 Endpoint: http://localhost:8080
+2024/05/21 12:34:54 Secret: 0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q
+2024/05/21 12:34:54 Realm: master
+2024/05/21 12:34:54 Request: &{POST http://localhost:8080/realms/master/protocol/openid-connect/token HTTP/1.1 1 1 map[Content-Type:[application/x-www-form-urlencoded]] {0x14000599080} 0x1009c7710 116 [] false localhost:8080 map[] map[] <nil> map[]   <nil> <nil> <nil> {{}} <nil> [] map[]}

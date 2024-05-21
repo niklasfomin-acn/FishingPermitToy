@@ -24,6 +24,17 @@ var (
 
 // Store a newly received citizen permit request
 func (h *Handlers) HandleCitizenPermitRequest(w http.ResponseWriter, r *http.Request) {
+	// validCitizenToken, err := auth.ValidateCitizenToken(token)
+	// if err != nil {
+	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
+	// 	return
+	// }
+
+	// if validCitizenToken == false {
+	// 	http.Error(w, "Invalid token", http.StatusUnauthorized)
+	// 	return
+	// }
+
 	if r.Method != http.MethodPost {
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
 		return

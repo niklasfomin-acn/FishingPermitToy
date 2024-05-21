@@ -17,26 +17,13 @@ import (
 // Global Variables
 var ProcessedResultMap map[string]interface{}
 var Vendor string
+var APIAccessToken string
 
 // Login
-func SetupStartPage(app *tview.Application, pages *tview.Pages) {
+func SetupStartPage(app *tview.Application, pages *tview.Pages, config config.Config) {
 	form := tview.NewForm()
 	form.SetBorder(true).SetTitle("Willkommen im Angelschein-Portal Berlin-Brandenburg").SetTitleAlign(tview.AlignCenter)
 	form.SetBackgroundColor(tview.Styles.PrimitiveBackgroundColor)
-
-	// Header
-	// file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/angelschein.jpeg")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer file.Close()
-
-	// img, err := jpeg.Decode(file)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// form.AddImage("", img, 75, 15, 0)
 
 	// InputFields
 	form.AddDropDown("Nutzerstatus", []string{"Bürger", "Administrator"}, 0, nil)
@@ -45,12 +32,79 @@ func SetupStartPage(app *tview.Application, pages *tview.Pages) {
 
 	// Buttons
 	form.AddButton("Login", func() {
+		// Logger for Debugging
+		logFile, err := os.OpenFile("log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+		if err != nil {
+			log.Fatalf("Error opening log file: %v", err)
+		}
+		defer logFile.Close()
+		log.SetOutput(logFile)
+
 		if _, option := form.GetFormItemByLabel("Nutzerstatus").(*tview.DropDown).GetCurrentOption(); option == "Bürger" {
-			//TODO: Implement keycloak auhtentication for role citizen
-			pages.SwitchToPage("CitizenLandingPage")
+
+			clientID, endpoint, secret, _, err := auth.GetIdentityFromVault(config)
+			if err != nil {
+				log.Fatalf("Error getting identity from vault: %v", err)
+			}
+			log.Printf("Keycloak Client: %v, %v, %v", clientID, secret, endpoint)
+
+			keycloak := auth.NewKeycloakClient(clientID, endpoint, secret)
+			log.Printf("Keycloak Client: %v", keycloak)
+
+			username, password := auth.GetCredentialsFromForm(form)
+			//pages.SwitchToPage("CitizenLandingPage")
+
+			log.Printf("User Credentials: %v %v", username, password)
+
+			_, _, _, realm, err := auth.GetIdentityFromVault(config)
+			if err != nil {
+				log.Fatalf("Error getting identity from vault: %v", err)
+			}
+
+			token, err := keycloak.GetToken(username, password, realm)
+			if err != nil {
+				log.Printf("Error getting token: %v", err)
+			}
+
+			if token {
+				//APIAccessToken = token
+				pages.SwitchToPage("CitizenLandingPage")
+			} else {
+				log.Fatalf("User Credentials are wrong: %v", err)
+				pages.SwitchToPage("StartPage")
+			}
+
 		} else {
-			//TODO: Implement keycloak auhtentication for role admin
-			pages.SwitchToPage("AdminPage")
+			clientID, secret, endpoint, _, err := auth.GetIdentityFromVault(config)
+			if err != nil {
+				log.Fatalf("Error getting identity from vault: %v", err)
+			}
+
+			keycloak := auth.NewKeycloakClient(clientID, secret, endpoint)
+			log.Printf("Keycloak Client: %v", keycloak)
+
+			username, password := auth.GetCredentialsFromForm(form)
+			//pages.SwitchToPage("CitizenLandingPage")
+
+			log.Printf("User Credentials: %v %v", username, password)
+
+			_, _, _, realm, err := auth.GetIdentityFromVault(config)
+			if err != nil {
+				log.Fatalf("Error getting identity from vault: %v", err)
+			}
+
+			token, err := keycloak.GetToken(username, password, realm)
+			if err != nil {
+				log.Printf("Error getting token: %v", err)
+			}
+
+			if token {
+				//APIAccessToken = token
+				pages.SwitchToPage("AdminPage")
+			} else {
+				log.Fatalf("User Credentials are wrong: %v", err)
+				pages.SwitchToPage("StartPage")
+			}
 		}
 	})
 
@@ -73,18 +127,6 @@ func SetupCitizenLandingPage(app *tview.Application, pages *tview.Pages, config 
 	landingForm.SetBorder(true).SetTitle("Menü Antragsteller").SetTitleAlign(tview.AlignCenter)
 	landingForm.SetButtonTextColor(tview.Styles.PrimaryTextColor)
 
-	// file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/angelschein.jpeg")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// img, err := jpeg.Decode(file)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// // Header
-	// landingForm.AddImage("", img, 70, 15, 0)
-
 	// Buttons
 	landingForm.AddButton("Antragstatus Anzeigen", func() {})
 	landingForm.AddButton("Smarte Antragstellung", func() { pages.SwitchToPage("SmartDocumentPage") })
@@ -102,20 +144,17 @@ func SetupCitizenLandingPage(app *tview.Application, pages *tview.Pages, config 
 
 // Citizen Options for Manual Permit Creation
 func SetupManualPermitPage(app *tview.Application, pages *tview.Pages, config config.Config) {
+	// Logger for Debugging
+	logFile, err := os.OpenFile("log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatalf("Error opening log file: %v", err)
+	}
+	defer logFile.Close()
+	log.SetOutput(logFile)
+
+	// Layout
 	manualPermitForm := tview.NewForm()
 	manualPermitForm.SetBorder(true).SetTitle("Manueller Antrag").SetTitleAlign(tview.AlignCenter)
-
-	// file, err := os.Open("/Users/niklas.fomin/Documents/ReposLocal/FishingPermitToy/client/ui/perso.jpeg")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// img, err := jpeg.Decode(file)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// manualPermitForm.AddImage("", img, 40, 10, 0)
-
 	manualPermitForm.AddInputField("Personalausweis-Nr.", "", 30, nil, nil)
 	manualPermitForm.AddInputField("Nachname", "", 30, nil, nil)
 	manualPermitForm.AddInputField("Vorname", "", 30, nil, nil)
@@ -133,9 +172,12 @@ func SetupManualPermitPage(app *tview.Application, pages *tview.Pages, config co
 
 	manualPermitForm.AddButton("Neuen Antrag stellen", func() {
 		citizenPermit := data.CreateCitizenPermitFromForm(manualPermitForm)
+		log.Printf("Successfully created citizen permit: %v", citizenPermit)
+
 		// Call API handler to post citizen permit request
 		requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
-		requestClient.TransferCitizenPermit(citizenPermit)
+		log.Printf("Successfully created request client: %v", requestClient)
+		requestClient.TransferCitizenPermit(citizenPermit, APIAccessToken)
 	})
 
 	// Buttons
@@ -353,6 +395,7 @@ func SetupAdminPage(app *tview.Application, pages *tview.Pages, config config.Co
 
 }
 
+// Smart Document Processing through Azure and AWS services
 func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config config.Config) {
 	smartDocumentForm := tview.NewForm()
 	smartDocumentForm.SetBorder(true).SetTitle("Smarte Dokumentenverarbeitung").SetTitleAlign(tview.AlignCenter)
@@ -395,14 +438,16 @@ func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config c
 					_, indexValue := smartDocumentForm.GetFormItemByLabel("Dokument Wählen").(*tview.DropDown).GetCurrentOption()
 					// Access the keyvault here, TODO: Exchange bools versus config.json stuff
 					pathFromVault, secretFromVault, err := auth.GetSecretFromVault(true, false, false, &config)
-					if err != nil {
-						log.Fatalf("Error getting secret from vault: %v", err)
-					}
-					log.Printf("Secret from Vault: %v", secretFromVault)
-					log.Printf("Path from Vault: %v", pathFromVault)
-					// Call a document Service instance
+					// if err != nil {
+					// 	log.Fatalf("Error getting secret from vault: %v", err)
+					// }
+					// log.Printf("Secret from Vault: %v", secretFromVault)
+					// log.Printf("Path from Vault: %v", pathFromVault)
+					//Call a document Service instance
 					aiService := utils.NewIDDocumentService(pathFromVault, secretFromVault, indexValue)
-					//aiService := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, indexValue)
+					aiService2 := utils.NewIDDocumentService(config.ServiceEndpoints, config.ServiceKeys, indexValue)
+					log.Printf("Vault Values, %v", aiService)
+					log.Printf("Config Vaules:%v", aiService2)
 					persoFile, err := aiService.SelectDocument(indexValue)
 					if err != nil {
 						log.Fatalf("Error selecting document: %v", err)
@@ -503,6 +548,7 @@ func SetupSmartDocumentPage(app *tview.Application, pages *tview.Pages, config c
 	pages.AddPage("SmartDocumentPage", smartDocumentForm, true, false)
 }
 
+// Page Setup to process the AI-assisted documenta and then send the request
 func SetupSmartPermitPage(app *tview.Application, pages *tview.Pages, config config.Config) {
 	smartPermitForm := tview.NewForm()
 	smartPermitForm.SetBorder(true).SetTitle("Erfassung von Pflichtangaben").SetTitleAlign(tview.AlignCenter)
@@ -522,13 +568,13 @@ func SetupSmartPermitPage(app *tview.Application, pages *tview.Pages, config con
 
 			// Call API handler to post citizen permit request
 			requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
-			requestClient.TransferCitizenPermit(citizenPermit)
+			requestClient.TransferCitizenPermit(citizenPermit, APIAccessToken)
 		} else {
 			citizenPermit := data.CreateMergedCitizenPermitFromService2(smartPermitForm, ProcessedResultMap)
 
 			// Call API handler to post citizen permit request
 			requestClient := data.NewJSONTransferClient(config.ServerAddress, config.ServerPort, config.ServerAPIs[0])
-			requestClient.TransferCitizenPermit(citizenPermit)
+			requestClient.TransferCitizenPermit(citizenPermit, APIAccessToken)
 
 		}
 	})

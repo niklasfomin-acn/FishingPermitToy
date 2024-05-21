@@ -28,7 +28,7 @@ func main() {
 	pages := tview.NewPages()
 
 	// Setup Start Page
-	presentation.SetupStartPage(app, pages)
+	presentation.SetupStartPage(app, pages, config)
 
 	// Setup Citizen Pages
 	presentation.SetupCitizenLandingPage(app, pages, config)
@@ -142,4 +142,13 @@ func main() {
 	// log.Printf("Path: %v", testEndpoint)
 	// log.Print("Key: ", testKey)
 
+	// // Keycloak Test
+	// keycloak := auth.NewKeycloakClient(config.KeycloakClientID, config.KeycloakEndpoint, config.KeycloakClientSecret)
+	// log.Printf("Keycloak Client Initialized: %v", keycloak)
+
+	// token, err := keycloak.GetToken("frank", "my-new-password", config.KeycloakRealm)
+	// if err != nil {
+	// 	log.Fatalf("Error getting token: %v", token)
+	// }
+	// log.Printf("Token: %v", keycloak.Token)
 }

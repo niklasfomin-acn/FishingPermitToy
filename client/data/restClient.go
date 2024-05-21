@@ -23,7 +23,7 @@ func NewJSONTransferClient(destAddr, destPort, destAPI string) *jsonTransferClie
 }
 
 // Citizen API Access
-func (client *jsonTransferClient) TransferCitizenPermit(cp *CitizenPermit) error {
+func (client *jsonTransferClient) TransferCitizenPermit(cp *CitizenPermit, token string) error {
 	jsonData, err := json.Marshal(cp)
 	if err != nil {
 		return err

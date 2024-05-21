@@ -15,4 +15,8 @@ type Config struct {
 	SecretPaths               []string `json:"SecretPaths"`
 	SecretNames               []string `json:"SecretNames"`
 	VaultProvider             string   `json:"VaultProvider"`
+	KeycloakClientID          string   `json:"KeycloakClientID"`
+	KeycloakEndpoint          string   `json:"KeycloakEndpoint"`
+	KeycloakClientSecret      string   `json:"KeycloakClientSecret"`
+	KeycloakRealm             string   `json:"KeycloakRealm"`
 }

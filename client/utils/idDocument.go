@@ -79,7 +79,7 @@ func (doc *idDocument) UploadDocument(File image.Image) (operationLocation strin
 
 func (doc *idDocument) GetResults(Endpoint string) (results string, err error) {
 	for {
-		req, err := http.NewRequest("GET", doc.Endpoint, nil)
+		req, err := http.NewRequest("GET", Endpoint, nil)
 		if err != nil {
 			return results, err
 		}

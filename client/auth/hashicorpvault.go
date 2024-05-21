@@ -2,8 +2,10 @@ package auth
 
 import (
 	config "client/data"
+	"errors"
 	"fmt"
 	"log"
+	"os"
 
 	vaultapi "github.com/hashicorp/vault/api"
 )
@@ -24,8 +26,6 @@ func NewHashiCorpVaultClient(config *config.Config) (*HashiCorpVaultClient, erro
 }
 
 func (h *HashiCorpVaultClient) ConnectToService() error {
-	//ctx := context.Background()
-
 	config := &vaultapi.Config{
 		Address: h.Endpoint,
 	}
@@ -49,18 +49,33 @@ func (h *HashiCorpVaultClient) ConnectToService() error {
 	}
 
 	h.Client = client
+	if os.Getenv("VAULT_TOKEN") != "root" {
+		errors.New("VAULT_TOKEN environment variable is not set")
+		token := "root"
+		os.Setenv("VAULT_TOKEN", token)
+		h.Client.SetToken(token)
+		log.Printf("Vault token is set, %s", token)
+	}
+	log.Printf("Vault token is set, %s", os.Getenv("VAULT_TOKEN"))
 
 	return nil
 }
 
 func (h *HashiCorpVaultClient) GetSecret(name string, path string) (string, error) {
+	if h == nil || h.Client == nil {
+		return "", errors.New("vault client is not initialized")
+	}
+
 	secretClient := h.Client
 
 	secret, err := secretClient.Logical().Read(path)
-	log.Printf("Path: %v", path)
 	if err != nil {
 		log.Printf("Error reading secret: %v", err)
 		return "", err
+	}
+
+	if secret == nil {
+		return "", fmt.Errorf("No secret found at path: %s", path)
 	}
 
 	data, ok := secret.Data["data"].(map[string]interface{})

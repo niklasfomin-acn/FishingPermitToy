@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+  namespace: fishingpermittoy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vault
+  template:
+    metadata:
+      labels:
+        app: vault
+    spec:
+      serviceAccountName: vault-sa # Specify the service account here
+      containers:
+        - name: vault
+          image: hashicorp/vault:latest
+          ports:
+            - containerPort: 8200
+          env:
+            - name: VAULT_DEV_ROOT_TOKEN_ID
+              value: "root"
+            - name: VAULT_DEV_LISTEN_ADDRESS
+              value: "0.0.0.0:8200"
+          securityContext:
+            runAsUser: 1000
+            allowPrivilegeEscalation: true
+            capabilities:
+              add: ["IPC_LOCK", "SYS_RESOURCE"]
+              drop: ["CAP_SETFCAP"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault
+  namespace: fishingpermittoy
+spec:
+  ports:
+    - port: 8200
+      targetPort: 8200
+  selector:
+    app: vault

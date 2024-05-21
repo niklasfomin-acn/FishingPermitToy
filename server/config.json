@@ -1,9 +1,18 @@
 {
     "serverAddress": ":3000",
     "databases": [
-        "mongodb://localhost:27017",
+        "mongodb://mongodb-service:27017",
         "postgresql://postgres@localhost:5432/postgres?sslmode=disable",
         "oracle://system:oracle@localhost:1521/xe",
         "mongodb://mongodb:27017"
+    ],
+    "HVaultAddress": "http://vault:8200",
+    "SecretNames": [
+        "db",
+        "db"
+    ],
+    "SecretPaths": [
+        "secret/data/data/FishingPermitClone/MongoAzure",
+        "secret/data/data/FishingPermitClone/MongoLocalCluster"
     ]
 }

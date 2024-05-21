@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine3.14
+FROM golang:1.21-alpine
 
 WORKDIR /AnglerAppKlon
 
@@ -7,8 +7,8 @@ COPY go.sum ./
 
 COPY . ./
 
-RUN go build -o /AnglerAppKlon/app
+RUN go build -o /AnglerAppKlon/server
 
 EXPOSE 3000
 
-CMD ["/AnglerAppKlon/app"]
+CMD ["/AnglerAppKlon/server"]

@@ -1,6 +1,6 @@
 {
-    "ServerAddress": "localhost",
-    "ServerPort": "3000",
+    "ServerAddress": "192.168.49.2",
+    "ServerPort": "30080",
     "ServerAPIs": [
         "/SaveCitizenPermit",
         "/GetAllCitizenPermitRequests",
@@ -21,10 +21,15 @@
     "HVaultAddress": "http://localhost:8200",
     "SecretNames": [
         "ServiceEndpoints",
-        "ServiceKeys"
+        "ServiceKeys",
+        "KeycloakEndpoint",
+        "KeycloakClientID",
+        "KeycloakClientSecret",
+        "KeycloakRealm"
     ],
     "SecretPaths" :[
-            "secret/data/FishingPermitClone/ServiceConfig"
+            "secret/data/data/FishingPermitClone/ServiceConfig",
+            "secret/data/data/data/FishingPermitClone/IdentityConfig"
             ],
     "ServiceEndpointPath": "secret/FishingPermitClone/ServiceConfig/ServiceEndpoint",
     "APIKeyPath": "secret/FishingPermitClone/ServiceConfig/ServiceKeys",
@@ -32,7 +37,11 @@
         "AWSSecretsManager",
         "HashiCorpVault",
         "AzureVault"
-    ]
+    ],
+    "KeycloakEndpoint": "http://localhost:8080",
+    "KeycloakClientID": "admin-cli",
+    "KeycloakClientSecret": "0csNvbsxlB1FS1irNYT0Gdhj3WFxIo6Q",
+    "KeycloakRealm": "master"
 }
 
 
